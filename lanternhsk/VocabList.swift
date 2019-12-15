@@ -14,7 +14,7 @@ struct VocabList: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct VocabList_Previews: PreviewProvider {
     static var previews: some View {
         VocabList()
     }
