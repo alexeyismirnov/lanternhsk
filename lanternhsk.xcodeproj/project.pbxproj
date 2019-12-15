@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		8AD525C923A6253600274135 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525C823A6253600274135 /* AppDelegate.swift */; };
 		8AD525CB23A6253600274135 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525CA23A6253600274135 /* SceneDelegate.swift */; };
-		8AD525CD23A6253600274135 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525CC23A6253600274135 /* ContentView.swift */; };
+		8AD525CD23A6253600274135 /* VocabList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525CC23A6253600274135 /* VocabList.swift */; };
 		8AD525CF23A6253800274135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525CE23A6253800274135 /* Assets.xcassets */; };
 		8AD525D223A6253800274135 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525D123A6253800274135 /* Preview Assets.xcassets */; };
 		8AD525D523A6253800274135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525D323A6253800274135 /* LaunchScreen.storyboard */; };
+		8AD525DD23A6270F00274135 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525DC23A6270F00274135 /* Data.swift */; };
+		8AD525DF23A629DE00274135 /* hsk1.json in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525DE23A629DE00274135 /* hsk1.json */; };
+		8AD525E123A62FA600274135 /* VocabRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525E023A62FA600274135 /* VocabRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8AD525C523A6253600274135 /* lanternhsk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lanternhsk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD525C823A6253600274135 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AD525CA23A6253600274135 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8AD525CC23A6253600274135 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8AD525CC23A6253600274135 /* VocabList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabList.swift; sourceTree = "<group>"; };
 		8AD525CE23A6253800274135 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AD525D123A6253800274135 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8AD525D423A6253800274135 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8AD525D623A6253800274135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AD525DC23A6270F00274135 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		8AD525DE23A629DE00274135 /* hsk1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hsk1.json; sourceTree = "<group>"; };
+		8AD525E023A62FA600274135 /* VocabRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,11 +62,14 @@
 		8AD525C723A6253600274135 /* lanternhsk */ = {
 			isa = PBXGroup;
 			children = (
+				8AD525DC23A6270F00274135 /* Data.swift */,
 				8AD525C823A6253600274135 /* AppDelegate.swift */,
 				8AD525CA23A6253600274135 /* SceneDelegate.swift */,
-				8AD525CC23A6253600274135 /* ContentView.swift */,
+				8AD525CC23A6253600274135 /* VocabList.swift */,
+				8AD525E023A62FA600274135 /* VocabRow.swift */,
 				8AD525CE23A6253800274135 /* Assets.xcassets */,
 				8AD525D323A6253800274135 /* LaunchScreen.storyboard */,
+				8AD525DE23A629DE00274135 /* hsk1.json */,
 				8AD525D623A6253800274135 /* Info.plist */,
 				8AD525D023A6253800274135 /* Preview Content */,
 			);
@@ -133,6 +142,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AD525DF23A629DE00274135 /* hsk1.json in Resources */,
 				8AD525D523A6253800274135 /* LaunchScreen.storyboard in Resources */,
 				8AD525D223A6253800274135 /* Preview Assets.xcassets in Resources */,
 				8AD525CF23A6253800274135 /* Assets.xcassets in Resources */,
@@ -148,7 +158,9 @@
 			files = (
 				8AD525C923A6253600274135 /* AppDelegate.swift in Sources */,
 				8AD525CB23A6253600274135 /* SceneDelegate.swift in Sources */,
-				8AD525CD23A6253600274135 /* ContentView.swift in Sources */,
+				8AD525CD23A6253600274135 /* VocabList.swift in Sources */,
+				8AD525DD23A6270F00274135 /* Data.swift in Sources */,
+				8AD525E123A62FA600274135 /* VocabRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
