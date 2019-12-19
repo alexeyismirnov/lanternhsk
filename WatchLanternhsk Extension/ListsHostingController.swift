@@ -10,8 +10,8 @@ import WatchKit
 import Foundation
 import SwiftUI
 
-class HostingController: WKHostingController<ListsTab<VocabListWatch>> {
+class ListsHostingController: WKHostingController<ListsTab<VocabListWatch>> {
     override var body: ListsTab<VocabListWatch> {
-        return ListsTab() { VocabListWatch(deck: $0) }
+        return ListsTab(producer: { VocabListWatch(deck: $0) })
     }
 }

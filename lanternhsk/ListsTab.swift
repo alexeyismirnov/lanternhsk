@@ -9,11 +9,10 @@
 import SwiftUI
 
 struct ListsTab<DeckView: View>: View {
-    
     let producer: (VocabDeck) -> DeckView
     
     var body: some View {
-        List(lists) { item in
+        let list = List(lists) { item in
             NavigationLink(destination: self.producer(item)) {
                 VStack(alignment: .leading) {
                     Text(item.name).font(.headline)
@@ -22,6 +21,12 @@ struct ListsTab<DeckView: View>: View {
             }
             
         }.navigationBarTitle("Lists")
+        
+        #if os(watchOS)
+        return list.focusable(true)
+        #else
+        return list
+        #endif
     }
 }
 
@@ -33,6 +38,6 @@ typealias DeckView = VocabList
 
 struct ListsTab_Previews: PreviewProvider {
     static var previews: some View {
-        ListsTab() { DeckView(deck: $0) }
+        ListsTab(producer: { DeckView(deck: $0) })
     }
 }
