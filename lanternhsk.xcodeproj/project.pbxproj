@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A7B0F6723AA0B9200DC1645 /* ListsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6623AA0B9200DC1645 /* ListsTab.swift */; };
+		8A7B0F6823AA0B9200DC1645 /* ListsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6623AA0B9200DC1645 /* ListsTab.swift */; };
+		8A7B0F6A23AA1FFC00DC1645 /* hsk2.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6923AA1FFC00DC1645 /* hsk2.json */; };
+		8A7B0F6B23AA1FFC00DC1645 /* hsk2.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6923AA1FFC00DC1645 /* hsk2.json */; };
+		8A7B0F6D23AA21F400DC1645 /* hsk3.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6C23AA21F400DC1645 /* hsk3.json */; };
+		8A7B0F6E23AA21F400DC1645 /* hsk3.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6C23AA21F400DC1645 /* hsk3.json */; };
 		8AD525C923A6253600274135 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525C823A6253600274135 /* AppDelegate.swift */; };
 		8AD525CB23A6253600274135 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525CA23A6253600274135 /* SceneDelegate.swift */; };
 		8AD525CD23A6253600274135 /* VocabList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525CC23A6253600274135 /* VocabList.swift */; };
@@ -19,7 +25,7 @@
 		8AD525E823A634CA00274135 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525E623A634CA00274135 /* Interface.storyboard */; };
 		8AD525EA23A634CC00274135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525E923A634CC00274135 /* Assets.xcassets */; };
 		8AD525F123A634CC00274135 /* WatchLanternhsk Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8AD525F023A634CC00274135 /* WatchLanternhsk Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		8AD525F623A634CC00274135 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525F523A634CC00274135 /* ContentView.swift */; };
+		8AD525F623A634CC00274135 /* VocabListWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525F523A634CC00274135 /* VocabListWatch.swift */; };
 		8AD525F823A634CC00274135 /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525F723A634CC00274135 /* HostingController.swift */; };
 		8AD525FA23A634CC00274135 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525F923A634CC00274135 /* ExtensionDelegate.swift */; };
 		8AD525FC23A634CC00274135 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525FB23A634CC00274135 /* ComplicationController.swift */; };
@@ -27,7 +33,6 @@
 		8AD5260123A634CD00274135 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5260023A634CD00274135 /* Preview Assets.xcassets */; };
 		8AD5260523A634CD00274135 /* WatchLanternhsk.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8AD525E423A634CA00274135 /* WatchLanternhsk.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8AD5260E23A6354300274135 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525DC23A6270F00274135 /* Data.swift */; };
-		8AD5260F23A6354300274135 /* VocabList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525CC23A6253600274135 /* VocabList.swift */; };
 		8AD5261023A6354300274135 /* VocabRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525E023A62FA600274135 /* VocabRow.swift */; };
 		8AD5261123A6354300274135 /* hsk1.json in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525DE23A629DE00274135 /* hsk1.json */; };
 /* End PBXBuildFile section */
@@ -75,6 +80,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8A7B0F6623AA0B9200DC1645 /* ListsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsTab.swift; sourceTree = "<group>"; };
+		8A7B0F6923AA1FFC00DC1645 /* hsk2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hsk2.json; sourceTree = "<group>"; };
+		8A7B0F6C23AA21F400DC1645 /* hsk3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hsk3.json; sourceTree = "<group>"; };
 		8AD525C523A6253600274135 /* lanternhsk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lanternhsk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD525C823A6253600274135 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AD525CA23A6253600274135 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,7 +99,7 @@
 		8AD525E923A634CC00274135 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AD525EB23A634CC00274135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AD525F023A634CC00274135 /* WatchLanternhsk Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WatchLanternhsk Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8AD525F523A634CC00274135 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8AD525F523A634CC00274135 /* VocabListWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabListWatch.swift; sourceTree = "<group>"; };
 		8AD525F723A634CC00274135 /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
 		8AD525F923A634CC00274135 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		8AD525FB23A634CC00274135 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
@@ -144,11 +152,14 @@
 				8AD525DC23A6270F00274135 /* Data.swift */,
 				8AD525C823A6253600274135 /* AppDelegate.swift */,
 				8AD525CA23A6253600274135 /* SceneDelegate.swift */,
+				8A7B0F6623AA0B9200DC1645 /* ListsTab.swift */,
 				8AD525CC23A6253600274135 /* VocabList.swift */,
 				8AD525E023A62FA600274135 /* VocabRow.swift */,
 				8AD525CE23A6253800274135 /* Assets.xcassets */,
 				8AD525D323A6253800274135 /* LaunchScreen.storyboard */,
 				8AD525DE23A629DE00274135 /* hsk1.json */,
+				8A7B0F6923AA1FFC00DC1645 /* hsk2.json */,
+				8A7B0F6C23AA21F400DC1645 /* hsk3.json */,
 				8AD525D623A6253800274135 /* Info.plist */,
 				8AD525D023A6253800274135 /* Preview Content */,
 			);
@@ -176,7 +187,7 @@
 		8AD525F423A634CC00274135 /* WatchLanternhsk Extension */ = {
 			isa = PBXGroup;
 			children = (
-				8AD525F523A634CC00274135 /* ContentView.swift */,
+				8AD525F523A634CC00274135 /* VocabListWatch.swift */,
 				8AD525F723A634CC00274135 /* HostingController.swift */,
 				8AD525F923A634CC00274135 /* ExtensionDelegate.swift */,
 				8AD525FB23A634CC00274135 /* ComplicationController.swift */,
@@ -297,9 +308,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A7B0F6A23AA1FFC00DC1645 /* hsk2.json in Resources */,
 				8AD525DF23A629DE00274135 /* hsk1.json in Resources */,
 				8AD525D523A6253800274135 /* LaunchScreen.storyboard in Resources */,
 				8AD525D223A6253800274135 /* Preview Assets.xcassets in Resources */,
+				8A7B0F6D23AA21F400DC1645 /* hsk3.json in Resources */,
 				8AD525CF23A6253800274135 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,7 +330,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A7B0F6E23AA21F400DC1645 /* hsk3.json in Resources */,
 				8AD5260123A634CD00274135 /* Preview Assets.xcassets in Resources */,
+				8A7B0F6B23AA1FFC00DC1645 /* hsk2.json in Resources */,
 				8AD5261123A6354300274135 /* hsk1.json in Resources */,
 				8AD525FE23A634CD00274135 /* Assets.xcassets in Resources */,
 			);
@@ -331,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AD525C923A6253600274135 /* AppDelegate.swift in Sources */,
+				8A7B0F6723AA0B9200DC1645 /* ListsTab.swift in Sources */,
 				8AD525CB23A6253600274135 /* SceneDelegate.swift in Sources */,
 				8AD525CD23A6253600274135 /* VocabList.swift in Sources */,
 				8AD525DD23A6270F00274135 /* Data.swift in Sources */,
@@ -346,9 +362,9 @@
 				8AD5261023A6354300274135 /* VocabRow.swift in Sources */,
 				8AD5260E23A6354300274135 /* Data.swift in Sources */,
 				8AD525FC23A634CC00274135 /* ComplicationController.swift in Sources */,
-				8AD5260F23A6354300274135 /* VocabList.swift in Sources */,
-				8AD525F623A634CC00274135 /* ContentView.swift in Sources */,
+				8AD525F623A634CC00274135 /* VocabListWatch.swift in Sources */,
 				8AD525FA23A634CC00274135 /* ExtensionDelegate.swift in Sources */,
+				8A7B0F6823AA0B9200DC1645 /* ListsTab.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,13 +9,21 @@
 import SwiftUI
 
 struct VocabList: View {
+    let deck: VocabDeck
+    let cards: [VocabCard]
+    
+    init(deck: VocabDeck) {
+        self.deck = deck
+        self.cards = deck.load()
+    }
+    
     var body: some View {
-        List(vocabData, rowContent: VocabRow.init)
+        List(cards, rowContent: VocabRow.init).navigationBarTitle(deck.name)
     }
 }
 
 struct VocabList_Previews: PreviewProvider {
     static var previews: some View {
-        VocabList()
+        VocabList(deck: lists[0])
     }
 }

@@ -20,9 +20,10 @@ struct VocabRow: View {
 
 struct VocabRow_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            VocabRow(card: vocabData[0])
-            VocabRow(card: vocabData[5])
+        let cards: [VocabCard] = lists[0].load()
+        return Group {
+            VocabRow(card: cards[0])
+            VocabRow(card: cards[5])
 
         }
         .previewLayout(.fixed(width: 300, height: 70))
