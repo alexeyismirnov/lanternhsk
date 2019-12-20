@@ -23,7 +23,7 @@ struct ImageButton: View {
         }.onTapGesture {
             self.handler()
         }
-        .frame(width: 40, height: 40).border(Color.red)
+        .frame(width: 40, height: 40)
     }
 }
 
@@ -33,22 +33,22 @@ struct VocabRow: View {
     @State var starred: Bool = false
     
     var body: some View {
-        HStack(alignment: .center) {
-            
-            VStack(alignment: .leading) {
-                Text(card.word).font(.title)
-                Text(card.pinyin).font(.subheadline).lineLimit(2)
-            }.frame(maxHeight: .infinity, alignment: .center).background(Color.red)
-            
-            Spacer()
+        ZStack() {
             HStack(spacing: 0) {
-                ImageButton(iconName: "ellipsis", handler: { print("action1") })
+                Spacer()
                 ImageButton(iconName: starred ? "star.fill": "star", handler: {
                     self.starred = !self.starred
                     print("action2") })
+                ImageButton(iconName: "ellipsis", handler: { print("action1") })
+                
             }.frame(maxHeight: .infinity, alignment: .top)
             
-        }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top).background(Color.green)
+            VStack(alignment: .leading) {
+                Text(card.word).font(.title)
+                Text(card.pinyin).font(.subheadline)
+            }.frame(maxWidth: .infinity, alignment: .leading)
+            
+        }
     }
 }
 
