@@ -13,7 +13,7 @@ struct TabLabel: View {
     let label: String
     
     var body: some View {
-        HStack {
+        VStack {
             Image(systemName: imageName)
             Text(label)
         }

@@ -18,7 +18,7 @@ struct VocabList: View {
     }
     
     var body: some View {
-        List(cards, rowContent: VocabRow.init).navigationBarTitle(deck.name)
+        List(cards) { VocabRow(card: $0) }.navigationBarTitle(deck.name)
     }
 }
 
