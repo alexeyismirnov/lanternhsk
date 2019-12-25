@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A638F8023B35DA300D4DD7F /* StudyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A638F7F23B35DA300D4DD7F /* StudyManager.swift */; };
+		8A638F8123B35DA300D4DD7F /* StudyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A638F7F23B35DA300D4DD7F /* StudyManager.swift */; };
 		8A64F9D723AB667D0080F7B8 /* StudyTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A64F9D623AB667D0080F7B8 /* StudyTab.swift */; };
 		8A64F9D823AB667D0080F7B8 /* StudyTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A64F9D623AB667D0080F7B8 /* StudyTab.swift */; };
 		8A64F9DA23AB67BB0080F7B8 /* StudyHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A64F9D923AB67BB0080F7B8 /* StudyHostingController.swift */; };
@@ -23,7 +25,7 @@
 		8AD525CF23A6253800274135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525CE23A6253800274135 /* Assets.xcassets */; };
 		8AD525D223A6253800274135 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525D123A6253800274135 /* Preview Assets.xcassets */; };
 		8AD525D523A6253800274135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525D323A6253800274135 /* LaunchScreen.storyboard */; };
-		8AD525DD23A6270F00274135 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525DC23A6270F00274135 /* Data.swift */; };
+		8AD525DD23A6270F00274135 /* VocabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525DC23A6270F00274135 /* VocabManager.swift */; };
 		8AD525DF23A629DE00274135 /* hsk1.json in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525DE23A629DE00274135 /* hsk1.json */; };
 		8AD525E123A62FA600274135 /* VocabRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525E023A62FA600274135 /* VocabRow.swift */; };
 		8AD525E823A634CA00274135 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525E623A634CA00274135 /* Interface.storyboard */; };
@@ -36,7 +38,7 @@
 		8AD525FE23A634CD00274135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525FD23A634CC00274135 /* Assets.xcassets */; };
 		8AD5260123A634CD00274135 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5260023A634CD00274135 /* Preview Assets.xcassets */; };
 		8AD5260523A634CD00274135 /* WatchLanternhsk.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8AD525E423A634CA00274135 /* WatchLanternhsk.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		8AD5260E23A6354300274135 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525DC23A6270F00274135 /* Data.swift */; };
+		8AD5260E23A6354300274135 /* VocabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525DC23A6270F00274135 /* VocabManager.swift */; };
 		8AD5261023A6354300274135 /* VocabRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525E023A62FA600274135 /* VocabRow.swift */; };
 		8AD5261123A6354300274135 /* hsk1.json in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525DE23A629DE00274135 /* hsk1.json */; };
 /* End PBXBuildFile section */
@@ -84,6 +86,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8A638F7F23B35DA300D4DD7F /* StudyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyManager.swift; sourceTree = "<group>"; };
 		8A64F9D623AB667D0080F7B8 /* StudyTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTab.swift; sourceTree = "<group>"; };
 		8A64F9D923AB67BB0080F7B8 /* StudyHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyHostingController.swift; sourceTree = "<group>"; };
 		8A64F9DB23AB6E9A0080F7B8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -98,7 +101,7 @@
 		8AD525D123A6253800274135 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8AD525D423A6253800274135 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8AD525D623A6253800274135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8AD525DC23A6270F00274135 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		8AD525DC23A6270F00274135 /* VocabManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabManager.swift; sourceTree = "<group>"; };
 		8AD525DE23A629DE00274135 /* hsk1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hsk1.json; sourceTree = "<group>"; };
 		8AD525E023A62FA600274135 /* VocabRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabRow.swift; sourceTree = "<group>"; };
 		8AD525E423A634CA00274135 /* WatchLanternhsk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchLanternhsk.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,7 +159,8 @@
 		8AD525C723A6253600274135 /* lanternhsk */ = {
 			isa = PBXGroup;
 			children = (
-				8AD525DC23A6270F00274135 /* Data.swift */,
+				8AD525DC23A6270F00274135 /* VocabManager.swift */,
+				8A638F7F23B35DA300D4DD7F /* StudyManager.swift */,
 				8AD525C823A6253600274135 /* AppDelegate.swift */,
 				8AD525CA23A6253600274135 /* SceneDelegate.swift */,
 				8A64F9DB23AB6E9A0080F7B8 /* MainView.swift */,
@@ -360,7 +364,8 @@
 				8A7B0F6723AA0B9200DC1645 /* ListsTab.swift in Sources */,
 				8AD525CB23A6253600274135 /* SceneDelegate.swift in Sources */,
 				8AD525CD23A6253600274135 /* VocabList.swift in Sources */,
-				8AD525DD23A6270F00274135 /* Data.swift in Sources */,
+				8A638F8023B35DA300D4DD7F /* StudyManager.swift in Sources */,
+				8AD525DD23A6270F00274135 /* VocabManager.swift in Sources */,
 				8AD525E123A62FA600274135 /* VocabRow.swift in Sources */,
 				8A64F9D723AB667D0080F7B8 /* StudyTab.swift in Sources */,
 			);
@@ -374,7 +379,8 @@
 				8A64F9D823AB667D0080F7B8 /* StudyTab.swift in Sources */,
 				8A64F9DA23AB67BB0080F7B8 /* StudyHostingController.swift in Sources */,
 				8AD5261023A6354300274135 /* VocabRow.swift in Sources */,
-				8AD5260E23A6354300274135 /* Data.swift in Sources */,
+				8AD5260E23A6354300274135 /* VocabManager.swift in Sources */,
+				8A638F8123B35DA300D4DD7F /* StudyManager.swift in Sources */,
 				8AD525FC23A634CC00274135 /* ComplicationController.swift in Sources */,
 				8AD525F623A634CC00274135 /* VocabListWatch.swift in Sources */,
 				8AD525FA23A634CC00274135 /* ExtensionDelegate.swift in Sources */,
