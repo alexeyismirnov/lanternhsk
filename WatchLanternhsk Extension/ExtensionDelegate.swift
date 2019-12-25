@@ -9,9 +9,10 @@
 import WatchKit
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
-
+    let studyManager = StudyManager()
+    
     func applicationDidFinishLaunching() {
-        // Perform any final initialization of your application.
+        studyManager.load()
     }
 
     func applicationDidBecomeActive() {

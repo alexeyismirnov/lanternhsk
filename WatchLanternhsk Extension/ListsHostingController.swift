@@ -10,8 +10,16 @@ import WatchKit
 import Foundation
 import SwiftUI
 
-class ListsHostingController: WKHostingController<ListsTab<VocabListWatch>> {
-    override var body: ListsTab<VocabListWatch> {
-        return ListsTab(producer: { VocabListWatch(deck: $0) })
+class ListsHostingController: WKHostingController<AnyView> {
+    var studyManager: StudyManager!
+    
+    override func awake(withContext context: Any?) {
+        super.awake(withContext: context)
+        self.studyManager = (WKExtension.shared().delegate as! ExtensionDelegate).studyManager
+    }
+    
+    override var body: AnyView {
+        return AnyView(ListsTab(producer: { VocabListWatch(deck: $0) })
+            .environmentObject(studyManager))
     }
 }

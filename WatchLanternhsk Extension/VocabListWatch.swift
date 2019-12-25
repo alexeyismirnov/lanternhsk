@@ -19,7 +19,7 @@ struct VocabListWatch: View {
     
     var body: some View {
         GeometryReader { geometry in
-            List(self.cards) { VocabRow(card: $0, height: geometry.size.height)
+            List(self.cards) { VocabRow(card: $0, in: self.deck.id, height: geometry.size.height)
             }.environment(\.defaultMinListRowHeight, geometry.size.height)
                 .listStyle(CarouselListStyle()).focusable(true)
         }.contextMenu(menuItems: {

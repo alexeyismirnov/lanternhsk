@@ -13,14 +13,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        let environment = StudyManager()
+        environment.load()
 
-        // Create the SwiftUI view that provides the window contents.
-        let contentView = MainView()
-
-        // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
+            window.rootViewController = UIHostingController(
+                rootView: MainView()
+                .environmentObject(environment)
+            )
             self.window = window
             window.makeKeyAndVisible()
         }

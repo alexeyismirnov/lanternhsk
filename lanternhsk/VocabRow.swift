@@ -48,16 +48,27 @@ struct VocabRowItemGeometry: View {
 }
 
 struct VocabRowSideOne: View {
-    let card: VocabCard
-    @State var starred: Bool = false
+    @EnvironmentObject var studyManager: StudyManager
     
+    let card: VocabCard
+    let deckId: Int
+    
+    var isStarred: Bool {
+        return studyManager.isStarred(card: card, in: deckId)
+    }
+
     var body: some View {
         ZStack() {
             HStack(spacing: 0) {
                 Spacer()
-                ImageButton(iconName: starred ? "star.fill": "star", handler: {
-                    self.starred = !self.starred
-                    print("action2") })
+                ImageButton(iconName: isStarred ? "star.fill": "star",
+                            handler: {
+                                if (self.isStarred) {
+                                    self.studyManager.removeFromStudy(card: self.card, in: self.deckId)
+                                } else {
+                                    self.studyManager.addToStudy(card: self.card, in: self.deckId)
+                                }
+                })
                 ImageButton(iconName: "ellipsis", handler: { print("action1") })
                 
             }.frame(maxHeight: .infinity, alignment: .top)
@@ -87,18 +98,21 @@ struct VocabRowSideTwo: View {
 }
 
 struct VocabRow: View {
-    let card: VocabCard
     @State private var flipped: Bool = false
     @State var maxHeight : CGFloat
     
-    init(card: VocabCard, height: CGFloat = 0.0) {
+    let card: VocabCard
+    let deckId: Int
+    
+    init(card: VocabCard, in deckId: Int, height: CGFloat = 0.0) {
         self.card = card
+        self.deckId = deckId
         _maxHeight = State(initialValue: height)
     }
     
     var body: some View {
         ZStack {
-            VocabRowSideOne(card: card)
+            VocabRowSideOne(card: card, deckId: deckId)
                 .rotation3DEffect(.degrees(self.flipped ? 180.0 : 0.0), axis: (x: 1.0, y: 0.0, z: 0.0))
                 .zIndex(self.flipped ? 0 : 1)
                 .opacity(self.flipped ? 0: 1)
@@ -126,10 +140,12 @@ struct VocabRow: View {
 
 struct VocabRow_Previews: PreviewProvider {
     static var previews: some View {
-        let cards: [VocabCard] = lists[0].load()
+        let deckId = 0
+        
+        let cards: [VocabCard] = lists[deckId].load()
         return Group {
-            VocabRow(card: cards[0])
-            VocabRow(card: cards[5])
+            VocabRow(card: cards[0], in: deckId)
+            VocabRow(card: cards[5], in: deckId)
 
         }
         .previewLayout(.fixed(width: 300, height: 70))
