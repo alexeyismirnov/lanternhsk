@@ -13,8 +13,8 @@
 		8A64F9D823AB667D0080F7B8 /* StudyTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A64F9D623AB667D0080F7B8 /* StudyTab.swift */; };
 		8A64F9DA23AB67BB0080F7B8 /* StudyHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A64F9D923AB67BB0080F7B8 /* StudyHostingController.swift */; };
 		8A64F9DC23AB6E9A0080F7B8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A64F9DB23AB6E9A0080F7B8 /* MainView.swift */; };
-		8A7B0F6723AA0B9200DC1645 /* ListsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6623AA0B9200DC1645 /* ListsTab.swift */; };
-		8A7B0F6823AA0B9200DC1645 /* ListsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6623AA0B9200DC1645 /* ListsTab.swift */; };
+		8A7B0F6723AA0B9200DC1645 /* VocabTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6623AA0B9200DC1645 /* VocabTab.swift */; };
+		8A7B0F6823AA0B9200DC1645 /* VocabTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6623AA0B9200DC1645 /* VocabTab.swift */; };
 		8A7B0F6A23AA1FFC00DC1645 /* hsk2.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6923AA1FFC00DC1645 /* hsk2.json */; };
 		8A7B0F6B23AA1FFC00DC1645 /* hsk2.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6923AA1FFC00DC1645 /* hsk2.json */; };
 		8A7B0F6D23AA21F400DC1645 /* hsk3.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6C23AA21F400DC1645 /* hsk3.json */; };
@@ -90,7 +90,7 @@
 		8A64F9D623AB667D0080F7B8 /* StudyTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTab.swift; sourceTree = "<group>"; };
 		8A64F9D923AB67BB0080F7B8 /* StudyHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyHostingController.swift; sourceTree = "<group>"; };
 		8A64F9DB23AB6E9A0080F7B8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		8A7B0F6623AA0B9200DC1645 /* ListsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsTab.swift; sourceTree = "<group>"; };
+		8A7B0F6623AA0B9200DC1645 /* VocabTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabTab.swift; sourceTree = "<group>"; };
 		8A7B0F6923AA1FFC00DC1645 /* hsk2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hsk2.json; sourceTree = "<group>"; };
 		8A7B0F6C23AA21F400DC1645 /* hsk3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hsk3.json; sourceTree = "<group>"; };
 		8AD525C523A6253600274135 /* lanternhsk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lanternhsk.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,7 +164,7 @@
 				8AD525C823A6253600274135 /* AppDelegate.swift */,
 				8AD525CA23A6253600274135 /* SceneDelegate.swift */,
 				8A64F9DB23AB6E9A0080F7B8 /* MainView.swift */,
-				8A7B0F6623AA0B9200DC1645 /* ListsTab.swift */,
+				8A7B0F6623AA0B9200DC1645 /* VocabTab.swift */,
 				8A64F9D623AB667D0080F7B8 /* StudyTab.swift */,
 				8AD525CC23A6253600274135 /* VocabList.swift */,
 				8AD525E023A62FA600274135 /* VocabRow.swift */,
@@ -361,7 +361,7 @@
 			files = (
 				8AD525C923A6253600274135 /* AppDelegate.swift in Sources */,
 				8A64F9DC23AB6E9A0080F7B8 /* MainView.swift in Sources */,
-				8A7B0F6723AA0B9200DC1645 /* ListsTab.swift in Sources */,
+				8A7B0F6723AA0B9200DC1645 /* VocabTab.swift in Sources */,
 				8AD525CB23A6253600274135 /* SceneDelegate.swift in Sources */,
 				8AD525CD23A6253600274135 /* VocabList.swift in Sources */,
 				8A638F8023B35DA300D4DD7F /* StudyManager.swift in Sources */,
@@ -384,7 +384,7 @@
 				8AD525FC23A634CC00274135 /* ComplicationController.swift in Sources */,
 				8AD525F623A634CC00274135 /* VocabListWatch.swift in Sources */,
 				8AD525FA23A634CC00274135 /* ExtensionDelegate.swift in Sources */,
-				8A7B0F6823AA0B9200DC1645 /* ListsTab.swift in Sources */,
+				8A7B0F6823AA0B9200DC1645 /* VocabTab.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

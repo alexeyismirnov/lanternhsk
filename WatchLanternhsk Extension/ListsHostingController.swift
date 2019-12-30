@@ -19,7 +19,7 @@ class ListsHostingController: WKHostingController<AnyView> {
     }
     
     override var body: AnyView {
-        return AnyView(ListsTab(producer: { VocabListWatch(deck: $0) })
+        return AnyView(VocabTab(producer: { VocabListWatch(deck: $0) })
             .environmentObject(studyManager))
     }
 }

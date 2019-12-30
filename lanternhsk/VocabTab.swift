@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ListsTab<DeckView: View>: View {
+struct VocabTab<DeckView: View>: View {
     let producer: (VocabDeck) -> DeckView
     
     var body: some View {
@@ -36,8 +36,8 @@ typealias DeckView = VocabListWatch
 typealias DeckView = VocabList
 #endif
 
-struct ListsTab_Previews: PreviewProvider {
+struct VocabTab_Previews: PreviewProvider {
     static var previews: some View {
-        ListsTab(producer: { DeckView(deck: $0) })
+        VocabTab(producer: { DeckView(deck: $0) })
     }
 }
