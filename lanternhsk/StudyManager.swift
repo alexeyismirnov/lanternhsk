@@ -27,7 +27,9 @@ struct StudyDeck: Codable, Identifiable {
     var id: Int
     var name: String
     var cards: [VocabCard]
-    
+}
+
+extension StudyDeck {
     init?(deck: VocabDeck, studyManager: StudyManager) {
         self.id = deck.id
         self.name = deck.name

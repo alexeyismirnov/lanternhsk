@@ -8,6 +8,12 @@
 
 import SwiftUI
 
+#if os(watchOS)
+typealias StudyView = StudyListWatch
+#else
+typealias StudyView = StudyList
+#endif
+
 struct StudyTab: View {
     @EnvironmentObject var studyManager: StudyManager
     @State var studyLists = [StudyDeck]()
@@ -19,10 +25,12 @@ struct StudyTab: View {
         }
         
         let list = List(studyLists) { item in
-            VStack(alignment: .leading) {
-                Text(item.name).font(.headline)
-                Text("Words: \(item.cards.count)").font(.subheadline)
-            }.padding()
+            NavigationLink(destination: StudyView(deck: item)) {
+                VStack(alignment: .leading) {
+                    Text(item.name).font(.headline)
+                    Text("Words: \(item.cards.count)").font(.subheadline)
+                }.padding()
+            }
         }
         
         #if os(watchOS)
@@ -43,14 +51,14 @@ struct StudyTab: View {
     }
     
     var body: some View {
-        getContent()
-            .navigationBarTitle("Study")
+        getContent().navigationBarTitle("Study")
             .onAppear(perform: {
                 self.reload()
             })
             .onReceive(studyManager.cardsChanged, perform: { _ in
                 self.reload()
             })
+        
     }
 }
 
