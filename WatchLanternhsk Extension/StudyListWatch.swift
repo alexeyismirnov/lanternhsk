@@ -10,12 +10,13 @@ import SwiftUI
 
 struct StudyListWatch: View {
     var deck: StudyDeck
-    
+    @State var answerType : StudyRow.AnswerType = .none
+    @State var answerStr : String = ""
+
     var body: some View {
-        
         GeometryReader { geometry in
             List {
-                StudyRow(card: self.deck.cards[0])
+                StudyRow(card: self.deck.cards[0], answerType: self.$answerType, answerStr: self.$answerStr)
             }.environment(\.defaultMinListRowHeight, geometry.size.height)
             
         }

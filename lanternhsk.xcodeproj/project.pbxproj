@@ -43,7 +43,6 @@
 		8AD5261023A6354300274135 /* VocabRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525E023A62FA600274135 /* VocabRow.swift */; };
 		8AD5261123A6354300274135 /* hsk1.json in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525DE23A629DE00274135 /* hsk1.json */; };
 		8AFBE0BC23BB30FF002E95BC /* StudyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBE0BB23BB30FF002E95BC /* StudyList.swift */; };
-		8AFBE0BD23BB30FF002E95BC /* StudyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBE0BB23BB30FF002E95BC /* StudyList.swift */; };
 		8AFBE0BF23BB364F002E95BC /* StudyRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBE0BE23BB364F002E95BC /* StudyRow.swift */; };
 		8AFBE0C023BB364F002E95BC /* StudyRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBE0BE23BB364F002E95BC /* StudyRow.swift */; };
 /* End PBXBuildFile section */
@@ -399,7 +398,6 @@
 				8AD525F823A634CC00274135 /* ListsHostingController.swift in Sources */,
 				8A64F9D823AB667D0080F7B8 /* StudyTab.swift in Sources */,
 				8AFBE0C023BB364F002E95BC /* StudyRow.swift in Sources */,
-				8AFBE0BD23BB30FF002E95BC /* StudyList.swift in Sources */,
 				8A64F9DA23AB67BB0080F7B8 /* StudyHostingController.swift in Sources */,
 				8AD5261023A6354300274135 /* VocabRow.swift in Sources */,
 				8A61D8ED23BCBEF600697207 /* StudyListWatch.swift in Sources */,

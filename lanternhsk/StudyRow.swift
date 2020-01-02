@@ -9,14 +9,15 @@
 import SwiftUI
 
 struct StudyRow: View {
-    enum AnswerType {
-        case none, correct, incorrect
-    }
-    
-    @State var answerStr: String = ""
-    @State var answerType: AnswerType = .none
-    
     let card: VocabCard
+    @Binding var answerType: AnswerType
+    @Binding var answerStr: String
+
+    init(card: VocabCard, answerType: Binding<AnswerType>, answerStr: Binding<String>) {
+        self.card = card
+        self._answerType = answerType
+        self._answerStr = answerStr
+    }
 
     var body: some View {
         Group {
@@ -69,10 +70,19 @@ struct StudyRow: View {
    
 }
 
+extension StudyRow {
+    public enum AnswerType {
+           case none, correct, incorrect
+       }
+}
+
 struct StudyRow_Previews: PreviewProvider {
+    @State static var answerType : StudyRow.AnswerType = .none
+    @State static var answerStr : String = ""
+
     static let cards: [VocabCard] = lists[0].load()
 
     static var previews: some View {
-        StudyRow(card: cards[0])
+        StudyRow(card: cards[0], answerType: $answerType, answerStr: $answerStr)
     }
 }
