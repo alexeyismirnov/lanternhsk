@@ -27,13 +27,20 @@ struct StudyList: View {
                 self.answerType = .none
                 self.answerStr = ""
                 self.index = Int.random(in: 0..<self.deck.cards.count)
+                
+                self.opacity = 0.0
+                withAnimation(.linear(duration: 1)) {
+                    self.opacity = 1.0
+                }
             }
         }
        
         return Group {
-            StudyRow(card: self.deck.cards[index], answerType: $answerType, answerStr: $answerStr).opacity(opacity)
+            StudyRow(card: self.deck.cards[index], answerType: $answerType, answerStr: $answerStr)
+                .opacity(opacity)
             
-        } .onAppear  {
+        }
+        .onAppear  {
             withAnimation(.linear(duration: 1)) {
                 self.opacity = 1.0
             }
