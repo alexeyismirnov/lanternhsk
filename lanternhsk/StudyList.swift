@@ -10,7 +10,7 @@ import SwiftUI
 
 struct StudyList: View {
     var deck: StudyDeck
-    @State var answerType : StudyRow.AnswerType = .none
+    @State var answerType = AnswerType.none
     @State var answerStr : String = ""
     @State private var opacity = 0.0
 
@@ -22,6 +22,8 @@ struct StudyList: View {
     }
     
     var body: some View {
+        
+        /*
         if answerType != .none {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.answerType = .none
@@ -34,7 +36,8 @@ struct StudyList: View {
                 }
             }
         }
-       
+       */
+        
         return Group {
             StudyRow(card: self.deck.cards[index], answerType: $answerType, answerStr: $answerStr)
                 .opacity(opacity)

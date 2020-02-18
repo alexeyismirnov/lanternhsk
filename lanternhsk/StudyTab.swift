@@ -8,12 +8,6 @@
 
 import SwiftUI
 
-#if os(watchOS)
-typealias StudyView = StudyListWatch
-#else
-typealias StudyView = StudyList
-#endif
-
 struct StudyTab: View {
     @EnvironmentObject var studyManager: StudyManager
     @State var studyLists = [StudyDeck]()
@@ -25,7 +19,7 @@ struct StudyTab: View {
         }
         
         let list = List(studyLists) { item in
-            NavigationLink(destination: StudyView(deck: item)) {
+            NavigationLink(destination: QuestionList(model: QuestionModel(deck: item))) {
                 VStack(alignment: .leading) {
                     Text(item.name).font(.headline)
                     Text("Words: \(item.cards.count)").font(.subheadline)

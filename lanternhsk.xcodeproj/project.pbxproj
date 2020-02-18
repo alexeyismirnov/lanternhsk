@@ -20,6 +20,10 @@
 		8A7B0F6B23AA1FFC00DC1645 /* hsk2.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6923AA1FFC00DC1645 /* hsk2.json */; };
 		8A7B0F6D23AA21F400DC1645 /* hsk3.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6C23AA21F400DC1645 /* hsk3.json */; };
 		8A7B0F6E23AA21F400DC1645 /* hsk3.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6C23AA21F400DC1645 /* hsk3.json */; };
+		8A9B7CFC23FBF7E100BA086B /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B7CFB23FBF7E100BA086B /* QuestionModel.swift */; };
+		8A9B7CFD23FBF7E100BA086B /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B7CFB23FBF7E100BA086B /* QuestionModel.swift */; };
+		8AA4D9B423FBD77B00FF13C0 /* QuestionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4D9B323FBD77B00FF13C0 /* QuestionList.swift */; };
+		8AA4D9B523FBD77B00FF13C0 /* QuestionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4D9B323FBD77B00FF13C0 /* QuestionList.swift */; };
 		8AD525C923A6253600274135 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525C823A6253600274135 /* AppDelegate.swift */; };
 		8AD525CB23A6253600274135 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525CA23A6253600274135 /* SceneDelegate.swift */; };
 		8AD525CD23A6253600274135 /* VocabList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525CC23A6253600274135 /* VocabList.swift */; };
@@ -98,6 +102,8 @@
 		8A7B0F6623AA0B9200DC1645 /* VocabTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabTab.swift; sourceTree = "<group>"; };
 		8A7B0F6923AA1FFC00DC1645 /* hsk2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hsk2.json; sourceTree = "<group>"; };
 		8A7B0F6C23AA21F400DC1645 /* hsk3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hsk3.json; sourceTree = "<group>"; };
+		8A9B7CFB23FBF7E100BA086B /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		8AA4D9B323FBD77B00FF13C0 /* QuestionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionList.swift; sourceTree = "<group>"; };
 		8AD525C523A6253600274135 /* lanternhsk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lanternhsk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD525C823A6253600274135 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AD525CA23A6253600274135 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -182,6 +188,8 @@
 				8A7B0F6623AA0B9200DC1645 /* VocabTab.swift */,
 				8A64F9D623AB667D0080F7B8 /* StudyTab.swift */,
 				8AD525CC23A6253600274135 /* VocabList.swift */,
+				8A9B7CFB23FBF7E100BA086B /* QuestionModel.swift */,
+				8AA4D9B323FBD77B00FF13C0 /* QuestionList.swift */,
 				8AFBE0BB23BB30FF002E95BC /* StudyList.swift */,
 				8AD525E023A62FA600274135 /* VocabRow.swift */,
 				8AFBE0BE23BB364F002E95BC /* StudyRow.swift */,
@@ -377,6 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A9B7CFC23FBF7E100BA086B /* QuestionModel.swift in Sources */,
 				8AD525C923A6253600274135 /* AppDelegate.swift in Sources */,
 				8A64F9DC23AB6E9A0080F7B8 /* MainView.swift in Sources */,
 				8AFBE0BF23BB364F002E95BC /* StudyRow.swift in Sources */,
@@ -386,6 +395,7 @@
 				8A638F8023B35DA300D4DD7F /* StudyManager.swift in Sources */,
 				8AD525DD23A6270F00274135 /* VocabManager.swift in Sources */,
 				8AFBE0BC23BB30FF002E95BC /* StudyList.swift in Sources */,
+				8AA4D9B423FBD77B00FF13C0 /* QuestionList.swift in Sources */,
 				8AD525E123A62FA600274135 /* VocabRow.swift in Sources */,
 				8A64F9D723AB667D0080F7B8 /* StudyTab.swift in Sources */,
 			);
@@ -402,6 +412,8 @@
 				8AD5261023A6354300274135 /* VocabRow.swift in Sources */,
 				8A61D8ED23BCBEF600697207 /* StudyListWatch.swift in Sources */,
 				8AD5260E23A6354300274135 /* VocabManager.swift in Sources */,
+				8A9B7CFD23FBF7E100BA086B /* QuestionModel.swift in Sources */,
+				8AA4D9B523FBD77B00FF13C0 /* QuestionList.swift in Sources */,
 				8A638F8123B35DA300D4DD7F /* StudyManager.swift in Sources */,
 				8AD525FC23A634CC00274135 /* ComplicationController.swift in Sources */,
 				8AD525F623A634CC00274135 /* VocabListWatch.swift in Sources */,

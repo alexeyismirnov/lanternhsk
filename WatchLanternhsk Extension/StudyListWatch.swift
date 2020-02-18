@@ -10,7 +10,7 @@ import SwiftUI
 
 struct StudyListWatch: View {
     var deck: StudyDeck
-    @State var answerType : StudyRow.AnswerType = .none
+    @State var answerType = AnswerType.none
     @State var answerStr : String = ""
 
     var body: some View {

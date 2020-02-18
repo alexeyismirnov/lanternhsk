@@ -67,17 +67,11 @@ struct StudyRow: View {
             answerType = .incorrect
         }
     }
-   
 }
 
-extension StudyRow {
-    public enum AnswerType {
-           case none, correct, incorrect
-       }
-}
 
 struct StudyRow_Previews: PreviewProvider {
-    @State static var answerType : StudyRow.AnswerType = .none
+    @State static var answerType = AnswerType.none
     @State static var answerStr : String = ""
 
     static let cards: [VocabCard] = lists[0].load()
