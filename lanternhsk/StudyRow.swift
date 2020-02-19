@@ -12,22 +12,25 @@ struct StudyRow: View {
     let card: VocabCard
     @Binding var answerType: AnswerType
     @Binding var answerStr: String
+    
+    @State var show: Bool = false
 
     init(card: VocabCard, answerType: Binding<AnswerType>, answerStr: Binding<String>) {
         self.card = card
         self._answerType = answerType
         self._answerStr = answerStr
     }
-
+    
     var body: some View {
-        Group {
+        VStack {
             if self.answerType == .none {
-                VStack {
+                 VStack {
                     Text(card.word).font(.title)
                     TextField("Translate", text: $answerStr, onCommit: validate)
                     .multilineTextAlignment(.center)
-
                 }
+                 .transition(AnyTransition.opacity
+                 .animation(.easeInOut(duration: 0.5)))
                 
             } else if self.answerType == .correct {
                 VStack {
@@ -41,6 +44,8 @@ struct StudyRow: View {
                         .foregroundColor(.green)
 
                 }
+                .transition(AnyTransition.opacity
+                .animation(.easeInOut(duration: 0.5)))
                 
             } else {
                 VStack {
@@ -55,13 +60,15 @@ struct StudyRow: View {
                         .foregroundColor(.red)
 
                 }
+                .transition(AnyTransition.opacity
+                .animation(.easeInOut(duration: 0.5)))
             }
             
         }
     }
     
     func validate() {
-        if card.translation.lowercased().contains(answerStr.lowercased()) {
+        if card.translation.lowercased().contains(answerStr.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()) {
             answerType = .correct
         } else {
             answerType = .incorrect

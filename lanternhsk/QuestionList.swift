@@ -31,19 +31,26 @@ struct QuestionList: View {
                 self.answerStr = ""
             }
         }
-
-        #if os(watchOS)
-        let content = GeometryReader { geometry in
-            List {
-                StudyRow(card: self.model.cards[self.model.index], answerType: self.$answerType, answerStr: self.$answerStr)            }.environment(\.defaultMinListRowHeight, geometry.size.height)
+        
+        var content: some View {
+            #if os(watchOS)
+            return GeometryReader { geometry in
+                List {
+                    StudyRow(card: self.model.cards[self.model.index],
+                             answerType: self.$answerType,
+                             answerStr: self.$answerStr)
+                    
+                }.environment(\.defaultMinListRowHeight, geometry.size.height)
+            }
+            
+            #else
+            return StudyRow(card: self.model.cards[self.model.index],
+                            answerType: $answerType,
+                            answerStr: $answerStr)
+            #endif
         }
         
         return AnyView(content)
-        
-        #else
-        let content = StudyRow(card: self.model.cards[self.model.index], answerType: $answerType, answerStr: $answerStr)
-        return AnyView(content)
-        #endif
     }
 
 }
