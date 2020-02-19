@@ -20,15 +20,25 @@ struct QuestionList: View {
     
     var body: some View {
         if model.index == model.totalQuestions {
-            return AnyView(Text("All questions answered")
-                          .multilineTextAlignment(.center))
+            return AnyView(
+                VStack(alignment: .leading) {
+                    Text("Correct: \(model.totalCorrect)")
+                        .foregroundColor(.green)
+                    
+                    Text("Wrong: \(model.totalIncorrect)")
+                        .foregroundColor(.red)
+                    
+                    Text("Skipped: \(model.totalIgnored)")
+                        .foregroundColor(.yellow)
+                }.font(.headline)
+            )
         }
         
         if answerType != .none {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.model.getNextQuestion(answer: self.answerType)
-                self.answerType = .none
-                self.answerStr = ""
+                    self.model.getNextQuestion(answer: self.answerType)
+                    self.answerType = .none
+                    self.answerStr = ""
             }
         }
         

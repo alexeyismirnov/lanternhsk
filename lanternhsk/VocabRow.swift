@@ -12,6 +12,14 @@ struct ImageButton: View {
     let iconName: String
     let handler: () -> Void
     
+    let frameSize: CGFloat
+    
+    init(iconName: String, handler: @escaping () -> Void, frameSize: CGFloat = 50.0) {
+        self.iconName = iconName
+        self.handler = handler
+        self.frameSize = frameSize
+    }
+    
     var body: some View {
         VStack() {
             Image(systemName: iconName)
@@ -23,7 +31,7 @@ struct ImageButton: View {
         }.onTapGesture {
             self.handler()
         }
-        .frame(width: 40, height: 40)
+        .frame(width: frameSize, height: frameSize)
     }
 }
 
@@ -58,7 +66,7 @@ struct VocabRowSideOne: View {
     }
 
     var body: some View {
-        ZStack() {
+        ZStack {
             HStack(spacing: 0) {
                 Spacer()
                 ImageButton(iconName: isStarred ? "star.fill": "star",
@@ -69,7 +77,7 @@ struct VocabRowSideOne: View {
                                     self.studyManager.addToStudy(card: self.card, in: self.deckId)
                                 }
                 })
-                ImageButton(iconName: "ellipsis", handler: { print("action1") })
+                ImageButton(iconName: "info.circle", handler: { print("action1") })
                 
             }.frame(maxHeight: .infinity, alignment: .top)
             

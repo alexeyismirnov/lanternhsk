@@ -24,13 +24,40 @@ struct StudyRow: View {
     var body: some View {
         VStack {
             if self.answerType == .none {
-                 VStack {
-                    Text(card.word).font(.title)
-                    TextField("Translate", text: $answerStr, onCommit: validate)
-                    .multilineTextAlignment(.center)
+                VStack {
+                    Spacer()
+
+                    VStack {
+                        Text(card.word).font(.title)
+                        TextField("Translate", text: $answerStr, onCommit: validate)
+                            .multilineTextAlignment(.center)
+                    }
+                    
+                    Spacer()
+                    
+                    VStack {
+                        Button(action: {
+                            #if os(iOS)
+                            self.answerType = .ignored
+                            #endif
+                        })  {
+                            HStack {
+                                Image(systemName: "arrow.right.circle")
+                                Text("Next").font(.headline)
+                            }.padding()
+                            .frame(width: 150, alignment: .center)
+                        }
+                        
+                        
+                    }
+                    .onTapGesture {
+                        self.answerType = .ignored
+                    }
+                    
                 }
-                 .transition(AnyTransition.opacity
-                 .animation(.easeInOut(duration: 0.5)))
+                .transition(AnyTransition.opacity
+                .animation(.easeInOut(duration: 0.5)))
+                
                 
             } else if self.answerType == .correct {
                 VStack {
@@ -47,7 +74,7 @@ struct StudyRow: View {
                 .transition(AnyTransition.opacity
                 .animation(.easeInOut(duration: 0.5)))
                 
-            } else {
+            } else if self.answerType == .incorrect  {
                 VStack {
                     Image(systemName: "multiply.circle")
                         .resizable()
@@ -62,6 +89,8 @@ struct StudyRow: View {
                 }
                 .transition(AnyTransition.opacity
                 .animation(.easeInOut(duration: 0.5)))
+            } else {
+                Rectangle().fill(Color.clear)
             }
             
         }
