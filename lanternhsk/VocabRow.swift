@@ -55,8 +55,14 @@ struct VocabRowItemGeometry: View {
     }
 }
 
+struct VocabModalItem: Identifiable {
+    let id = UUID()
+    let card: VocabCard
+}
+
 struct VocabRowSideOne: View {
     @EnvironmentObject var studyManager: StudyManager
+    @State var cardDetails: VocabModalItem?
     
     let card: VocabCard
     let deckId: Int
@@ -77,7 +83,11 @@ struct VocabRowSideOne: View {
                                     self.studyManager.addToStudy(card: self.card, in: self.deckId)
                                 }
                 })
-                ImageButton(iconName: "info.circle", handler: { print("action1") })
+                
+                ImageButton(iconName: "info.circle", handler: {
+                    self.cardDetails = VocabModalItem(card: self.card)
+                    
+                }).sheet(item: $cardDetails, content: { VocabDetails(card: $0.card) })
                 
             }.frame(maxHeight: .infinity, alignment: .top)
             

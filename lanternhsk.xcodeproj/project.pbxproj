@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A62CD3523FE2D8E00929454 /* VocabDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A62CD3423FE2D8E00929454 /* VocabDetails.swift */; };
+		8A62CD3623FE2D8E00929454 /* VocabDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A62CD3423FE2D8E00929454 /* VocabDetails.swift */; };
 		8A638F8023B35DA300D4DD7F /* StudyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A638F7F23B35DA300D4DD7F /* StudyManager.swift */; };
 		8A638F8123B35DA300D4DD7F /* StudyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A638F7F23B35DA300D4DD7F /* StudyManager.swift */; };
 		8A64F9D723AB667D0080F7B8 /* StudyTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A64F9D623AB667D0080F7B8 /* StudyTab.swift */; };
@@ -92,6 +94,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8A62CD3423FE2D8E00929454 /* VocabDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabDetails.swift; sourceTree = "<group>"; };
 		8A638F7F23B35DA300D4DD7F /* StudyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyManager.swift; sourceTree = "<group>"; };
 		8A64F9D623AB667D0080F7B8 /* StudyTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTab.swift; sourceTree = "<group>"; };
 		8A64F9D923AB67BB0080F7B8 /* StudyHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyHostingController.swift; sourceTree = "<group>"; };
@@ -184,9 +187,10 @@
 				8A7B0F6623AA0B9200DC1645 /* VocabTab.swift */,
 				8A64F9D623AB667D0080F7B8 /* StudyTab.swift */,
 				8AD525CC23A6253600274135 /* VocabList.swift */,
+				8AD525E023A62FA600274135 /* VocabRow.swift */,
+				8A62CD3423FE2D8E00929454 /* VocabDetails.swift */,
 				8A9B7CFB23FBF7E100BA086B /* QuestionModel.swift */,
 				8AA4D9B323FBD77B00FF13C0 /* QuestionList.swift */,
-				8AD525E023A62FA600274135 /* VocabRow.swift */,
 				8AFBE0BE23BB364F002E95BC /* StudyRow.swift */,
 				8AD525CE23A6253800274135 /* Assets.xcassets */,
 				8AD525D323A6253800274135 /* LaunchScreen.storyboard */,
@@ -382,6 +386,7 @@
 				8A9B7CFC23FBF7E100BA086B /* QuestionModel.swift in Sources */,
 				8AD525C923A6253600274135 /* AppDelegate.swift in Sources */,
 				8A64F9DC23AB6E9A0080F7B8 /* MainView.swift in Sources */,
+				8A62CD3523FE2D8E00929454 /* VocabDetails.swift in Sources */,
 				8AFBE0BF23BB364F002E95BC /* StudyRow.swift in Sources */,
 				8A7B0F6723AA0B9200DC1645 /* VocabTab.swift in Sources */,
 				8AD525CB23A6253600274135 /* SceneDelegate.swift in Sources */,
@@ -404,6 +409,7 @@
 				8A64F9DA23AB67BB0080F7B8 /* StudyHostingController.swift in Sources */,
 				8AD5261023A6354300274135 /* VocabRow.swift in Sources */,
 				8AD5260E23A6354300274135 /* VocabManager.swift in Sources */,
+				8A62CD3623FE2D8E00929454 /* VocabDetails.swift in Sources */,
 				8A9B7CFD23FBF7E100BA086B /* QuestionModel.swift in Sources */,
 				8AA4D9B523FBD77B00FF13C0 /* QuestionList.swift in Sources */,
 				8A638F8123B35DA300D4DD7F /* StudyManager.swift in Sources */,

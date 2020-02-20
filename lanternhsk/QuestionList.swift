@@ -11,11 +11,22 @@ import SwiftUI
 struct QuestionList: View {    
     @State var answerType = AnswerType.none
     @State var answerStr : String = ""
-
+    @State var review: Bool = false
+    
     @ObservedObject var model: QuestionModel
         
     init(model: QuestionModel) {
         self.model = model
+    }
+    
+    func nextQuestion() {
+        if model.index == model.totalQuestions {
+            return
+        }
+        
+        model.getNextQuestion(answer: answerType)
+        answerType = .none
+        answerStr = ""
     }
     
     var body: some View {
@@ -35,10 +46,12 @@ struct QuestionList: View {
         }
         
         if answerType != .none {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.model.getNextQuestion(answer: self.answerType)
-                    self.answerType = .none
-                    self.answerStr = ""
+            let delay = answerType == .ignored ? 0.5 : 2.5
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                if !self.review && self.answerType != .none  {
+                    self.nextQuestion()
+                }
             }
         }
         
@@ -48,7 +61,8 @@ struct QuestionList: View {
                 List {
                     StudyRow(card: self.model.cards[self.model.index],
                              answerType: self.$answerType,
-                             answerStr: self.$answerStr)
+                             answerStr: self.$answerStr,
+                             review: self.$review)
                     
                 }.environment(\.defaultMinListRowHeight, geometry.size.height)
             }
@@ -56,11 +70,17 @@ struct QuestionList: View {
             #else
             return StudyRow(card: self.model.cards[self.model.index],
                             answerType: $answerType,
-                            answerStr: $answerStr)
+                            answerStr: $answerStr,
+                            review: self.$review)
             #endif
         }
         
-        return AnyView(content)
+        return AnyView(content
+        .sheet(isPresented: $review,
+               onDismiss: { self.nextQuestion() },
+               content: { VocabDetails(card: self.model.cards[self.model.index]) })
+
+        )
     }
 
 }

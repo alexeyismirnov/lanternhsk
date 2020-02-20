@@ -12,13 +12,15 @@ struct StudyRow: View {
     let card: VocabCard
     @Binding var answerType: AnswerType
     @Binding var answerStr: String
-    
+    @Binding var review: Bool
+
     @State var show: Bool = false
 
-    init(card: VocabCard, answerType: Binding<AnswerType>, answerStr: Binding<String>) {
+    init(card: VocabCard, answerType: Binding<AnswerType>, answerStr: Binding<String>, review: Binding<Bool>) {
         self.card = card
         self._answerType = answerType
         self._answerStr = answerStr
+        self._review = review
     }
     
     var body: some View {
@@ -35,21 +37,12 @@ struct StudyRow: View {
                     
                     Spacer()
                     
-                    VStack {
-                        Button(action: {
-                            #if os(iOS)
-                            self.answerType = .ignored
-                            #endif
-                        })  {
-                            HStack {
-                                Image(systemName: "arrow.right.circle")
-                                Text("Next").font(.headline)
-                            }.padding()
-                            .frame(width: 150, alignment: .center)
-                        }
-                        
-                        
+                    HStack {
+                        Image(systemName: "arrow.right.circle")
+                        Text("Skip").font(.headline)
                     }
+                    .padding()
+                    .frame(width: 150, alignment: .center)
                     .onTapGesture {
                         self.answerType = .ignored
                     }
@@ -69,8 +62,20 @@ struct StudyRow: View {
                     Text("Correct")
                         .font(.title)
                         .foregroundColor(.green)
+                    
+                    Spacer()
 
+                    HStack {
+                        Image(systemName: "info.circle")
+                        Text("Review").font(.headline)
+                    }
+                    .padding()
+                    .frame(width: 150, alignment: .center)
+                    .onTapGesture {
+                        self.review = true
+                    }
                 }
+                    
                 .transition(AnyTransition.opacity
                 .animation(.easeInOut(duration: 0.5)))
                 
@@ -81,10 +86,21 @@ struct StudyRow: View {
                         .scaledToFit()
                         .foregroundColor(.red)
                         .frame(height: 50)
-                    
                     Text("Incorrect")
                         .font(.title)
                         .foregroundColor(.red)
+                    
+                    Spacer()
+                    
+                    HStack {
+                        Image(systemName: "info.circle")
+                        Text("Review").font(.headline)
+                    }
+                    .padding()
+                    .frame(width: 150, alignment: .center)
+                    .onTapGesture {
+                        self.review = true
+                    }
 
                 }
                 .transition(AnyTransition.opacity
@@ -109,10 +125,11 @@ struct StudyRow: View {
 struct StudyRow_Previews: PreviewProvider {
     @State static var answerType = AnswerType.none
     @State static var answerStr : String = ""
+    @State static var review : Bool = false
 
     static let cards: [VocabCard] = lists[0].load()
 
     static var previews: some View {
-        StudyRow(card: cards[0], answerType: $answerType, answerStr: $answerStr)
+        StudyRow(card: cards[0], answerType: $answerType, answerStr: $answerStr, review: $review)
     }
 }
