@@ -59,7 +59,7 @@ struct QuestionList: View {
             #if os(watchOS)
             return GeometryReader { geometry in
                 List {
-                    StudyRow(card: self.model.cards[self.model.index],
+                    StudyVocab(card: self.model.cards[self.model.index],
                              answerType: self.$answerType,
                              answerStr: self.$answerStr,
                              review: self.$review)
@@ -68,7 +68,7 @@ struct QuestionList: View {
             }
             
             #else
-            return StudyRow(card: self.model.cards[self.model.index],
+            return StudyVocab(card: self.model.cards[self.model.index],
                             answerType: $answerType,
                             answerStr: $answerStr,
                             review: self.$review)

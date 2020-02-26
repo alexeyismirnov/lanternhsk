@@ -52,6 +52,7 @@ class StudyManager: ObservableObject {
     @Published var cards = [StudyCard]()
     
     let cardsChanged = PassthroughSubject<Void, Never>()
+    let questionAdded = PassthroughSubject<Void, Never>()
 
     func load() {
         if let data = UserDefaults.standard.value(forKey: cardsKey) as? Data {
@@ -79,6 +80,10 @@ class StudyManager: ObservableObject {
         cards.removeAll(where: { $0.cardId == card.id && $0.deckId == deckId })
         save()
         cardsChanged.send()
+    }
+    
+    func addQuestion() {
+        questionAdded.send()
     }
     
     func clear() {

@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct StudyRow: View {
+struct StudyVocab: View {
     let card: VocabCard
     @Binding var answerType: AnswerType
     @Binding var answerStr: String
@@ -54,6 +54,8 @@ struct StudyRow: View {
                 
             } else if self.answerType == .correct {
                 VStack {
+                    Spacer()
+
                     Image(systemName: "checkmark.circle")
                         .resizable()
                         .scaledToFit()
@@ -81,6 +83,8 @@ struct StudyRow: View {
                 
             } else if self.answerType == .incorrect  {
                 VStack {
+                    Spacer()
+
                     Image(systemName: "multiply.circle")
                         .resizable()
                         .scaledToFit()
@@ -130,6 +134,6 @@ struct StudyRow_Previews: PreviewProvider {
     static let cards: [VocabCard] = lists[0].load()
 
     static var previews: some View {
-        StudyRow(card: cards[0], answerType: $answerType, answerStr: $answerStr, review: $review)
+        StudyVocab(card: cards[0], answerType: $answerType, answerStr: $answerStr, review: $review)
     }
 }

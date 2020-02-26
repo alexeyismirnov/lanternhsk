@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15505" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3mp-fW-waa">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15705" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3mp-fW-waa">
     <device id="watch38"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="15501"/>
     </dependencies>
     <scenes>
@@ -23,6 +23,36 @@
                 <hostingController id="7t6-ch-UQZ" customClass="StudyHostingController" customModule="WatchLanternhsk_Extension"/>
             </objects>
             <point key="canvasLocation" x="268" y="28"/>
+        </scene>
+        <!--StudyTone-->
+        <scene sceneID="VaT-40-gCT">
+            <objects>
+                <controller identifier="StudyTone" id="2cm-eh-PjX" customClass="StudyToneInterfaceController" customModule="WatchLanternhsk_Extension">
+                    <items>
+                        <group width="1" height="1" alignment="left" layout="vertical" id="1DB-Is-dZG">
+                            <items>
+                                <label alignment="center" verticalAlignment="center" text="好久不見" id="sE4-I9-1FN">
+                                    <fontDescription key="font" style="UICTFontTextStyleTitle2"/>
+                                </label>
+                                <label alignment="center" verticalAlignment="center" text="hǎo jiǔ bù jiàn" id="Lp6-nl-dhe"/>
+                            </items>
+                            <gestureRecognizers>
+                                <panGestureRecognizer id="qf7-cB-UkS">
+                                    <connections>
+                                        <action selector="panGesture:" destination="2cm-eh-PjX" id="UCy-K8-lb0"/>
+                                    </connections>
+                                </panGestureRecognizer>
+                                <tapGestureRecognizer id="HHm-IO-scf">
+                                    <connections>
+                                        <action selector="tapGesture:" destination="2cm-eh-PjX" id="UUT-3R-f16"/>
+                                    </connections>
+                                </tapGestureRecognizer>
+                            </gestureRecognizers>
+                        </group>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="85" y="323"/>
         </scene>
     </scenes>
 </document>

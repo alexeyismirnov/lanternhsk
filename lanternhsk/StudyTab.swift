@@ -8,9 +8,48 @@
 
 import SwiftUI
 
+enum ActionViewMode {
+    case first
+    case second
+}
+
+extension ActionViewMode {
+    func getView(deck: StudyDeck) -> some View {
+        switch self {
+            case .first: return  QuestionList(model: QuestionModel(deck: deck))
+            case .second: return QuestionList(model: QuestionModel(deck: deck))
+        }
+    }
+}
+
 struct StudyTab: View {
     @EnvironmentObject var studyManager: StudyManager
     @State var studyLists = [StudyDeck]()
+    
+    @State var showActionSheet: Bool = false
+    
+    @State var actionViewMode = ActionViewMode.first
+    @State var isActionViewPresented = false
+
+    var actionSheet: ActionSheet {
+        ActionSheet(title: Text("Study type"),  buttons: [
+            .default(
+            Text("Translation")) {
+                self.actionViewMode = .first
+                self.isActionViewPresented = true
+            },
+            .default(Text("Pinyin")) {
+                self.actionViewMode = .second
+                self.isActionViewPresented = true
+            },
+            .default(Text("Tone")) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    self.studyManager.addQuestion()
+                }
+                
+            },
+        ])
+    }
     
     func getContent() -> AnyView {
         if studyLists.count == 0 {
@@ -19,12 +58,22 @@ struct StudyTab: View {
         }
         
         let list = List(studyLists) { item in
-            NavigationLink(destination: QuestionList(model: QuestionModel(deck: item))) {
-                VStack(alignment: .leading) {
-                    Text(item.name).font(.headline)
-                    Text("Words: \(item.cards.count)").font(.subheadline)
-                }.padding()
+            VStack(alignment: .leading) {
+                Text(item.name).font(.headline)
+                Text("Words: \(item.cards.count)").font(.subheadline)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
+            .contentShape(Rectangle())
+            .onTapGesture {
+                self.showActionSheet.toggle()
+            }
+            .actionSheet(isPresented: self.$showActionSheet,
+                         content: { self.actionSheet })
+                .sheet(isPresented: self.$isActionViewPresented) {
+                self.actionViewMode.getView(deck: item)
+            }
+
         }
         
         #if os(watchOS)
