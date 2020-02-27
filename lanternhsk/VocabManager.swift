@@ -15,11 +15,56 @@ let lists: [VocabDeck] = [
     VocabDeck(id: 3, name: "HSK 3", filename: "hsk3.json", wordCount: 300),
 ]
 
+enum Tone: Int {
+    case none = 0, first = 1, second = 2, third = 3, fourth = 4
+}
+
+extension Tone {
+    init?(_ str: String) {
+        let scalars = str.decomposedStringWithCanonicalMapping
+            .unicodeScalars
+            .map { $0.value }
+            .filter { [0x300, 0x301, 0x304, 0x30C].contains($0) }
+        
+        if scalars.count == 0 {
+            self = .none
+            
+        } else if scalars.count == 1 {            
+            switch scalars[0] {
+            case 0x304:
+                self = .first
+            case 0x301:
+                self = .second
+            case 0x30C:
+                self = .third
+            case 0x300:
+                self = .fourth
+            default:
+                self = .none
+            }
+            
+        } else {
+            return nil
+        }
+    }
+}
+
 struct VocabCard: Hashable, Codable, Identifiable {
     var id: Int
     var word: String
     var pinyin: String
     var translation: String
+   
+    func getTones() -> [Tone] {
+        var tones = [Tone]()
+        for str in pinyin.components(separatedBy: " ") {
+            if let tone = Tone(str) {
+                tones.append(tone)
+            }
+        }
+        
+        return tones
+    }
 }
 
 struct VocabDeck: Hashable, Codable, Identifiable {
@@ -48,9 +93,9 @@ struct VocabDeck: Hashable, Codable, Identifiable {
         } catch {
             fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
         }
+        
     }
 }
-
 
 
 
