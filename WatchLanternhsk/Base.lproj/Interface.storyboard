@@ -50,6 +50,10 @@
                             </gestureRecognizers>
                         </group>
                     </items>
+                    <connections>
+                        <outlet property="label1" destination="sE4-I9-1FN" id="lMc-Us-x3Q"/>
+                        <outlet property="label2" destination="Lp6-nl-dhe" id="5db-d5-cc3"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="85" y="323"/>

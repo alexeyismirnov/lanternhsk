@@ -10,16 +10,40 @@ import Foundation
 import WatchKit
 
 class StudyToneInterfaceController: WKInterfaceController {
+    
+    @IBOutlet weak var label1: WKInterfaceLabel!
+    @IBOutlet weak var label2: WKInterfaceLabel!
+    
     var previousPoint: CGPoint?
+    
+    var deck: StudyDeck?
+    let totalQuestions = 3
+    var cards = [VocabCard]()
+    var index = 0
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+        setTitle("Draw tones")
+
+        deck = context as? StudyDeck
+        
+        if let deck = deck {
+            cards = (0..<totalQuestions).map {_ in
+                deck.cards[Int.random(in: 0..<deck.cards.count)]
+            }
+        }
+        
+        updateUI()
     }
     
     override func willActivate() {
         super.willActivate()
         
-        setTitle("Draw tones")
+    }
+    
+    func updateUI() {
+        label1.setText(cards[index].word)
+        label2.setText(cards[index].pinyin)
     }
     
     @IBAction func panGesture(_ sender: Any) {

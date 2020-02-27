@@ -52,6 +52,8 @@ class StudyManager: ObservableObject {
     @Published var cards = [StudyCard]()
     
     let cardsChanged = PassthroughSubject<Void, Never>()
+    
+    var deck: StudyDeck?
     let questionAdded = PassthroughSubject<Void, Never>()
 
     func load() {

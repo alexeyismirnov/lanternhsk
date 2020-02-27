@@ -26,24 +26,26 @@ struct StudyTab: View {
     @EnvironmentObject var studyManager: StudyManager
     @State var studyLists = [StudyDeck]()
     
-    @State var showActionSheet: Bool = false
+    @State var showActionSheet = [Int: Bool]()
     
     @State var actionViewMode = ActionViewMode.first
-    @State var isActionViewPresented = false
+    @State var showActionView = [Int: Bool]()
 
-    var actionSheet: ActionSheet {
-        ActionSheet(title: Text("Study type"),  buttons: [
+    func getActionSheet(deck: StudyDeck) -> ActionSheet {
+
+        return ActionSheet(title: Text("Study type"),  buttons: [
             .default(
             Text("Translation")) {
                 self.actionViewMode = .first
-                self.isActionViewPresented = true
+                self.showActionView[deck.id] = true
             },
             .default(Text("Pinyin")) {
                 self.actionViewMode = .second
-                self.isActionViewPresented = true
+                self.showActionView[deck.id] = true
             },
             .default(Text("Tone")) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    self.studyManager.deck = deck
                     self.studyManager.addQuestion()
                 }
                 
@@ -66,14 +68,18 @@ struct StudyTab: View {
             .padding()
             .contentShape(Rectangle())
             .onTapGesture {
-                self.showActionSheet.toggle()
+                self.showActionSheet[item.id] = true
             }
-            .actionSheet(isPresented: self.$showActionSheet,
-                         content: { self.actionSheet })
-                .sheet(isPresented: self.$isActionViewPresented) {
-                self.actionViewMode.getView(deck: item)
-            }
-
+            .actionSheet(isPresented: Binding(
+                get: { return self.showActionSheet[item.id]! },
+                set: { (newValue) in return self.showActionSheet[item.id] = newValue}
+                ),
+                         content: { self.getActionSheet(deck: item) })
+            .sheet(isPresented: Binding(
+                get: { return self.showActionView[item.id]! },
+                set: { (newValue) in return self.showActionView[item.id] = newValue}
+            )) { self.actionViewMode.getView(deck: item) }
+            
         }
         
         #if os(watchOS)
@@ -90,6 +96,11 @@ struct StudyTab: View {
             if let deck = StudyDeck(deck: list, studyManager: studyManager) {
                 studyLists.append(deck)
             }
+        }
+        
+        for deck in studyLists {
+            showActionSheet[deck.id] = false
+            showActionView[deck.id] = false
         }
     }
     

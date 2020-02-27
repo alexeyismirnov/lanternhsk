@@ -19,7 +19,7 @@ class StudyHostingController: WKHostingController<AnyView> {
         self.studyManager = (WKExtension.shared().delegate as! ExtensionDelegate).studyManager
         
         self.cancellable = self.studyManager.questionAdded.sink(receiveValue: {   _ in
-            self.presentController(withName: "StudyTone", context: nil)
+            self.presentController(withName: "StudyTone", context: self.studyManager.deck)
         })
     }
     
