@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A61F0742408BFAB00B434A0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61F0732408BFAB00B434A0 /* Extensions.swift */; };
+		8A61F0752408BFAB00B434A0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61F0732408BFAB00B434A0 /* Extensions.swift */; };
 		8A62CD3523FE2D8E00929454 /* VocabDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A62CD3423FE2D8E00929454 /* VocabDetails.swift */; };
 		8A62CD3623FE2D8E00929454 /* VocabDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A62CD3423FE2D8E00929454 /* VocabDetails.swift */; };
 		8A638F8023B35DA300D4DD7F /* StudyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A638F7F23B35DA300D4DD7F /* StudyManager.swift */; };
@@ -96,6 +98,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8A61F0732408BFAB00B434A0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8A62CD3423FE2D8E00929454 /* VocabDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabDetails.swift; sourceTree = "<group>"; };
 		8A638F7F23B35DA300D4DD7F /* StudyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyManager.swift; sourceTree = "<group>"; };
 		8A64F9D623AB667D0080F7B8 /* StudyTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTab.swift; sourceTree = "<group>"; };
@@ -197,6 +200,7 @@
 				8AA4D9B323FBD77B00FF13C0 /* QuestionList.swift */,
 				8AFBE0BE23BB364F002E95BC /* StudyVocab.swift */,
 				8AE4335F240509AC00E5C977 /* StudyTone.swift */,
+				8A61F0732408BFAB00B434A0 /* Extensions.swift */,
 				8AD525CE23A6253800274135 /* Assets.xcassets */,
 				8AD525D323A6253800274135 /* LaunchScreen.storyboard */,
 				8AD525DE23A629DE00274135 /* hsk1.json */,
@@ -399,6 +403,7 @@
 				8AD525CD23A6253600274135 /* VocabList.swift in Sources */,
 				8A638F8023B35DA300D4DD7F /* StudyManager.swift in Sources */,
 				8AD525DD23A6270F00274135 /* VocabManager.swift in Sources */,
+				8A61F0742408BFAB00B434A0 /* Extensions.swift in Sources */,
 				8AA4D9B423FBD77B00FF13C0 /* QuestionList.swift in Sources */,
 				8AD525E123A62FA600274135 /* VocabRow.swift in Sources */,
 				8A64F9D723AB667D0080F7B8 /* StudyTab.swift in Sources */,
@@ -421,6 +426,7 @@
 				8A9B7CFD23FBF7E100BA086B /* QuestionModel.swift in Sources */,
 				8AA4D9B523FBD77B00FF13C0 /* QuestionList.swift in Sources */,
 				8A638F8123B35DA300D4DD7F /* StudyManager.swift in Sources */,
+				8A61F0752408BFAB00B434A0 /* Extensions.swift in Sources */,
 				8AD525FC23A634CC00274135 /* ComplicationController.swift in Sources */,
 				8AD525F623A634CC00274135 /* VocabListWatch.swift in Sources */,
 				8AD525FA23A634CC00274135 /* ExtensionDelegate.swift in Sources */,
