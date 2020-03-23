@@ -26,10 +26,10 @@ struct StudyTab: View {
     @EnvironmentObject var studyManager: StudyManager
     @State var studyLists = [StudyDeck]()
     
-    @State var showActionSheet = [Int: Bool]()
+    @State var showActionSheet = [UUID: Bool]()
     
     @State var actionViewMode = ActionViewMode.first
-    @State var showActionView = [Int: Bool]()
+    @State var showActionView = [UUID: Bool]()
 
     func getActionSheet(deck: StudyDeck) -> ActionSheet {
 

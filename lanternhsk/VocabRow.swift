@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ImageButton: View {
     let iconName: String
@@ -65,7 +66,7 @@ struct VocabRowSideOne: View {
     @State var cardDetails: VocabModalItem?
     
     let card: VocabCard
-    let deckId: Int
+    let deckId: UUID
     
     var isStarred: Bool {
         return studyManager.isStarred(card: card, in: deckId)
@@ -120,9 +121,9 @@ struct VocabRow: View {
     @State var maxHeight : CGFloat
     
     let card: VocabCard
-    let deckId: Int
+    let deckId: UUID
     
-    init(card: VocabCard, in deckId: Int, height: CGFloat = 0.0) {
+    init(card: VocabCard, in deckId: UUID, height: CGFloat = 0.0) {
         self.card = card
         self.deckId = deckId
         _maxHeight = State(initialValue: height)
@@ -162,8 +163,8 @@ struct VocabRow_Previews: PreviewProvider {
         
         let cards: [VocabCard] = lists[deckId].load()
         return Group {
-            VocabRow(card: cards[0], in: deckId)
-            VocabRow(card: cards[5], in: deckId)
+            VocabRow(card: cards[0], in: UUID())
+            VocabRow(card: cards[5], in: UUID())
 
         }
         .previewLayout(.fixed(width: 300, height: 70))

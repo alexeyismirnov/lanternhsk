@@ -12,6 +12,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     let studyManager = StudyManager()
     
     func applicationDidFinishLaunching() {
+        CoreDataStack.shared.initDB()
         studyManager.load()
     }
 

@@ -17,6 +17,18 @@
 		8A64F9D823AB667D0080F7B8 /* StudyTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A64F9D623AB667D0080F7B8 /* StudyTab.swift */; };
 		8A64F9DA23AB67BB0080F7B8 /* StudyHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A64F9D923AB67BB0080F7B8 /* StudyHostingController.swift */; };
 		8A64F9DC23AB6E9A0080F7B8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A64F9DB23AB6E9A0080F7B8 /* MainView.swift */; };
+		8A6897D02428BC72004A0298 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6897CF2428BC72004A0298 /* CloudKit.framework */; };
+		8A6897D32428BD07004A0298 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6897D22428BD07004A0298 /* CloudKit.framework */; };
+		8A6897D92428C261004A0298 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6897D82428C261004A0298 /* CoreDataStack.swift */; };
+		8A6897DA2428C261004A0298 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6897D82428C261004A0298 /* CoreDataStack.swift */; };
+		8A6897DE2428C28B004A0298 /* coredata_populate.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 8A6897DB2428C28B004A0298 /* coredata_populate.sqlite-wal */; };
+		8A6897DF2428C28B004A0298 /* coredata_populate.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 8A6897DB2428C28B004A0298 /* coredata_populate.sqlite-wal */; };
+		8A6897E02428C28B004A0298 /* coredata_populate.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8A6897DC2428C28B004A0298 /* coredata_populate.sqlite */; };
+		8A6897E12428C28B004A0298 /* coredata_populate.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8A6897DC2428C28B004A0298 /* coredata_populate.sqlite */; };
+		8A6897E22428C28B004A0298 /* coredata_populate.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 8A6897DD2428C28B004A0298 /* coredata_populate.sqlite-shm */; };
+		8A6897E32428C28B004A0298 /* coredata_populate.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 8A6897DD2428C28B004A0298 /* coredata_populate.sqlite-shm */; };
+		8A6897EE2428E89A004A0298 /* coredata_populate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A6897E82428E899004A0298 /* coredata_populate.xcdatamodeld */; };
+		8A6897EF2428E89A004A0298 /* coredata_populate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A6897E82428E899004A0298 /* coredata_populate.xcdatamodeld */; };
 		8A7B0F6723AA0B9200DC1645 /* VocabTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6623AA0B9200DC1645 /* VocabTab.swift */; };
 		8A7B0F6823AA0B9200DC1645 /* VocabTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6623AA0B9200DC1645 /* VocabTab.swift */; };
 		8A7B0F6A23AA1FFC00DC1645 /* hsk2.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6923AA1FFC00DC1645 /* hsk2.json */; };
@@ -104,6 +116,15 @@
 		8A64F9D623AB667D0080F7B8 /* StudyTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTab.swift; sourceTree = "<group>"; };
 		8A64F9D923AB67BB0080F7B8 /* StudyHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyHostingController.swift; sourceTree = "<group>"; };
 		8A64F9DB23AB6E9A0080F7B8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		8A6897CE2428BC58004A0298 /* lanternhsk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = lanternhsk.entitlements; sourceTree = "<group>"; };
+		8A6897CF2428BC72004A0298 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		8A6897D12428BD04004A0298 /* WatchLanternhsk Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchLanternhsk Extension.entitlements"; sourceTree = "<group>"; };
+		8A6897D22428BD07004A0298 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.1.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		8A6897D82428C261004A0298 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		8A6897DB2428C28B004A0298 /* coredata_populate.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "coredata_populate.sqlite-wal"; sourceTree = "<group>"; };
+		8A6897DC2428C28B004A0298 /* coredata_populate.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = coredata_populate.sqlite; sourceTree = "<group>"; };
+		8A6897DD2428C28B004A0298 /* coredata_populate.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "coredata_populate.sqlite-shm"; sourceTree = "<group>"; };
+		8A6897E92428E899004A0298 /* coredata_populate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coredata_populate.xcdatamodel; sourceTree = "<group>"; };
 		8A7B0F6623AA0B9200DC1645 /* VocabTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabTab.swift; sourceTree = "<group>"; };
 		8A7B0F6923AA1FFC00DC1645 /* hsk2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hsk2.json; sourceTree = "<group>"; };
 		8A7B0F6C23AA21F400DC1645 /* hsk3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hsk3.json; sourceTree = "<group>"; };
@@ -142,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A6897D02428BC72004A0298 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A6897D32428BD07004A0298 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +181,8 @@
 		8A72772723BB6A9700A70124 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A6897D22428BD07004A0298 /* CloudKit.framework */,
+				8A6897CF2428BC72004A0298 /* CloudKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -186,6 +211,8 @@
 		8AD525C723A6253600274135 /* lanternhsk */ = {
 			isa = PBXGroup;
 			children = (
+				8A6897E82428E899004A0298 /* coredata_populate.xcdatamodeld */,
+				8A6897D82428C261004A0298 /* CoreDataStack.swift */,
 				8AD525DC23A6270F00274135 /* VocabManager.swift */,
 				8A638F7F23B35DA300D4DD7F /* StudyManager.swift */,
 				8AD525C823A6253600274135 /* AppDelegate.swift */,
@@ -206,6 +233,10 @@
 				8AD525DE23A629DE00274135 /* hsk1.json */,
 				8A7B0F6923AA1FFC00DC1645 /* hsk2.json */,
 				8A7B0F6C23AA21F400DC1645 /* hsk3.json */,
+				8A6897DC2428C28B004A0298 /* coredata_populate.sqlite */,
+				8A6897DD2428C28B004A0298 /* coredata_populate.sqlite-shm */,
+				8A6897DB2428C28B004A0298 /* coredata_populate.sqlite-wal */,
+				8A6897CE2428BC58004A0298 /* lanternhsk.entitlements */,
 				8AD525D623A6253800274135 /* Info.plist */,
 				8AD525D023A6253800274135 /* Preview Content */,
 			);
@@ -233,6 +264,7 @@
 		8AD525F423A634CC00274135 /* WatchLanternhsk Extension */ = {
 			isa = PBXGroup;
 			children = (
+				8A6897D12428BD04004A0298 /* WatchLanternhsk Extension.entitlements */,
 				8AD525F723A634CC00274135 /* ListsHostingController.swift */,
 				8A64F9D923AB67BB0080F7B8 /* StudyHostingController.swift */,
 				8AE43364240513D400E5C977 /* StudyToneInterfaceController.swift */,
@@ -359,6 +391,9 @@
 				8A7B0F6A23AA1FFC00DC1645 /* hsk2.json in Resources */,
 				8AD525DF23A629DE00274135 /* hsk1.json in Resources */,
 				8AD525D523A6253800274135 /* LaunchScreen.storyboard in Resources */,
+				8A6897DE2428C28B004A0298 /* coredata_populate.sqlite-wal in Resources */,
+				8A6897E02428C28B004A0298 /* coredata_populate.sqlite in Resources */,
+				8A6897E22428C28B004A0298 /* coredata_populate.sqlite-shm in Resources */,
 				8AD525D223A6253800274135 /* Preview Assets.xcassets in Resources */,
 				8A7B0F6D23AA21F400DC1645 /* hsk3.json in Resources */,
 				8AD525CF23A6253800274135 /* Assets.xcassets in Resources */,
@@ -379,10 +414,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A7B0F6E23AA21F400DC1645 /* hsk3.json in Resources */,
+				8A6897DF2428C28B004A0298 /* coredata_populate.sqlite-wal in Resources */,
 				8AD5260123A634CD00274135 /* Preview Assets.xcassets in Resources */,
 				8A7B0F6B23AA1FFC00DC1645 /* hsk2.json in Resources */,
 				8AD5261123A6354300274135 /* hsk1.json in Resources */,
+				8A6897E32428C28B004A0298 /* coredata_populate.sqlite-shm in Resources */,
 				8AD525FE23A634CD00274135 /* Assets.xcassets in Resources */,
+				8A6897E12428C28B004A0298 /* coredata_populate.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,8 +442,10 @@
 				8A638F8023B35DA300D4DD7F /* StudyManager.swift in Sources */,
 				8AD525DD23A6270F00274135 /* VocabManager.swift in Sources */,
 				8A61F0742408BFAB00B434A0 /* Extensions.swift in Sources */,
+				8A6897D92428C261004A0298 /* CoreDataStack.swift in Sources */,
 				8AA4D9B423FBD77B00FF13C0 /* QuestionList.swift in Sources */,
 				8AD525E123A62FA600274135 /* VocabRow.swift in Sources */,
+				8A6897EE2428E89A004A0298 /* coredata_populate.xcdatamodeld in Sources */,
 				8A64F9D723AB667D0080F7B8 /* StudyTab.swift in Sources */,
 				8AE43360240509AC00E5C977 /* StudyTone.swift in Sources */,
 			);
@@ -415,9 +455,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A6897EF2428E89A004A0298 /* coredata_populate.xcdatamodeld in Sources */,
 				8AD525F823A634CC00274135 /* ListsHostingController.swift in Sources */,
 				8A64F9D823AB667D0080F7B8 /* StudyTab.swift in Sources */,
 				8AFBE0C023BB364F002E95BC /* StudyVocab.swift in Sources */,
+				8A6897DA2428C261004A0298 /* CoreDataStack.swift in Sources */,
 				8A64F9DA23AB67BB0080F7B8 /* StudyHostingController.swift in Sources */,
 				8AD5261023A6354300274135 /* VocabRow.swift in Sources */,
 				8AE43365240513D400E5C977 /* StudyToneInterfaceController.swift in Sources */,
@@ -587,6 +629,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = lanternhsk/lanternhsk.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"lanternhsk/Preview Content\"";
 				DEVELOPMENT_TEAM = 3NQ697ND22;
@@ -607,6 +650,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = lanternhsk/lanternhsk.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"lanternhsk/Preview Content\"";
 				DEVELOPMENT_TEAM = 3NQ697ND22;
@@ -627,6 +671,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "WatchLanternhsk Extension/WatchLanternhsk Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchLanternhsk Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 3NQ697ND22;
@@ -651,6 +696,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "WatchLanternhsk Extension/WatchLanternhsk Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchLanternhsk Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 3NQ697ND22;
@@ -749,6 +795,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8A6897E82428E899004A0298 /* coredata_populate.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8A6897E92428E899004A0298 /* coredata_populate.xcdatamodel */,
+			);
+			currentVersion = 8A6897E92428E899004A0298 /* coredata_populate.xcdatamodel */;
+			name = coredata_populate.xcdatamodeld;
+			path = ../../../tmp/coredata_populate/coredata_populate/coredata_populate.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8AD525BD23A6253600274135 /* Project object */;
 }

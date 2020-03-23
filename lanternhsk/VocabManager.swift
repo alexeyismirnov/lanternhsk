@@ -10,9 +10,11 @@ import UIKit
 import SwiftUI
 
 let lists: [VocabDeck] = [
+    /*
     VocabDeck(id: 1, name: "HSK 1", filename: "hsk1.json", wordCount: 150),
     VocabDeck(id: 2, name: "HSK 2", filename: "hsk2.json", wordCount: 150),
     VocabDeck(id: 3, name: "HSK 3", filename: "hsk3.json", wordCount: 300),
+ */
 ]
 
 enum Tone: Int {
@@ -50,7 +52,7 @@ extension Tone {
 }
 
 struct VocabCard: Hashable, Codable, Identifiable {
-    var id: Int
+    var id: UUID
     var word: String
     var pinyin: String
     var translation: String
@@ -68,7 +70,7 @@ struct VocabCard: Hashable, Codable, Identifiable {
 }
 
 struct VocabDeck: Hashable, Codable, Identifiable {
-    var id: Int
+    var id: UUID
     var name: String
     var filename: String
     var wordCount: Int

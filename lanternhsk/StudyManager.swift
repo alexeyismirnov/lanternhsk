@@ -10,12 +10,12 @@ import SwiftUI
 import Combine
 
 struct StudyCard: Codable {
-    var deckId: Int
-    var cardId: Int
+    var deckId: UUID
+    var cardId: UUID
     var totalAnswers: Int
     var correctAnswers: Int
     
-    init(deckId: Int, cardId: Int) {
+    init(deckId: UUID, cardId: UUID) {
         self.deckId = deckId
         self.cardId = cardId
         self.totalAnswers = 0
@@ -24,7 +24,7 @@ struct StudyCard: Codable {
 }
 
 struct StudyDeck: Codable, Identifiable {
-    var id: Int
+    var id: UUID
     var name: String
     var cards: [VocabCard]
 }
@@ -68,20 +68,25 @@ class StudyManager: ObservableObject {
         UserDefaults.standard.set(try? PropertyListEncoder().encode(cards), forKey: cardsKey)
     }
         
-    func isStarred(card: VocabCard, in deckId: Int) -> Bool {
-        cards.filter() { $0.cardId == card.id && $0.deckId == deckId }.count > 0
+    func isStarred(card: VocabCard, in deckId: UUID) -> Bool {
+        return false
+        // cards.filter() { $0.cardId == card.id && $0.deckId == deckId }.count > 0
     }
     
-    func addToStudy(card: VocabCard, in deckId: Int) {
+    func addToStudy(card: VocabCard, in deckId: UUID) {
+        /*
         cards.append(StudyCard(deckId: deckId, cardId: card.id))
         save()
         cardsChanged.send()
+ */
     }
     
-    func removeFromStudy(card: VocabCard, in deckId: Int) {
+    func removeFromStudy(card: VocabCard, in deckId: UUID) {
+        /*
         cards.removeAll(where: { $0.cardId == card.id && $0.deckId == deckId })
         save()
         cardsChanged.send()
+ */
     }
     
     func addQuestion() {

@@ -88,7 +88,7 @@ struct QuestionList: View {
 struct QuestionList_Previews: PreviewProvider {
     static var previews: some View {
         let cards: [VocabCard] = lists[0].load()
-               let deck = StudyDeck(id: 0, name:"", cards: cards)
+               let deck = StudyDeck(id: UUID(), name:"", cards: cards)
         return QuestionList(model: QuestionModel(deck: deck))
     }
 }

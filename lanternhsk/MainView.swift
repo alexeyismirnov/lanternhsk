@@ -23,7 +23,7 @@ struct TabLabel: View {
 struct MainView: View {
     var body: some View {
         TabView {
-            NavigationView { VocabTab(producer: { VocabList(deck: $0) }) }
+            NavigationView { VocabTab() { VocabList($0) } }
              .tabItem({ TabLabel(imageName: "list.bullet", label: "Lists") })
             
             NavigationView { StudyTab() }

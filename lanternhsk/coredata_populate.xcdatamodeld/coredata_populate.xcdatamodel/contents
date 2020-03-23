@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CardEntity" representedClassName="CardEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="pinyin" optional="YES" attributeType="String"/>
+        <attribute name="translation" optional="YES" attributeType="String"/>
+        <attribute name="wordSimp" optional="YES" attributeType="String"/>
+        <attribute name="wordTrad" optional="YES" attributeType="String"/>
+        <relationship name="list" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ListEntity" inverseName="cards" inverseEntity="ListEntity"/>
+    </entity>
+    <entity name="ListEntity" representedClassName="ListEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="wordCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="cards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CardEntity" inverseName="list" inverseEntity="CardEntity"/>
+    </entity>
+    <elements>
+        <element name="CardEntity" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="ListEntity" positionX="-54" positionY="18" width="128" height="103"/>
+    </elements>
+</model>

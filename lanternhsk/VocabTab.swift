@@ -7,19 +7,40 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct VocabTab<DeckView: View>: View {
-    let producer: (VocabDeck) -> DeckView
+    let producer: (ListEntity) -> DeckView
+    @State var lists: [ListEntity] = []
+
+    init(_ producer: @escaping (ListEntity) -> DeckView) {
+        self.producer = producer
+        let request : NSFetchRequest<ListEntity> = ListEntity.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \ListEntity.objectID, ascending: true)]
+        
+        let context = CoreDataStack.shared.persistentContainer.viewContext
+        let lists = try! context.fetch(request)
+        
+        self._lists = State(initialValue: lists)
+    }
+    
+    func buildItem(_ list:ListEntity) -> some View {
+        let view = producer(list)
+
+        return NavigationLink(destination: view) {
+            VStack(alignment: .leading) {
+                Text((list as ListEntity).name!).font(.headline)
+                Text("Words: " + String((list as ListEntity).wordCount)).font(.subheadline)
+            }.padding()
+        }
+    }
     
     var body: some View {
-        let list = List(lists) { item in
-            NavigationLink(destination: self.producer(item)) {
-                VStack(alignment: .leading) {
-                    Text(item.name).font(.headline)
-                    Text("Words: \(item.wordCount)").font(.subheadline)
-                }.padding()
+        
+        let list = List {
+            ForEach(lists, id: \.id) { list in
+                self.buildItem(list)
             }
-            
         }.navigationBarTitle("Lists")
         
         #if os(watchOS)
@@ -38,6 +59,6 @@ typealias DeckView = VocabList
 
 struct VocabTab_Previews: PreviewProvider {
     static var previews: some View {
-        VocabTab(producer: { DeckView(deck: $0) })
+        VocabTab() { DeckView($0) }
     }
 }
