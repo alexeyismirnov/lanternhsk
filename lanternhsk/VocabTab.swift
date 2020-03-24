@@ -36,7 +36,6 @@ struct VocabTab<DeckView: View>: View {
     }
     
     var body: some View {
-        
         let list = List {
             ForEach(lists, id: \.id) { list in
                 self.buildItem(list)
