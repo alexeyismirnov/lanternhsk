@@ -41,6 +41,12 @@ struct VocabTab<DeckView: View>: View {
             ForEach(lists, id: \.id) { list in
                 self.buildItem(list)
             }
+            VStack(alignment: .leading) {
+                Text("Custom...").font(.headline)
+            }
+            .padding()
+            .frame(height: 50)
+
         }.navigationBarTitle("Lists")
         
         #if os(watchOS)

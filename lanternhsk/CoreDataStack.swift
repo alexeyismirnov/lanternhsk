@@ -45,10 +45,27 @@ class CoreDataStack {
         
         let localStoreLocation = appSupportDirectory.appendingPathComponent("coredata_populate.sqlite")
         let localStoreDescription = NSPersistentStoreDescription(url: localStoreLocation)
-        localStoreDescription.configuration = "Default"
+        localStoreDescription.configuration = "Local"
+        
+        let cloudStoreLocation = appSupportDirectory.appendingPathComponent("coredata_cloud.sqlite")
+        let cloudStoreDescription = NSPersistentStoreDescription(url: cloudStoreLocation)
+        cloudStoreDescription.configuration = "Cloud"
+        
+        cloudStoreDescription.cloudKitContainerOptions =
+            NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.com.rlc.lanternhsk")
+        
+        cloudStoreDescription.setOption(true as NSNumber,
+                               forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+
+        let remoteChangeKey = "NSPersistentStoreRemoteChangeNotificationOptionKey"
+        cloudStoreDescription.setOption(true as NSNumber, forKey: remoteChangeKey)
+        
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        container.viewContext.automaticallyMergesChangesFromParent = true
         
         container.persistentStoreDescriptions = [
-               localStoreDescription
+            cloudStoreDescription,
+            localStoreDescription
         ]
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in

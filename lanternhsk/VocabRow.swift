@@ -36,26 +36,6 @@ struct ImageButton: View {
     }
 }
 
-struct HeightPreferenceKey: PreferenceKey {
-    typealias Value = CGFloat
-
-    static var defaultValue: CGFloat = 0
-
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-        value = nextValue()
-    }
-}
-
-struct VocabRowItemGeometry: View {
-    var body: some View {
-        GeometryReader { geometry in
-            Rectangle()
-                .fill(Color.clear)
-                .preference(key: HeightPreferenceKey.self, value: geometry.size.height)
-        }
-    }
-}
-
 struct VocabModalItem: Identifiable {
     let id = UUID()
     let card: VocabCard
@@ -98,21 +78,18 @@ struct VocabRowSideOne: View {
             }
             .padding([.top, .bottom], 5.0)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(VocabRowItemGeometry())
-            
         }
     }
 }
 
 struct VocabRowSideTwo: View {
     let card: VocabCard
-    let maxHeight: CGFloat
     
     var body: some View {
         VStack(alignment: .leading) {
             Text(card.translation)
                 .multilineTextAlignment(.leading)
-        }.frame(height: maxHeight)
+        }
     }
 }
 
@@ -134,20 +111,15 @@ struct VocabRow: View {
             VocabRowSideOne(card: card, deckId: deckId)
                 .rotation3DEffect(.degrees(self.flipped ? 180.0 : 0.0), axis: (x: 1.0, y: 0.0, z: 0.0))
                 .zIndex(self.flipped ? 0 : 1)
-                .opacity(self.flipped ? 0: 1)
+                .opacity(self.flipped ? 0 : 1)
             
-            VocabRowSideTwo(card: card, maxHeight: maxHeight)
+            VocabRowSideTwo(card: card)
                 .rotation3DEffect(.degrees(self.flipped ? 0.0 : 180.0), axis: (x: -1.0, y: 0.0, z: 0.0))
                 .zIndex(self.flipped ? 1 : 0)
-                .opacity(self.flipped ? 1: 0)
+                .opacity(self.flipped ? 1 : 0)
         }
         .contentShape(Rectangle())
         .onTapGesture { self.handleFlipViewTap() }
-        .onPreferenceChange(HeightPreferenceKey.self) {
-            if $0 > self.maxHeight {
-                self.maxHeight = $0
-            }
-        }
     }
     
     func handleFlipViewTap() -> Void {
@@ -168,6 +140,5 @@ struct VocabRow_Previews: PreviewProvider {
 
         }
         .previewLayout(.fixed(width: 300, height: 70))
-
     }
 }
