@@ -22,7 +22,7 @@ extension ActionViewMode {
     }
 }
 
-struct StudyTab: View {
+struct StudyView: View {
     @EnvironmentObject var studyManager: StudyManager
     @State var studyLists = [StudyDeck]()
     
@@ -92,11 +92,13 @@ struct StudyTab: View {
     func reload() {
         studyLists = [StudyDeck]()
         
+        /*
         for list in lists {
             if let deck = StudyDeck(deck: list, studyManager: studyManager) {
                 studyLists.append(deck)
             }
         }
+        */
         
         for deck in studyLists {
             showActionSheet[deck.id] = false
@@ -118,6 +120,6 @@ struct StudyTab: View {
 
 struct StudyTab_Previews: PreviewProvider {
     static var previews: some View {
-        StudyTab()
+        StudyView()
     }
 }

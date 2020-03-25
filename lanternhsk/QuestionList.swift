@@ -78,7 +78,7 @@ struct QuestionList: View {
         return AnyView(content
         .sheet(isPresented: $review,
                onDismiss: { self.nextQuestion() },
-               content: { VocabDetails(card: self.model.cards[self.model.index]) })
+               content: { CardDetails(card: self.model.cards[self.model.index]) })
 
         )
     }
@@ -87,8 +87,8 @@ struct QuestionList: View {
 
 struct QuestionList_Previews: PreviewProvider {
     static var previews: some View {
-        let cards: [VocabCard] = lists[0].load()
-               let deck = StudyDeck(id: UUID(), name:"", cards: cards)
-        return QuestionList(model: QuestionModel(deck: deck))
+        Rectangle()
+            .fill(Color.yellow)
+            .frame(width: 50, height: 50)
     }
 }

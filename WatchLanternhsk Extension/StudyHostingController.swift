@@ -24,7 +24,7 @@ class StudyHostingController: WKHostingController<AnyView> {
     }
     
     override var body: AnyView {
-        return AnyView(StudyTab().environmentObject(studyManager))
+        return AnyView(StudyView().environmentObject(studyManager))
     }
 }
 

@@ -23,10 +23,10 @@ struct TabLabel: View {
 struct MainView: View {
     var body: some View {
         TabView {
-            NavigationView { VocabTab() { VocabList($0) } }
+            NavigationView { ListView() { CardView($0) } }
              .tabItem({ TabLabel(imageName: "list.bullet", label: "Lists") })
             
-            NavigationView { StudyTab() }
+            NavigationView { StudyView() }
              .tabItem({ TabLabel(imageName: "book.fill", label: "Study") })
         }
     }

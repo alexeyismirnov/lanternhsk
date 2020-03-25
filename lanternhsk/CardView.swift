@@ -9,7 +9,7 @@
 import SwiftUI
 import CoreData
 
-struct VocabList: View {
+struct CardView: View {
     let list: ListEntity
     let cards: [VocabCard]
     
@@ -31,13 +31,13 @@ struct VocabList: View {
     }
     
     var body: some View {
-        List(cards) { VocabRow(card: $0, in: self.list.id!) }
+        List(cards) { CardRow(card: $0, in: self.list.id!) }
             .navigationBarTitle(list.name!)
     }
 }
 
 struct VocabList_Previews: PreviewProvider {
     static var previews: some View {
-        VocabList(ListEntity())
+        CardView(ListEntity())
     }
 }

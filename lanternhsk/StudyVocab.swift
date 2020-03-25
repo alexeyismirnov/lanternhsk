@@ -125,15 +125,10 @@ struct StudyVocab: View {
     }
 }
 
-
 struct StudyRow_Previews: PreviewProvider {
-    @State static var answerType = AnswerType.none
-    @State static var answerStr : String = ""
-    @State static var review : Bool = false
-
-    static let cards: [VocabCard] = lists[0].load()
-
     static var previews: some View {
-        StudyVocab(card: cards[0], answerType: $answerType, answerStr: $answerStr, review: $review)
+        Rectangle()
+            .fill(Color.yellow)
+            .frame(width: 50, height: 50)
     }
 }

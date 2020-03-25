@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct VocabDetails: View {
+struct CardDetails: View {
     let card: VocabCard
     
     var body: some View {
@@ -28,9 +28,9 @@ struct VocabDetails: View {
 }
 
 struct VocabDetails_Previews: PreviewProvider {
-    static let cards: [VocabCard] = lists[0].load()
-
     static var previews: some View {
-        VocabDetails(card: cards[0])
+        Rectangle()
+            .fill(Color.yellow)
+            .frame(width: 50, height: 50)
     }
 }

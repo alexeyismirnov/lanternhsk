@@ -9,7 +9,7 @@
 import SwiftUI
 import CoreData
 
-struct VocabTab<DeckView: View>: View {
+struct ListView<DeckView: View>: View {
     let producer: (ListEntity) -> DeckView
     @State var lists: [ListEntity] = []
 
@@ -41,29 +41,34 @@ struct VocabTab<DeckView: View>: View {
                 self.buildItem(list)
             }
             VStack(alignment: .leading) {
-                Text("Custom...").font(.headline)
+                NavigationLink(destination: CloudListView()) {
+                    Text("Custom...").font(.headline)
+                }
             }
             .padding()
             .frame(height: 50)
 
-        }.navigationBarTitle("Lists")
-        
+        }
+
         #if os(watchOS)
-        return list.focusable(true)
+        return list
+            .navigationBarTitle("Lists")
+            .focusable(true)
         #else
         return list
+          .navigationBarTitle("Lists", displayMode: .inline)
         #endif
     }
 }
 
 #if os(watchOS)
-typealias DeckView = VocabListWatch
+typealias DeckView = CardViewWatch
 #else
-typealias DeckView = VocabList
+typealias DeckView = CardView
 #endif
 
 struct VocabTab_Previews: PreviewProvider {
     static var previews: some View {
-        VocabTab() { DeckView($0) }
+        ListView() { DeckView($0) }
     }
 }

@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		8A61F0742408BFAB00B434A0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61F0732408BFAB00B434A0 /* Extensions.swift */; };
 		8A61F0752408BFAB00B434A0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61F0732408BFAB00B434A0 /* Extensions.swift */; };
-		8A62CD3523FE2D8E00929454 /* VocabDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A62CD3423FE2D8E00929454 /* VocabDetails.swift */; };
-		8A62CD3623FE2D8E00929454 /* VocabDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A62CD3423FE2D8E00929454 /* VocabDetails.swift */; };
+		8A62CD3523FE2D8E00929454 /* CardDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A62CD3423FE2D8E00929454 /* CardDetails.swift */; };
+		8A62CD3623FE2D8E00929454 /* CardDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A62CD3423FE2D8E00929454 /* CardDetails.swift */; };
 		8A638F8023B35DA300D4DD7F /* StudyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A638F7F23B35DA300D4DD7F /* StudyManager.swift */; };
 		8A638F8123B35DA300D4DD7F /* StudyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A638F7F23B35DA300D4DD7F /* StudyManager.swift */; };
-		8A64F9D723AB667D0080F7B8 /* StudyTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A64F9D623AB667D0080F7B8 /* StudyTab.swift */; };
-		8A64F9D823AB667D0080F7B8 /* StudyTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A64F9D623AB667D0080F7B8 /* StudyTab.swift */; };
+		8A64F9D723AB667D0080F7B8 /* StudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A64F9D623AB667D0080F7B8 /* StudyView.swift */; };
+		8A64F9D823AB667D0080F7B8 /* StudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A64F9D623AB667D0080F7B8 /* StudyView.swift */; };
 		8A64F9DA23AB67BB0080F7B8 /* StudyHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A64F9D923AB67BB0080F7B8 /* StudyHostingController.swift */; };
 		8A64F9DC23AB6E9A0080F7B8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A64F9DB23AB6E9A0080F7B8 /* MainView.swift */; };
 		8A6897D02428BC72004A0298 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6897CF2428BC72004A0298 /* CloudKit.framework */; };
@@ -29,29 +29,24 @@
 		8A6897E32428C28B004A0298 /* coredata_populate.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 8A6897DD2428C28B004A0298 /* coredata_populate.sqlite-shm */; };
 		8A6897EE2428E89A004A0298 /* coredata_populate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A6897E82428E899004A0298 /* coredata_populate.xcdatamodeld */; };
 		8A6897EF2428E89A004A0298 /* coredata_populate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A6897E82428E899004A0298 /* coredata_populate.xcdatamodeld */; };
-		8A7B0F6723AA0B9200DC1645 /* VocabTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6623AA0B9200DC1645 /* VocabTab.swift */; };
-		8A7B0F6823AA0B9200DC1645 /* VocabTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6623AA0B9200DC1645 /* VocabTab.swift */; };
-		8A7B0F6A23AA1FFC00DC1645 /* hsk2.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6923AA1FFC00DC1645 /* hsk2.json */; };
-		8A7B0F6B23AA1FFC00DC1645 /* hsk2.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6923AA1FFC00DC1645 /* hsk2.json */; };
-		8A7B0F6D23AA21F400DC1645 /* hsk3.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6C23AA21F400DC1645 /* hsk3.json */; };
-		8A7B0F6E23AA21F400DC1645 /* hsk3.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6C23AA21F400DC1645 /* hsk3.json */; };
+		8A7B0F6723AA0B9200DC1645 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6623AA0B9200DC1645 /* ListView.swift */; };
+		8A7B0F6823AA0B9200DC1645 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6623AA0B9200DC1645 /* ListView.swift */; };
 		8A9B7CFC23FBF7E100BA086B /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B7CFB23FBF7E100BA086B /* QuestionModel.swift */; };
 		8A9B7CFD23FBF7E100BA086B /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B7CFB23FBF7E100BA086B /* QuestionModel.swift */; };
 		8AA4D9B423FBD77B00FF13C0 /* QuestionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4D9B323FBD77B00FF13C0 /* QuestionList.swift */; };
 		8AA4D9B523FBD77B00FF13C0 /* QuestionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4D9B323FBD77B00FF13C0 /* QuestionList.swift */; };
 		8AD525C923A6253600274135 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525C823A6253600274135 /* AppDelegate.swift */; };
 		8AD525CB23A6253600274135 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525CA23A6253600274135 /* SceneDelegate.swift */; };
-		8AD525CD23A6253600274135 /* VocabList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525CC23A6253600274135 /* VocabList.swift */; };
+		8AD525CD23A6253600274135 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525CC23A6253600274135 /* CardView.swift */; };
 		8AD525CF23A6253800274135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525CE23A6253800274135 /* Assets.xcassets */; };
 		8AD525D223A6253800274135 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525D123A6253800274135 /* Preview Assets.xcassets */; };
 		8AD525D523A6253800274135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525D323A6253800274135 /* LaunchScreen.storyboard */; };
 		8AD525DD23A6270F00274135 /* VocabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525DC23A6270F00274135 /* VocabManager.swift */; };
-		8AD525DF23A629DE00274135 /* hsk1.json in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525DE23A629DE00274135 /* hsk1.json */; };
-		8AD525E123A62FA600274135 /* VocabRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525E023A62FA600274135 /* VocabRow.swift */; };
+		8AD525E123A62FA600274135 /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525E023A62FA600274135 /* CardRow.swift */; };
 		8AD525E823A634CA00274135 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525E623A634CA00274135 /* Interface.storyboard */; };
 		8AD525EA23A634CC00274135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525E923A634CC00274135 /* Assets.xcassets */; };
 		8AD525F123A634CC00274135 /* WatchLanternhsk Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8AD525F023A634CC00274135 /* WatchLanternhsk Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		8AD525F623A634CC00274135 /* VocabListWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525F523A634CC00274135 /* VocabListWatch.swift */; };
+		8AD525F623A634CC00274135 /* CardViewWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525F523A634CC00274135 /* CardViewWatch.swift */; };
 		8AD525F823A634CC00274135 /* ListsHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525F723A634CC00274135 /* ListsHostingController.swift */; };
 		8AD525FA23A634CC00274135 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525F923A634CC00274135 /* ExtensionDelegate.swift */; };
 		8AD525FC23A634CC00274135 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525FB23A634CC00274135 /* ComplicationController.swift */; };
@@ -59,10 +54,14 @@
 		8AD5260123A634CD00274135 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5260023A634CD00274135 /* Preview Assets.xcassets */; };
 		8AD5260523A634CD00274135 /* WatchLanternhsk.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8AD525E423A634CA00274135 /* WatchLanternhsk.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8AD5260E23A6354300274135 /* VocabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525DC23A6270F00274135 /* VocabManager.swift */; };
-		8AD5261023A6354300274135 /* VocabRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525E023A62FA600274135 /* VocabRow.swift */; };
-		8AD5261123A6354300274135 /* hsk1.json in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525DE23A629DE00274135 /* hsk1.json */; };
+		8AD5261023A6354300274135 /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525E023A62FA600274135 /* CardRow.swift */; };
 		8AE43360240509AC00E5C977 /* StudyTone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE4335F240509AC00E5C977 /* StudyTone.swift */; };
 		8AE43365240513D400E5C977 /* StudyToneInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE43364240513D400E5C977 /* StudyToneInterfaceController.swift */; };
+		8AF28648242B2948007E606D /* ExtensionsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF28647242B2948007E606D /* ExtensionsUI.swift */; };
+		8AF2864B242B2F2C007E606D /* CloudListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF2864A242B2F2C007E606D /* CloudListView.swift */; };
+		8AF2864C242B2F2C007E606D /* CloudListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF2864A242B2F2C007E606D /* CloudListView.swift */; };
+		8AF2864E242B6845007E606D /* CloudSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF2864D242B6845007E606D /* CloudSectionView.swift */; };
+		8AF2864F242B6845007E606D /* CloudSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF2864D242B6845007E606D /* CloudSectionView.swift */; };
 		8AFBE0BF23BB364F002E95BC /* StudyVocab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBE0BE23BB364F002E95BC /* StudyVocab.swift */; };
 		8AFBE0C023BB364F002E95BC /* StudyVocab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBE0BE23BB364F002E95BC /* StudyVocab.swift */; };
 /* End PBXBuildFile section */
@@ -111,9 +110,9 @@
 
 /* Begin PBXFileReference section */
 		8A61F0732408BFAB00B434A0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		8A62CD3423FE2D8E00929454 /* VocabDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabDetails.swift; sourceTree = "<group>"; };
+		8A62CD3423FE2D8E00929454 /* CardDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetails.swift; sourceTree = "<group>"; };
 		8A638F7F23B35DA300D4DD7F /* StudyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyManager.swift; sourceTree = "<group>"; };
-		8A64F9D623AB667D0080F7B8 /* StudyTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTab.swift; sourceTree = "<group>"; };
+		8A64F9D623AB667D0080F7B8 /* StudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyView.swift; sourceTree = "<group>"; };
 		8A64F9D923AB67BB0080F7B8 /* StudyHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyHostingController.swift; sourceTree = "<group>"; };
 		8A64F9DB23AB6E9A0080F7B8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		8A6897CE2428BC58004A0298 /* lanternhsk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = lanternhsk.entitlements; sourceTree = "<group>"; };
@@ -125,28 +124,25 @@
 		8A6897DC2428C28B004A0298 /* coredata_populate.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = coredata_populate.sqlite; sourceTree = "<group>"; };
 		8A6897DD2428C28B004A0298 /* coredata_populate.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "coredata_populate.sqlite-shm"; sourceTree = "<group>"; };
 		8A6897E92428E899004A0298 /* coredata_populate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coredata_populate.xcdatamodel; sourceTree = "<group>"; };
-		8A7B0F6623AA0B9200DC1645 /* VocabTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabTab.swift; sourceTree = "<group>"; };
-		8A7B0F6923AA1FFC00DC1645 /* hsk2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hsk2.json; sourceTree = "<group>"; };
-		8A7B0F6C23AA21F400DC1645 /* hsk3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hsk3.json; sourceTree = "<group>"; };
+		8A7B0F6623AA0B9200DC1645 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		8A9B7CFB23FBF7E100BA086B /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		8AA4D9B323FBD77B00FF13C0 /* QuestionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionList.swift; sourceTree = "<group>"; };
 		8AD525C523A6253600274135 /* lanternhsk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lanternhsk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD525C823A6253600274135 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AD525CA23A6253600274135 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8AD525CC23A6253600274135 /* VocabList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabList.swift; sourceTree = "<group>"; };
+		8AD525CC23A6253600274135 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		8AD525CE23A6253800274135 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AD525D123A6253800274135 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8AD525D423A6253800274135 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8AD525D623A6253800274135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AD525DC23A6270F00274135 /* VocabManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabManager.swift; sourceTree = "<group>"; };
-		8AD525DE23A629DE00274135 /* hsk1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hsk1.json; sourceTree = "<group>"; };
-		8AD525E023A62FA600274135 /* VocabRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabRow.swift; sourceTree = "<group>"; };
+		8AD525E023A62FA600274135 /* CardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRow.swift; sourceTree = "<group>"; };
 		8AD525E423A634CA00274135 /* WatchLanternhsk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchLanternhsk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD525E723A634CA00274135 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		8AD525E923A634CC00274135 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AD525EB23A634CC00274135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AD525F023A634CC00274135 /* WatchLanternhsk Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WatchLanternhsk Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8AD525F523A634CC00274135 /* VocabListWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabListWatch.swift; sourceTree = "<group>"; };
+		8AD525F523A634CC00274135 /* CardViewWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewWatch.swift; sourceTree = "<group>"; };
 		8AD525F723A634CC00274135 /* ListsHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsHostingController.swift; sourceTree = "<group>"; };
 		8AD525F923A634CC00274135 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		8AD525FB23A634CC00274135 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
@@ -155,6 +151,9 @@
 		8AD5260223A634CD00274135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AE4335F240509AC00E5C977 /* StudyTone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTone.swift; sourceTree = "<group>"; };
 		8AE43364240513D400E5C977 /* StudyToneInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyToneInterfaceController.swift; sourceTree = "<group>"; };
+		8AF28647242B2948007E606D /* ExtensionsUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsUI.swift; sourceTree = "<group>"; };
+		8AF2864A242B2F2C007E606D /* CloudListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudListView.swift; sourceTree = "<group>"; };
+		8AF2864D242B6845007E606D /* CloudSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSectionView.swift; sourceTree = "<group>"; };
 		8AFBE0BE23BB364F002E95BC /* StudyVocab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyVocab.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -218,21 +217,21 @@
 				8AD525C823A6253600274135 /* AppDelegate.swift */,
 				8AD525CA23A6253600274135 /* SceneDelegate.swift */,
 				8A64F9DB23AB6E9A0080F7B8 /* MainView.swift */,
-				8A7B0F6623AA0B9200DC1645 /* VocabTab.swift */,
-				8A64F9D623AB667D0080F7B8 /* StudyTab.swift */,
-				8AD525CC23A6253600274135 /* VocabList.swift */,
-				8AD525E023A62FA600274135 /* VocabRow.swift */,
-				8A62CD3423FE2D8E00929454 /* VocabDetails.swift */,
+				8A7B0F6623AA0B9200DC1645 /* ListView.swift */,
+				8AD525CC23A6253600274135 /* CardView.swift */,
+				8AF2864A242B2F2C007E606D /* CloudListView.swift */,
+				8AF2864D242B6845007E606D /* CloudSectionView.swift */,
+				8AD525E023A62FA600274135 /* CardRow.swift */,
+				8A62CD3423FE2D8E00929454 /* CardDetails.swift */,
+				8A64F9D623AB667D0080F7B8 /* StudyView.swift */,
 				8A9B7CFB23FBF7E100BA086B /* QuestionModel.swift */,
 				8AA4D9B323FBD77B00FF13C0 /* QuestionList.swift */,
 				8AFBE0BE23BB364F002E95BC /* StudyVocab.swift */,
 				8AE4335F240509AC00E5C977 /* StudyTone.swift */,
 				8A61F0732408BFAB00B434A0 /* Extensions.swift */,
+				8AF28647242B2948007E606D /* ExtensionsUI.swift */,
 				8AD525CE23A6253800274135 /* Assets.xcassets */,
 				8AD525D323A6253800274135 /* LaunchScreen.storyboard */,
-				8AD525DE23A629DE00274135 /* hsk1.json */,
-				8A7B0F6923AA1FFC00DC1645 /* hsk2.json */,
-				8A7B0F6C23AA21F400DC1645 /* hsk3.json */,
 				8A6897DC2428C28B004A0298 /* coredata_populate.sqlite */,
 				8A6897DD2428C28B004A0298 /* coredata_populate.sqlite-shm */,
 				8A6897DB2428C28B004A0298 /* coredata_populate.sqlite-wal */,
@@ -268,7 +267,7 @@
 				8AD525F723A634CC00274135 /* ListsHostingController.swift */,
 				8A64F9D923AB67BB0080F7B8 /* StudyHostingController.swift */,
 				8AE43364240513D400E5C977 /* StudyToneInterfaceController.swift */,
-				8AD525F523A634CC00274135 /* VocabListWatch.swift */,
+				8AD525F523A634CC00274135 /* CardViewWatch.swift */,
 				8AD525F923A634CC00274135 /* ExtensionDelegate.swift */,
 				8AD525FB23A634CC00274135 /* ComplicationController.swift */,
 				8AD525FD23A634CC00274135 /* Assets.xcassets */,
@@ -388,14 +387,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A7B0F6A23AA1FFC00DC1645 /* hsk2.json in Resources */,
-				8AD525DF23A629DE00274135 /* hsk1.json in Resources */,
 				8AD525D523A6253800274135 /* LaunchScreen.storyboard in Resources */,
 				8A6897DE2428C28B004A0298 /* coredata_populate.sqlite-wal in Resources */,
 				8A6897E02428C28B004A0298 /* coredata_populate.sqlite in Resources */,
 				8A6897E22428C28B004A0298 /* coredata_populate.sqlite-shm in Resources */,
 				8AD525D223A6253800274135 /* Preview Assets.xcassets in Resources */,
-				8A7B0F6D23AA21F400DC1645 /* hsk3.json in Resources */,
 				8AD525CF23A6253800274135 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,11 +409,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A7B0F6E23AA21F400DC1645 /* hsk3.json in Resources */,
 				8A6897DF2428C28B004A0298 /* coredata_populate.sqlite-wal in Resources */,
 				8AD5260123A634CD00274135 /* Preview Assets.xcassets in Resources */,
-				8A7B0F6B23AA1FFC00DC1645 /* hsk2.json in Resources */,
-				8AD5261123A6354300274135 /* hsk1.json in Resources */,
 				8A6897E32428C28B004A0298 /* coredata_populate.sqlite-shm in Resources */,
 				8AD525FE23A634CD00274135 /* Assets.xcassets in Resources */,
 				8A6897E12428C28B004A0298 /* coredata_populate.sqlite in Resources */,
@@ -431,22 +424,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AF2864B242B2F2C007E606D /* CloudListView.swift in Sources */,
 				8A9B7CFC23FBF7E100BA086B /* QuestionModel.swift in Sources */,
 				8AD525C923A6253600274135 /* AppDelegate.swift in Sources */,
 				8A64F9DC23AB6E9A0080F7B8 /* MainView.swift in Sources */,
-				8A62CD3523FE2D8E00929454 /* VocabDetails.swift in Sources */,
+				8A62CD3523FE2D8E00929454 /* CardDetails.swift in Sources */,
 				8AFBE0BF23BB364F002E95BC /* StudyVocab.swift in Sources */,
-				8A7B0F6723AA0B9200DC1645 /* VocabTab.swift in Sources */,
+				8A7B0F6723AA0B9200DC1645 /* ListView.swift in Sources */,
 				8AD525CB23A6253600274135 /* SceneDelegate.swift in Sources */,
-				8AD525CD23A6253600274135 /* VocabList.swift in Sources */,
+				8AF2864E242B6845007E606D /* CloudSectionView.swift in Sources */,
+				8AD525CD23A6253600274135 /* CardView.swift in Sources */,
 				8A638F8023B35DA300D4DD7F /* StudyManager.swift in Sources */,
 				8AD525DD23A6270F00274135 /* VocabManager.swift in Sources */,
 				8A61F0742408BFAB00B434A0 /* Extensions.swift in Sources */,
+				8AF28648242B2948007E606D /* ExtensionsUI.swift in Sources */,
 				8A6897D92428C261004A0298 /* CoreDataStack.swift in Sources */,
 				8AA4D9B423FBD77B00FF13C0 /* QuestionList.swift in Sources */,
-				8AD525E123A62FA600274135 /* VocabRow.swift in Sources */,
+				8AD525E123A62FA600274135 /* CardRow.swift in Sources */,
 				8A6897EE2428E89A004A0298 /* coredata_populate.xcdatamodeld in Sources */,
-				8A64F9D723AB667D0080F7B8 /* StudyTab.swift in Sources */,
+				8A64F9D723AB667D0080F7B8 /* StudyView.swift in Sources */,
 				8AE43360240509AC00E5C977 /* StudyTone.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,22 +453,24 @@
 			files = (
 				8A6897EF2428E89A004A0298 /* coredata_populate.xcdatamodeld in Sources */,
 				8AD525F823A634CC00274135 /* ListsHostingController.swift in Sources */,
-				8A64F9D823AB667D0080F7B8 /* StudyTab.swift in Sources */,
+				8A64F9D823AB667D0080F7B8 /* StudyView.swift in Sources */,
 				8AFBE0C023BB364F002E95BC /* StudyVocab.swift in Sources */,
 				8A6897DA2428C261004A0298 /* CoreDataStack.swift in Sources */,
 				8A64F9DA23AB67BB0080F7B8 /* StudyHostingController.swift in Sources */,
-				8AD5261023A6354300274135 /* VocabRow.swift in Sources */,
+				8AD5261023A6354300274135 /* CardRow.swift in Sources */,
 				8AE43365240513D400E5C977 /* StudyToneInterfaceController.swift in Sources */,
+				8AF2864F242B6845007E606D /* CloudSectionView.swift in Sources */,
 				8AD5260E23A6354300274135 /* VocabManager.swift in Sources */,
-				8A62CD3623FE2D8E00929454 /* VocabDetails.swift in Sources */,
+				8A62CD3623FE2D8E00929454 /* CardDetails.swift in Sources */,
 				8A9B7CFD23FBF7E100BA086B /* QuestionModel.swift in Sources */,
 				8AA4D9B523FBD77B00FF13C0 /* QuestionList.swift in Sources */,
 				8A638F8123B35DA300D4DD7F /* StudyManager.swift in Sources */,
 				8A61F0752408BFAB00B434A0 /* Extensions.swift in Sources */,
 				8AD525FC23A634CC00274135 /* ComplicationController.swift in Sources */,
-				8AD525F623A634CC00274135 /* VocabListWatch.swift in Sources */,
+				8AD525F623A634CC00274135 /* CardViewWatch.swift in Sources */,
+				8AF2864C242B2F2C007E606D /* CloudListView.swift in Sources */,
 				8AD525FA23A634CC00274135 /* ExtensionDelegate.swift in Sources */,
-				8A7B0F6823AA0B9200DC1645 /* VocabTab.swift in Sources */,
+				8A7B0F6823AA0B9200DC1645 /* ListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

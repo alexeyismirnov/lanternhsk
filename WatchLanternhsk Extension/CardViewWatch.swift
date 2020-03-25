@@ -9,7 +9,7 @@
 import SwiftUI
 import CoreData
 
-struct VocabListWatch: View {
+struct CardViewWatch: View {
     let list: ListEntity
     let cards: [VocabCard]
     
@@ -32,7 +32,7 @@ struct VocabListWatch: View {
     
     var body: some View {
         GeometryReader { geometry in
-            List(self.cards) { VocabRow(card: $0, in: self.list.id!, height: geometry.size.height) }
+            List(self.cards) { CardRow(card: $0, in: self.list.id!) }
             .environment(\.defaultMinListRowHeight, geometry.size.height)
             .listStyle(CarouselListStyle()).focusable(true)
         }.contextMenu(menuItems: {
@@ -51,6 +51,6 @@ struct VocabListWatch: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        VocabListWatch(ListEntity())
+        CardViewWatch(ListEntity())
     }
 }

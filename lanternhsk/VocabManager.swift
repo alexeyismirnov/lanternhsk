@@ -9,14 +9,6 @@
 import UIKit
 import SwiftUI
 
-let lists: [VocabDeck] = [
-    /*
-    VocabDeck(id: 1, name: "HSK 1", filename: "hsk1.json", wordCount: 150),
-    VocabDeck(id: 2, name: "HSK 2", filename: "hsk2.json", wordCount: 150),
-    VocabDeck(id: 3, name: "HSK 3", filename: "hsk3.json", wordCount: 300),
- */
-]
-
 enum Tone: Int {
     case none = 0, first = 1, second = 2, third = 3, fourth = 4
 }
