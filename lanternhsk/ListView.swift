@@ -9,12 +9,10 @@
 import SwiftUI
 import CoreData
 
-struct ListView<DeckView: View>: View {
-    let producer: (ListEntity) -> DeckView
+struct ListView: View {
     @State var lists: [ListEntity] = []
 
-    init(_ producer: @escaping (ListEntity) -> DeckView) {
-        self.producer = producer
+    init() {
         let request : NSFetchRequest<ListEntity> = ListEntity.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(keyPath: \ListEntity.objectID, ascending: true)]
         
@@ -25,7 +23,7 @@ struct ListView<DeckView: View>: View {
     }
     
     func buildItem(_ list:ListEntity) -> some View {
-        let view = producer(list)
+        let view = CardView(list)
 
         return NavigationLink(destination: view) {
             VStack(alignment: .leading) {
@@ -61,14 +59,8 @@ struct ListView<DeckView: View>: View {
     }
 }
 
-#if os(watchOS)
-typealias DeckView = CardViewWatch
-#else
-typealias DeckView = CardView
-#endif
-
 struct VocabTab_Previews: PreviewProvider {
     static var previews: some View {
-        ListView() { DeckView($0) }
+        ListView()
     }
 }

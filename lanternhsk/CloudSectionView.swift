@@ -36,9 +36,9 @@ struct CloudSectionView: View {
     }
     
     func buildItem(_ section:CloudSectionEntity) -> some View {
-        // let view = LazyView(CardView(self.list, section))
+        let view = LazyView(CloudCardView(self.list, section))
         
-        return NavigationLink(destination: CloudSectionView(list)) {
+        return NavigationLink(destination: view) {
             VStack(alignment: .leading) {
                 Text((section as CloudSectionEntity).name!).font(.headline)
                 Text("Words: " + String((section as CloudSectionEntity).wordCount)).font(.subheadline)

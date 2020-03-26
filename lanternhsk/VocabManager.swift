@@ -43,6 +43,35 @@ extension Tone {
     }
 }
 
+extension String {
+    func tone(_ tone: Int) -> String {
+        let diacritics = ["", "\u{0304}", "\u{0301}", "\u{030C}", "\u{0300}"]
+        
+        let suffix3 = self.suffix(3)
+        let suffix2 = self.suffix(2)
+
+        if suffix3 == "iao" || suffix3 == "uai" {
+            return String(self.dropLast()) + diacritics[tone] + String(self.last!)
+            
+        } else if suffix2 == "ai" || suffix2 == "ei" ||  suffix2 == "ao" || suffix2 == "ou" {
+            return String(self.dropLast()) + diacritics[tone] + String(self.last!)
+
+        } else {
+            let pattern = "(.*)([aoeiu])(.*)"
+            let regex = try! NSRegularExpression(pattern: pattern)
+
+            let text2 = NSMutableString(string: self)
+
+            regex.replaceMatches(in: text2,
+                                 options: .reportProgress,
+                                 range: NSRange(location: 0,length: text2.length),
+                                 withTemplate: "$1$2"  + diacritics[tone] + "$3")
+            
+            return String(text2)
+        }
+    }
+}
+
 struct VocabCard: Hashable, Codable, Identifiable {
     var id: UUID
     var word: String

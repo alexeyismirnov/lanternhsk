@@ -23,7 +23,7 @@ struct TabLabel: View {
 struct MainView: View {
     var body: some View {
         TabView {
-            NavigationView { ListView() { CardView($0) } }
+            NavigationView { ListView() }
              .tabItem({ TabLabel(imageName: "list.bullet", label: "Lists") })
             
             NavigationView { StudyView() }

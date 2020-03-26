@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A5E5CEB242C8A6900691726 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525CC23A6253600274135 /* CardView.swift */; };
+		8A5E5CED242C8F4700691726 /* CloudCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E5CEC242C8F4700691726 /* CloudCardView.swift */; };
+		8A5E5CEE242C8F4700691726 /* CloudCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E5CEC242C8F4700691726 /* CloudCardView.swift */; };
+		8A5E5CF0242C933D00691726 /* AddCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E5CEF242C933D00691726 /* AddCard.swift */; };
 		8A61F0742408BFAB00B434A0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61F0732408BFAB00B434A0 /* Extensions.swift */; };
 		8A61F0752408BFAB00B434A0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61F0732408BFAB00B434A0 /* Extensions.swift */; };
 		8A62CD3523FE2D8E00929454 /* CardDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A62CD3423FE2D8E00929454 /* CardDetails.swift */; };
@@ -46,7 +50,6 @@
 		8AD525E823A634CA00274135 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525E623A634CA00274135 /* Interface.storyboard */; };
 		8AD525EA23A634CC00274135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525E923A634CC00274135 /* Assets.xcassets */; };
 		8AD525F123A634CC00274135 /* WatchLanternhsk Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8AD525F023A634CC00274135 /* WatchLanternhsk Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		8AD525F623A634CC00274135 /* CardViewWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525F523A634CC00274135 /* CardViewWatch.swift */; };
 		8AD525F823A634CC00274135 /* ListsHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525F723A634CC00274135 /* ListsHostingController.swift */; };
 		8AD525FA23A634CC00274135 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525F923A634CC00274135 /* ExtensionDelegate.swift */; };
 		8AD525FC23A634CC00274135 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525FB23A634CC00274135 /* ComplicationController.swift */; };
@@ -109,6 +112,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8A5E5CEC242C8F4700691726 /* CloudCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudCardView.swift; sourceTree = "<group>"; };
+		8A5E5CEF242C933D00691726 /* AddCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCard.swift; sourceTree = "<group>"; };
 		8A61F0732408BFAB00B434A0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8A62CD3423FE2D8E00929454 /* CardDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetails.swift; sourceTree = "<group>"; };
 		8A638F7F23B35DA300D4DD7F /* StudyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyManager.swift; sourceTree = "<group>"; };
@@ -142,7 +147,6 @@
 		8AD525E923A634CC00274135 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AD525EB23A634CC00274135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AD525F023A634CC00274135 /* WatchLanternhsk Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WatchLanternhsk Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8AD525F523A634CC00274135 /* CardViewWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewWatch.swift; sourceTree = "<group>"; };
 		8AD525F723A634CC00274135 /* ListsHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsHostingController.swift; sourceTree = "<group>"; };
 		8AD525F923A634CC00274135 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		8AD525FB23A634CC00274135 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
@@ -221,6 +225,8 @@
 				8AD525CC23A6253600274135 /* CardView.swift */,
 				8AF2864A242B2F2C007E606D /* CloudListView.swift */,
 				8AF2864D242B6845007E606D /* CloudSectionView.swift */,
+				8A5E5CEC242C8F4700691726 /* CloudCardView.swift */,
+				8A5E5CEF242C933D00691726 /* AddCard.swift */,
 				8AD525E023A62FA600274135 /* CardRow.swift */,
 				8A62CD3423FE2D8E00929454 /* CardDetails.swift */,
 				8A64F9D623AB667D0080F7B8 /* StudyView.swift */,
@@ -267,7 +273,6 @@
 				8AD525F723A634CC00274135 /* ListsHostingController.swift */,
 				8A64F9D923AB67BB0080F7B8 /* StudyHostingController.swift */,
 				8AE43364240513D400E5C977 /* StudyToneInterfaceController.swift */,
-				8AD525F523A634CC00274135 /* CardViewWatch.swift */,
 				8AD525F923A634CC00274135 /* ExtensionDelegate.swift */,
 				8AD525FB23A634CC00274135 /* ComplicationController.swift */,
 				8AD525FD23A634CC00274135 /* Assets.xcassets */,
@@ -436,10 +441,12 @@
 				8AD525CD23A6253600274135 /* CardView.swift in Sources */,
 				8A638F8023B35DA300D4DD7F /* StudyManager.swift in Sources */,
 				8AD525DD23A6270F00274135 /* VocabManager.swift in Sources */,
+				8A5E5CED242C8F4700691726 /* CloudCardView.swift in Sources */,
 				8A61F0742408BFAB00B434A0 /* Extensions.swift in Sources */,
 				8AF28648242B2948007E606D /* ExtensionsUI.swift in Sources */,
 				8A6897D92428C261004A0298 /* CoreDataStack.swift in Sources */,
 				8AA4D9B423FBD77B00FF13C0 /* QuestionList.swift in Sources */,
+				8A5E5CF0242C933D00691726 /* AddCard.swift in Sources */,
 				8AD525E123A62FA600274135 /* CardRow.swift in Sources */,
 				8A6897EE2428E89A004A0298 /* coredata_populate.xcdatamodeld in Sources */,
 				8A64F9D723AB667D0080F7B8 /* StudyView.swift in Sources */,
@@ -463,11 +470,12 @@
 				8AD5260E23A6354300274135 /* VocabManager.swift in Sources */,
 				8A62CD3623FE2D8E00929454 /* CardDetails.swift in Sources */,
 				8A9B7CFD23FBF7E100BA086B /* QuestionModel.swift in Sources */,
+				8A5E5CEE242C8F4700691726 /* CloudCardView.swift in Sources */,
 				8AA4D9B523FBD77B00FF13C0 /* QuestionList.swift in Sources */,
 				8A638F8123B35DA300D4DD7F /* StudyManager.swift in Sources */,
+				8A5E5CEB242C8A6900691726 /* CardView.swift in Sources */,
 				8A61F0752408BFAB00B434A0 /* Extensions.swift in Sources */,
 				8AD525FC23A634CC00274135 /* ComplicationController.swift in Sources */,
-				8AD525F623A634CC00274135 /* CardViewWatch.swift in Sources */,
 				8AF2864C242B2F2C007E606D /* CloudListView.swift in Sources */,
 				8AD525FA23A634CC00274135 /* ExtensionDelegate.swift in Sources */,
 				8A7B0F6823AA0B9200DC1645 /* ListView.swift in Sources */,

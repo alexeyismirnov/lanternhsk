@@ -31,8 +31,27 @@ struct CardView: View {
     }
     
     var body: some View {
-        List(cards) { CardRow(card: $0, in: self.list.id!) }
-            .navigationBarTitle(list.name!)
+        let content = List(cards) { CardRow(card: $0, in: self.list.id!) }
+        
+        #if os(watchOS)
+        return GeometryReader { geometry in
+            content
+                .environment(\.defaultMinListRowHeight, geometry.size.height)
+                .listStyle(CarouselListStyle()).focusable(true)
+        }.contextMenu(menuItems: {
+            Button(action: {
+                print("Refresh")
+            }, label: {
+                VStack{
+                    Image(systemName: "arrow.clockwise").font(.title)
+                    Text("Refresh view")
+                }
+            })
+        }).navigationBarTitle(list.name!)
+        #else
+        return content.navigationBarTitle(list.name!)
+        #endif
+        
     }
 }
 

@@ -19,7 +19,6 @@ class ListsHostingController: WKHostingController<AnyView> {
     }
     
     override var body: AnyView {
-        return AnyView(ListView() { CardViewWatch($0) }
-            .environmentObject(studyManager))
+        return AnyView(ListView().environmentObject(studyManager))
     }
 }
