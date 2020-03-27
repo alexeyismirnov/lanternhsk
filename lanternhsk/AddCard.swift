@@ -102,7 +102,12 @@ struct AddCard: View {
                     }
                 }
                 
-                items.append(VocabCard(id: UUID(), word: values[0], pinyin: tones.joined(separator: " "), translation: values[2]))
+                items.append(VocabCard(id: UUID(),
+                                       word: values[0],
+                                       pinyin: tones.joined(separator: " "),
+                                       translation: values[2],
+                                       starred: false
+                                       ))
             }
         }
         

@@ -26,7 +26,9 @@ struct CardView: View {
         self.cards = cards.map { VocabCard(id: $0.id!,
                                            word: $0.wordTrad!,
                                            pinyin: $0.pinyin!,
-                                           translation: $0.translation!)}
+                                           translation: $0.translation!,
+                                           starred: $0.starred
+            )}
         
     }
     

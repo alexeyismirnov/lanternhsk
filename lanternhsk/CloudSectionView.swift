@@ -26,13 +26,7 @@ struct CloudSectionView: View {
 
     init(_ list: CloudListEntity) {
         self.list = list
-        
-        let context = CoreDataStack.shared.persistentContainer.viewContext
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \CloudSectionEntity.objectID, ascending: true)]
-        request.predicate = NSPredicate(format: "list.id == %@", list.id! as CVarArg)
-
-        let sections = try! context.fetch(request)
-        self._sections = State(initialValue: sections)
+        self._sections = State(initialValue: getSections())
     }
     
     func buildItem(_ section:CloudSectionEntity) -> some View {
@@ -46,10 +40,17 @@ struct CloudSectionView: View {
         }
     }
     
-    func reload() {
+    func getSections() -> [CloudSectionEntity] {
         let context = CoreDataStack.shared.persistentContainer.viewContext
-        self.sections = try! context.fetch(self.request)
-        self.trigger.toggle()
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \CloudSectionEntity.objectID, ascending: true)]
+        
+        if let listId = list.id {
+            request.predicate = NSPredicate(format: "list.id == %@", listId as CVarArg)
+            return try! context.fetch(self.request)
+        } else {
+            return []
+        }
+        
     }
     
     var body: some View {
@@ -75,10 +76,12 @@ struct CloudSectionView: View {
                 }
                 
             }.onReceive(self.didSave) { _ in
-                self.reload()
+                self.sections = self.getSections()
+                self.trigger.toggle()
                 
             }.onAppear(perform: {
-                self.reload()
+                self.sections = self.getSections()
+                self.trigger.toggle()
                 
             })
                 .navigationBarTitle(list.name ?? ""))
@@ -111,7 +114,8 @@ struct CloudSectionView: View {
                                     section.wordCount = 0
                                     
                                     try! context.save()
-                                    self.reload()
+                                    self.sections = self.getSections()
+                                    self.trigger.toggle()
                                 }
                                 
         }

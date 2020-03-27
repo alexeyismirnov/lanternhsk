@@ -31,8 +31,6 @@
 		8A6897E12428C28B004A0298 /* coredata_populate.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8A6897DC2428C28B004A0298 /* coredata_populate.sqlite */; };
 		8A6897E22428C28B004A0298 /* coredata_populate.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 8A6897DD2428C28B004A0298 /* coredata_populate.sqlite-shm */; };
 		8A6897E32428C28B004A0298 /* coredata_populate.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 8A6897DD2428C28B004A0298 /* coredata_populate.sqlite-shm */; };
-		8A6897EE2428E89A004A0298 /* coredata_populate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A6897E82428E899004A0298 /* coredata_populate.xcdatamodeld */; };
-		8A6897EF2428E89A004A0298 /* coredata_populate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A6897E82428E899004A0298 /* coredata_populate.xcdatamodeld */; };
 		8A7B0F6723AA0B9200DC1645 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6623AA0B9200DC1645 /* ListView.swift */; };
 		8A7B0F6823AA0B9200DC1645 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6623AA0B9200DC1645 /* ListView.swift */; };
 		8A9B7CFC23FBF7E100BA086B /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B7CFB23FBF7E100BA086B /* QuestionModel.swift */; };
@@ -60,6 +58,8 @@
 		8AD5261023A6354300274135 /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525E023A62FA600274135 /* CardRow.swift */; };
 		8AE43360240509AC00E5C977 /* StudyTone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE4335F240509AC00E5C977 /* StudyTone.swift */; };
 		8AE43365240513D400E5C977 /* StudyToneInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE43364240513D400E5C977 /* StudyToneInterfaceController.swift */; };
+		8AED1937242DD69D006A47F4 /* coredata_populate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8AED1935242DD69D006A47F4 /* coredata_populate.xcdatamodeld */; };
+		8AED1938242DD69D006A47F4 /* coredata_populate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8AED1935242DD69D006A47F4 /* coredata_populate.xcdatamodeld */; };
 		8AF28648242B2948007E606D /* ExtensionsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF28647242B2948007E606D /* ExtensionsUI.swift */; };
 		8AF2864B242B2F2C007E606D /* CloudListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF2864A242B2F2C007E606D /* CloudListView.swift */; };
 		8AF2864C242B2F2C007E606D /* CloudListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF2864A242B2F2C007E606D /* CloudListView.swift */; };
@@ -128,7 +128,6 @@
 		8A6897DB2428C28B004A0298 /* coredata_populate.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "coredata_populate.sqlite-wal"; sourceTree = "<group>"; };
 		8A6897DC2428C28B004A0298 /* coredata_populate.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = coredata_populate.sqlite; sourceTree = "<group>"; };
 		8A6897DD2428C28B004A0298 /* coredata_populate.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "coredata_populate.sqlite-shm"; sourceTree = "<group>"; };
-		8A6897E92428E899004A0298 /* coredata_populate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coredata_populate.xcdatamodel; sourceTree = "<group>"; };
 		8A7B0F6623AA0B9200DC1645 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		8A9B7CFB23FBF7E100BA086B /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		8AA4D9B323FBD77B00FF13C0 /* QuestionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionList.swift; sourceTree = "<group>"; };
@@ -155,6 +154,7 @@
 		8AD5260223A634CD00274135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AE4335F240509AC00E5C977 /* StudyTone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTone.swift; sourceTree = "<group>"; };
 		8AE43364240513D400E5C977 /* StudyToneInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyToneInterfaceController.swift; sourceTree = "<group>"; };
+		8AED1936242DD69D006A47F4 /* coredata_populate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coredata_populate.xcdatamodel; sourceTree = "<group>"; };
 		8AF28647242B2948007E606D /* ExtensionsUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsUI.swift; sourceTree = "<group>"; };
 		8AF2864A242B2F2C007E606D /* CloudListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudListView.swift; sourceTree = "<group>"; };
 		8AF2864D242B6845007E606D /* CloudSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSectionView.swift; sourceTree = "<group>"; };
@@ -214,7 +214,7 @@
 		8AD525C723A6253600274135 /* lanternhsk */ = {
 			isa = PBXGroup;
 			children = (
-				8A6897E82428E899004A0298 /* coredata_populate.xcdatamodeld */,
+				8AED1935242DD69D006A47F4 /* coredata_populate.xcdatamodeld */,
 				8A6897D82428C261004A0298 /* CoreDataStack.swift */,
 				8AD525DC23A6270F00274135 /* VocabManager.swift */,
 				8A638F7F23B35DA300D4DD7F /* StudyManager.swift */,
@@ -439,6 +439,7 @@
 				8AD525CB23A6253600274135 /* SceneDelegate.swift in Sources */,
 				8AF2864E242B6845007E606D /* CloudSectionView.swift in Sources */,
 				8AD525CD23A6253600274135 /* CardView.swift in Sources */,
+				8AED1937242DD69D006A47F4 /* coredata_populate.xcdatamodeld in Sources */,
 				8A638F8023B35DA300D4DD7F /* StudyManager.swift in Sources */,
 				8AD525DD23A6270F00274135 /* VocabManager.swift in Sources */,
 				8A5E5CED242C8F4700691726 /* CloudCardView.swift in Sources */,
@@ -448,7 +449,6 @@
 				8AA4D9B423FBD77B00FF13C0 /* QuestionList.swift in Sources */,
 				8A5E5CF0242C933D00691726 /* AddCard.swift in Sources */,
 				8AD525E123A62FA600274135 /* CardRow.swift in Sources */,
-				8A6897EE2428E89A004A0298 /* coredata_populate.xcdatamodeld in Sources */,
 				8A64F9D723AB667D0080F7B8 /* StudyView.swift in Sources */,
 				8AE43360240509AC00E5C977 /* StudyTone.swift in Sources */,
 			);
@@ -458,7 +458,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A6897EF2428E89A004A0298 /* coredata_populate.xcdatamodeld in Sources */,
 				8AD525F823A634CC00274135 /* ListsHostingController.swift in Sources */,
 				8A64F9D823AB667D0080F7B8 /* StudyView.swift in Sources */,
 				8AFBE0C023BB364F002E95BC /* StudyVocab.swift in Sources */,
@@ -468,6 +467,7 @@
 				8AE43365240513D400E5C977 /* StudyToneInterfaceController.swift in Sources */,
 				8AF2864F242B6845007E606D /* CloudSectionView.swift in Sources */,
 				8AD5260E23A6354300274135 /* VocabManager.swift in Sources */,
+				8AED1938242DD69D006A47F4 /* coredata_populate.xcdatamodeld in Sources */,
 				8A62CD3623FE2D8E00929454 /* CardDetails.swift in Sources */,
 				8A9B7CFD23FBF7E100BA086B /* QuestionModel.swift in Sources */,
 				8A5E5CEE242C8F4700691726 /* CloudCardView.swift in Sources */,
@@ -803,14 +803,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		8A6897E82428E899004A0298 /* coredata_populate.xcdatamodeld */ = {
+		8AED1935242DD69D006A47F4 /* coredata_populate.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				8A6897E92428E899004A0298 /* coredata_populate.xcdatamodel */,
+				8AED1936242DD69D006A47F4 /* coredata_populate.xcdatamodel */,
 			);
-			currentVersion = 8A6897E92428E899004A0298 /* coredata_populate.xcdatamodel */;
-			name = coredata_populate.xcdatamodeld;
-			path = ../../../tmp/coredata_populate/coredata_populate/coredata_populate.xcdatamodeld;
+			currentVersion = 8AED1936242DD69D006A47F4 /* coredata_populate.xcdatamodel */;
+			path = coredata_populate.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

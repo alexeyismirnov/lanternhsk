@@ -77,6 +77,7 @@ struct VocabCard: Hashable, Codable, Identifiable {
     var word: String
     var pinyin: String
     var translation: String
+    var starred: Bool
    
     func getTones() -> [Tone] {
         var tones = [Tone]()

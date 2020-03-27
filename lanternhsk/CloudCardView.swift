@@ -35,52 +35,72 @@ struct CloudCardView: View {
         let request : NSFetchRequest<CloudCardEntity> =  CloudCardEntity.fetchRequest()
 
         request.sortDescriptors = [NSSortDescriptor(keyPath: \CloudCardEntity.objectID, ascending: true)]
-        request.predicate = NSPredicate(format: "list.id == %@ && section.id == %@", list.id! as CVarArg, section.id! as CVarArg)
-        
-        let cloudCards : [CloudCardEntity] = try! context.fetch(request)
-        
-        let cards = cloudCards.map { card in VocabCard(id: card.id!,
-                                                    word: card.word!,
-                                                    pinyin: card.pinyin!,
-                                                    translation: card.translation!) }
-        
-        return (cloudCards, cards)
+        if let listId = list.id, let sectionId = section.id {
+            request.predicate = NSPredicate(format: "list.id == %@ && section.id == %@", listId as CVarArg, sectionId as CVarArg)
+            
+            let cloudCards : [CloudCardEntity] = try! context.fetch(request)
+            let cards = cloudCards.map { VocabCard(id: $0.id!,
+                                                   word: $0.word!,
+                                                   pinyin: $0.pinyin!,
+                                                   translation: $0.translation!,
+                                                   starred: $0.starred
+                )}
+            
+            return (cloudCards, cards)
+        } else {
+            return ([], [])
+        }
+
     }
     
     var body: some View {
         let context = CoreDataStack.shared.persistentContainer.viewContext
+        var content: AnyView
         
-        let content = List {
-            ForEach(cards, id: \.id) {
-                CardRow(card: $0, in: self.list.id!)
-                
-            }.onDelete { offsets in
-                for index in offsets {
-                    self.list.wordCount -= 1
-                    self.section.wordCount -= 1
-                    context.delete(self.cloudCards[index])
-                }
-                try! context.save()
-            }
+        if cards.count == 0 {
+            content = AnyView(
+                Text("No cards").multilineTextAlignment(.center)
+            )
             
-        }.onReceive(self.didSave) { _ in
-            (self.cloudCards, self.cards) = self.getCards()
+        } else {
+            content = AnyView(List {
+                ForEach(cards, id: \.id) {
+                    CardRow(card: $0, in: self.list.id!)
+                    
+                }.onDelete { offsets in
+                    for index in offsets {
+                        self.list.wordCount -= 1
+                        self.section.wordCount -= 1
+                        context.delete(self.cloudCards[index])
+                    }
+                    try! context.save()
+                }
+                
+            })
         }
+        
+        content = AnyView(content
+            .onReceive(self.didSave) { _ in
+                (self.cloudCards, self.cards) = self.getCards()
+                
+        }.onAppear(perform: {
+            (self.cloudCards, self.cards) = self.getCards()
+        }))
         
         #if os(iOS)
         return content
             .navigationBarTitle(section.name ?? "")
             .navigationBarItems(trailing:
-            HStack {
-                Button(action: {
-                    withAnimation {
-                        self.sheetVisible.toggle()
-                    }
-                },
-                       label: {
-                        Text("Add")
-                })
-            }
+                HStack {
+                    Button(action: {
+                        withAnimation {
+                            self.sheetVisible = true
+                        }
+                    },
+                           label: {
+                            Text("Add")
+                    })
+                }
         ).sheet(isPresented: $sheetVisible) {
             AddCard(sheetVisible: self.$sheetVisible, list: self.list, section: self.section)
         }
