@@ -3,7 +3,6 @@
     <entity name="CardEntity" representedClassName="CardEntity" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="pinyin" optional="YES" attributeType="String"/>
-        <attribute name="starred" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="translation" optional="YES" attributeType="String"/>
         <attribute name="wordSimp" optional="YES" attributeType="String"/>
         <attribute name="wordTrad" optional="YES" attributeType="String"/>
@@ -12,7 +11,6 @@
     <entity name="CloudCardEntity" representedClassName="CloudCardEntity" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="pinyin" optional="YES" attributeType="String"/>
-        <attribute name="starred" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="translation" optional="YES" attributeType="String"/>
         <attribute name="word" optional="YES" attributeType="String"/>
         <relationship name="list" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CloudListEntity" inverseName="cards" inverseEntity="CloudListEntity"/>
@@ -38,20 +36,28 @@
         <attribute name="wordCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="cards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CardEntity" inverseName="list" inverseEntity="CardEntity"/>
     </entity>
+    <entity name="StarCardEntity" representedClassName="StarCardEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="cardId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="listId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="sectionId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="starred" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
     <configuration name="Cloud" usedWithCloudKit="YES">
         <memberEntity name="CloudCardEntity"/>
         <memberEntity name="CloudListEntity"/>
         <memberEntity name="CloudSectionEntity"/>
+        <memberEntity name="StarCardEntity"/>
     </configuration>
     <configuration name="Local">
-        <memberEntity name="CardEntity"/>
         <memberEntity name="ListEntity"/>
+        <memberEntity name="CardEntity"/>
     </configuration>
     <elements>
-        <element name="CardEntity" positionX="-63" positionY="-18" width="128" height="148"/>
-        <element name="CloudCardEntity" positionX="-54" positionY="36" width="128" height="148"/>
+        <element name="CardEntity" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="CloudCardEntity" positionX="-54" positionY="36" width="128" height="133"/>
         <element name="CloudListEntity" positionX="-45" positionY="45" width="128" height="118"/>
         <element name="CloudSectionEntity" positionX="-36" positionY="54" width="128" height="118"/>
         <element name="ListEntity" positionX="-54" positionY="18" width="128" height="103"/>
+        <element name="StarCardEntity" positionX="-54" positionY="63" width="128" height="103"/>
     </elements>
 </model>

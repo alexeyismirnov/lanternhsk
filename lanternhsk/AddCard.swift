@@ -106,8 +106,8 @@ struct AddCard: View {
                                        word: values[0],
                                        pinyin: tones.joined(separator: " "),
                                        translation: values[2],
-                                       starred: false
-                                       ))
+                                       entity: nil
+                ))
             }
         }
         

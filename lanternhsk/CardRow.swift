@@ -45,11 +45,10 @@ private struct CardRowSideOne: View {
     @EnvironmentObject var studyManager: StudyManager
     @State var cardDetails: CardModalItem?
     
-    let card: VocabCard
-    let deckId: UUID
+    @Binding var card: VocabCard
     
     var isStarred: Bool {
-        return studyManager.isStarred(card: card, in: deckId)
+        return studyManager.isStarred(card: card)
     }
 
     var body: some View {
@@ -59,9 +58,10 @@ private struct CardRowSideOne: View {
                 ImageButton(iconName: isStarred ? "star.fill": "star",
                             handler: {
                                 if (self.isStarred) {
-                                    self.studyManager.removeFromStudy(card: self.card, in: self.deckId)
+                                    self.studyManager.removeFromStudy(card: self.card)
+                                    
                                 } else {
-                                    self.studyManager.addToStudy(card: self.card, in: self.deckId)
+                                    self.studyManager.addToStudy(card: self.card)
                                 }
                 })
                 
@@ -96,17 +96,15 @@ private struct CardRowSideTwo: View {
 struct CardRow: View {
     @State private var flipped: Bool = false
     
-    let card: VocabCard
-    let deckId: UUID
+    @Binding var card: VocabCard
     
-    init(card: VocabCard, in deckId: UUID) {
-        self.card = card
-        self.deckId = deckId
+    init(card: Binding<VocabCard>) {
+        self._card = card
     }
     
     var body: some View {
         ZStack {
-            CardRowSideOne(card: card, deckId: deckId)
+            CardRowSideOne(card: $card)
                 .rotation3DEffect(.degrees(self.flipped ? 180.0 : 0.0), axis: (x: 1.0, y: 0.0, z: 0.0))
                 .zIndex(self.flipped ? 0 : 1)
                 .opacity(self.flipped ? 0 : 1)

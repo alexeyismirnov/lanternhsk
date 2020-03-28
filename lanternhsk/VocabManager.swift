@@ -72,12 +72,12 @@ extension String {
     }
 }
 
-struct VocabCard: Hashable, Codable, Identifiable {
+struct VocabCard: Identifiable {
     var id: UUID
     var word: String
     var pinyin: String
     var translation: String
-    var starred: Bool
+    var entity: AnyObject?
    
     func getTones() -> [Tone] {
         var tones = [Tone]()

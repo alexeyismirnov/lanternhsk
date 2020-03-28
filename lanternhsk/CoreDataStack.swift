@@ -51,8 +51,7 @@ class CoreDataStack {
         let cloudStoreDescription = NSPersistentStoreDescription(url: cloudStoreLocation)
         cloudStoreDescription.configuration = "Cloud"
         
-        cloudStoreDescription.cloudKitContainerOptions =
-            NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.com.rlc.lanternhsk")
+        cloudStoreDescription.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.com.rlc.lanternhsk4")
         
         cloudStoreDescription.setOption(true as NSNumber,
                                forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
@@ -73,6 +72,8 @@ class CoreDataStack {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        
+       //  try! container.initializeCloudKitSchema(options: [.printSchema])
         
         return container
     }()

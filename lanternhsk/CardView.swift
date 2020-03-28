@@ -11,29 +11,45 @@ import CoreData
 
 struct CardView: View {
     let list: ListEntity
-    let cards: [VocabCard]
-    
+    @State var cards: [VocabCard] = []
+        
+    private var didSave =  NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)
+
     init(_ list: ListEntity) {
         self.list = list
-        
+        let cards = getCards()
+        self._cards = State(initialValue: cards)
+    }
+    
+    func getCards() -> [VocabCard] {
         let context = CoreDataStack.shared.persistentContainer.viewContext
         let request: NSFetchRequest<CardEntity> = CardEntity.fetchRequest()
         request.predicate = NSPredicate(format: "list.id == %@", list.id! as CVarArg)
         request.sortDescriptors = [NSSortDescriptor(keyPath: \CardEntity.objectID, ascending: true)]
-
-        let cards = try! context.fetch(request)
-                
-        self.cards = cards.map { VocabCard(id: $0.id!,
-                                           word: $0.wordTrad!,
-                                           pinyin: $0.pinyin!,
-                                           translation: $0.translation!,
-                                           starred: $0.starred
-            )}
         
+        let cards = try! context.fetch(request)
+        
+        return cards.map { VocabCard(id: $0.id!,
+                                     word: $0.wordTrad!,
+                                     pinyin: $0.pinyin!,
+                                     translation: $0.translation!,
+            entity: $0
+            )}
+    }
+    
+    func buildItem(_ index: Int) -> CardRow {
+        return CardRow(card: self.$cards[index])
     }
     
     var body: some View {
-        let content = List(cards) { CardRow(card: $0, in: self.list.id!) }
+        let content = List {
+            ForEach(cards.indices, id:\.self ){ index in
+                self.buildItem(index)
+            }
+        }
+        .onReceive(self.didSave) { _ in
+            self.cards = self.getCards()
+        }
         
         #if os(watchOS)
         return GeometryReader { geometry in

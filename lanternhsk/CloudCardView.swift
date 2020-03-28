@@ -43,7 +43,7 @@ struct CloudCardView: View {
                                                    word: $0.word!,
                                                    pinyin: $0.pinyin!,
                                                    translation: $0.translation!,
-                                                   starred: $0.starred
+                                                   entity: $0
                 )}
             
             return (cloudCards, cards)
@@ -64,19 +64,20 @@ struct CloudCardView: View {
             
         } else {
             content = AnyView(List {
-                ForEach(cards, id: \.id) {
-                    CardRow(card: $0, in: self.list.id!)
-                    
-                }.onDelete { offsets in
-                    for index in offsets {
-                        self.list.wordCount -= 1
-                        self.section.wordCount -= 1
-                        context.delete(self.cloudCards[index])
-                    }
-                    try! context.save()
+                ForEach(cards.indices, id:\.self ){ index in
+                    CardRow(card: self.$cards[index]) }.onDelete { offsets in
+                        for index in offsets {
+                            self.list.wordCount -= 1
+                            self.section.wordCount -= 1
+                            context.delete(self.cloudCards[index])
+                        }
+                        try! context.save()
                 }
-                
-            })
+            }
+            .onReceive(self.didSave) { _ in
+                // self.cards = self.getCards()
+                }
+            )
         }
         
         content = AnyView(content

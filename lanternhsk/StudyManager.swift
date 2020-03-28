@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Combine
+import CoreData
 
 struct StudyCard: Codable {
     var deckId: UUID
@@ -23,7 +24,7 @@ struct StudyCard: Codable {
     }
 }
 
-struct StudyDeck: Codable, Identifiable {
+struct StudyDeck:  Identifiable {
     var id: UUID
     var name: String
     var cards: [VocabCard]
@@ -33,7 +34,9 @@ extension StudyDeck {
     init?(deck: VocabDeck, studyManager: StudyManager) {
         self.id = deck.id
         self.name = deck.name
+        self.cards = []
         
+        /*
         let vocabCards: [VocabCard] = deck.load()
         let studyCards = studyManager.cards.filter() { $0.deckId == deck.id }
         
@@ -43,6 +46,7 @@ extension StudyDeck {
         if cards.isEmpty {
             return nil
         }
+ */
     }
 }
 
@@ -55,45 +59,95 @@ class StudyManager: ObservableObject {
     
     var deck: StudyDeck?
     let questionAdded = PassthroughSubject<Void, Never>()
+    
+    func fetchOrCreate(listId: UUID, sectionId: UUID, cardId: UUID) -> StarCardEntity {
+        let context = CoreDataStack.shared.persistentContainer.viewContext
 
-    func load() {
-        if let data = UserDefaults.standard.value(forKey: cardsKey) as? Data {
-            if let cards = try? PropertyListDecoder().decode([StudyCard].self, from: data) {
-                self.cards = cards
+        let request: NSFetchRequest<StarCardEntity> = StarCardEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "listId == %@ && sectionId == %@ && cardId == %@",
+                                        listId as CVarArg,
+                                        sectionId as CVarArg,
+                                        cardId as CVarArg)
+        
+        let results = try! context.fetch(request)
+        
+        if let entity = results.first {
+            return entity
+            
+        } else {
+            let entity = StarCardEntity(context: context)
+            entity.listId = listId
+            entity.sectionId = sectionId
+            entity.cardId = cardId
+            entity.starred = false
+            
+            try! context.save()
+            
+            return entity
+        }
+
+    }
+    
+    func getStarCardEntity(card: VocabCard) -> StarCardEntity? {
+        if let entity = card.entity as? CardEntity {
+            if let list = entity.list,
+                let listId = list.id,
+                let cardId = entity.id
+            {
+                return fetchOrCreate(listId: listId, sectionId: listId, cardId: cardId)
+            } else {
+                return nil
             }
+            
+        } else if let entity = card.entity as? CloudCardEntity {
+            if let list = entity.list,
+                let section = entity.section,
+                let listId = list.id,
+                let sectionId = section.id,
+                let cardId = entity.id {
+                return fetchOrCreate(listId: listId, sectionId: sectionId, cardId: cardId)
+
+            } else {
+                return nil
+            }
+            
+        } else {
+            return nil
         }
     }
-    
-    func save() {
-        UserDefaults.standard.set(try? PropertyListEncoder().encode(cards), forKey: cardsKey)
-    }
+
+    func addToStudy(card: VocabCard) {
+        let context = CoreDataStack.shared.persistentContainer.viewContext
         
-    func isStarred(card: VocabCard, in deckId: UUID) -> Bool {
+        if let starCard = getStarCardEntity(card: card) {
+            starCard.starred = true
+            try! context.save()
+        }
+        
+        cardsChanged.send()
+    }
+    
+    func removeFromStudy(card: VocabCard) {
+        let context = CoreDataStack.shared.persistentContainer.viewContext
+        
+        if let starCard = getStarCardEntity(card: card) {
+            starCard.starred = false
+            try! context.save()
+        }
+        
+        cardsChanged.send()
+    }
+    
+    func isStarred(card: VocabCard) -> Bool {
+        if let starCard = getStarCardEntity(card: card) {
+            return  starCard.starred
+        }
+        
         return false
-        // cards.filter() { $0.cardId == card.id && $0.deckId == deckId }.count > 0
-    }
-    
-    func addToStudy(card: VocabCard, in deckId: UUID) {
-        /*
-        cards.append(StudyCard(deckId: deckId, cardId: card.id))
-        save()
-        cardsChanged.send()
- */
-    }
-    
-    func removeFromStudy(card: VocabCard, in deckId: UUID) {
-        /*
-        cards.removeAll(where: { $0.cardId == card.id && $0.deckId == deckId })
-        save()
-        cardsChanged.send()
- */
     }
     
     func addQuestion() {
         questionAdded.send()
     }
     
-    func clear() {
-      UserDefaults.standard.removeObject(forKey: cardsKey)
-    }
 }

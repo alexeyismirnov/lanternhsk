@@ -23,7 +23,7 @@ struct ListView: View {
     }
     
     func buildItem(_ list:ListEntity) -> some View {
-        let view = CardView(list)
+        let view = LazyView(CardView(list))
 
         return NavigationLink(destination: view) {
             VStack(alignment: .leading) {
@@ -39,7 +39,7 @@ struct ListView: View {
                 self.buildItem(list)
             }
             VStack(alignment: .leading) {
-                NavigationLink(destination: CloudListView()) {
+                NavigationLink(destination: LazyView(CloudListView())) {
                     Text("Custom...").font(.headline)
                 }
             }
