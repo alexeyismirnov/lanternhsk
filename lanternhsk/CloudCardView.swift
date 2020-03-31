@@ -39,12 +39,7 @@ struct CloudCardView: View {
             request.predicate = NSPredicate(format: "list.id == %@ && section.id == %@", listId as CVarArg, sectionId as CVarArg)
             
             let cloudCards : [CloudCardEntity] = try! context.fetch(request)
-            let cards = cloudCards.map { VocabCard(id: $0.id!,
-                                                   word: $0.word!,
-                                                   pinyin: $0.pinyin!,
-                                                   translation: $0.translation!,
-                                                   entity: $0
-                )}
+            let cards = cloudCards.map { VocabCard(entity: $0) }
             
             return (cloudCards, cards)
         } else {
@@ -73,11 +68,7 @@ struct CloudCardView: View {
                         }
                         try! context.save()
                 }
-            }
-            .onReceive(self.didSave) { _ in
-                // self.cards = self.getCards()
-                }
-            )
+            })
         }
         
         content = AnyView(content

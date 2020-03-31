@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 enum ActionViewMode {
     case first
@@ -26,13 +27,57 @@ struct StudyView: View {
     @EnvironmentObject var studyManager: StudyManager
     @State var studyLists = [StudyDeck]()
     
-    @State var showActionSheet = [UUID: Bool]()
-    
     @State var actionViewMode = ActionViewMode.first
     @State var showActionView = [UUID: Bool]()
+    @State var showActionSheet = [UUID: Bool]()
 
+    private var didSave =  NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)    
+    
+    init() {
+        let (lists, actionViews, actionSheets) = getLists()
+        self._studyLists = State(initialValue: lists)
+        self._showActionView = State(initialValue: actionViews)
+        self._showActionSheet = State(initialValue: actionSheets)
+    }
+    
+    func getLists() -> ([StudyDeck], [UUID: Bool], [UUID: Bool]) {
+        var studyLists = [StudyDeck]()
+        let context = CoreDataStack.shared.persistentContainer.viewContext
+
+        let request : NSFetchRequest<ListEntity> = ListEntity.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \ListEntity.objectID, ascending: true)]
+        
+        let lists = try! context.fetch(request)
+        
+        for list in lists {
+            if let deck = StudyDeck(entity: list) {
+                studyLists.append(deck)
+            }
+        }
+        
+        let request2 : NSFetchRequest<CloudSectionEntity> =  CloudSectionEntity.fetchRequest()
+        request2.sortDescriptors = [NSSortDescriptor(keyPath: \CloudSectionEntity.objectID, ascending: true)]
+               
+        let sections = try! context.fetch(request2)
+        
+        for section in sections {
+            if let deck = StudyDeck(entity: section) {
+                studyLists.append(deck)
+            }
+        }
+        
+        var showActionSheet = [UUID: Bool]()
+        var showActionView = [UUID: Bool]()
+        
+        for deck in studyLists {
+            showActionSheet[deck.id] = false
+            showActionView[deck.id] = false
+        }
+       
+        return (studyLists, showActionView, showActionSheet)
+    }
+    
     func getActionSheet(deck: StudyDeck) -> ActionSheet {
-
         return ActionSheet(title: Text("Study type"),  buttons: [
             .default(
             Text("Translation")) {
@@ -90,20 +135,10 @@ struct StudyView: View {
     }
     
     func reload() {
-        studyLists = [StudyDeck]()
-        
-        /*
-        for list in lists {
-            if let deck = StudyDeck(deck: list, studyManager: studyManager) {
-                studyLists.append(deck)
-            }
-        }
-        */
-        
-        for deck in studyLists {
-            showActionSheet[deck.id] = false
-            showActionView[deck.id] = false
-        }
+        let (lists, actionViews, actionSheets) = getLists()
+        studyLists = lists
+        showActionView = actionViews
+        showActionSheet = actionSheets
     }
     
     var body: some View {
@@ -114,6 +149,9 @@ struct StudyView: View {
             .onReceive(studyManager.cardsChanged, perform: { _ in
                 self.reload()
             })
+            .onReceive(self.didSave) { _ in
+                self.reload()
+        }
         
     }
 }

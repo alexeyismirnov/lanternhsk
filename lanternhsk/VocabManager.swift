@@ -91,35 +91,20 @@ struct VocabCard: Identifiable {
     }
 }
 
-struct VocabDeck: Hashable, Codable, Identifiable {
-    var id: UUID
-    var name: String
-    var filename: String
-    var wordCount: Int
+extension VocabCard {
+    init(entity: CardEntity) {
+        self.init(id: entity.id!,
+                  word: entity.wordTrad!,
+                  pinyin: entity.pinyin!,
+                  translation: entity.translation!,
+                  entity: entity)
+    }
     
-    func load<T: Decodable>() -> T {
-        let data: Data
-        
-        guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
-            else {
-                fatalError("Couldn't find \(filename) in main bundle.")
-        }
-        
-        do {
-            data = try Data(contentsOf: file)
-        } catch {
-            fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
-        }
-        
-        do {
-            let decoder = JSONDecoder()
-            return try decoder.decode(T.self, from: data)
-        } catch {
-            fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
-        }
-        
+    init(entity: CloudCardEntity) {
+        self.init(id: entity.id!,
+                  word: entity.word!,
+                  pinyin: entity.pinyin!,
+                  translation: entity.translation!,
+                  entity: entity)
     }
 }
-
-
-

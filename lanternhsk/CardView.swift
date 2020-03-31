@@ -29,12 +29,7 @@ struct CardView: View {
         
         let cards = try! context.fetch(request)
         
-        return cards.map { VocabCard(id: $0.id!,
-                                     word: $0.wordTrad!,
-                                     pinyin: $0.pinyin!,
-                                     translation: $0.translation!,
-            entity: $0
-            )}
+        return cards.map { VocabCard(entity: $0) }
     }
     
     func buildItem(_ index: Int) -> CardRow {

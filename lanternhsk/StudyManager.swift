@@ -31,22 +31,76 @@ struct StudyDeck:  Identifiable {
 }
 
 extension StudyDeck {
-    init?(deck: VocabDeck, studyManager: StudyManager) {
-        self.id = deck.id
-        self.name = deck.name
-        self.cards = []
+    init?(entity: AnyObject) {
+        self.id = UUID()
+        self.cards = [VocabCard]()
         
-        /*
-        let vocabCards: [VocabCard] = deck.load()
-        let studyCards = studyManager.cards.filter() { $0.deckId == deck.id }
+        let context = CoreDataStack.shared.persistentContainer.viewContext
+        let request: NSFetchRequest<StarCardEntity> = StarCardEntity.fetchRequest()
         
-        self.cards = vocabCards.filter()
-            { card in studyCards.filter() { card.id == $0.cardId }.count > 0  }
-        
-        if cards.isEmpty {
+        if let entity = entity as? ListEntity {
+            self.name = entity.name!
+            
+            if let listId = entity.id {               
+                request.predicate = NSPredicate(format: "listId == %@ && sectionId == %@ && starred == %@",
+                                                listId as CVarArg, listId as CVarArg, NSNumber(value: true))
+                
+                let starCards = try! context.fetch(request)
+
+                if starCards.count == 0 {
+                    return nil
+                }
+                
+                for sc in starCards {
+                    let request2: NSFetchRequest<CardEntity> = CardEntity.fetchRequest()
+                    request2.predicate = NSPredicate(format: "list.id == %@ && id == %@",
+                                                     sc.listId! as CVarArg,
+                                                     sc.cardId! as CVarArg)
+                    
+                    if let card = try! context.fetch(request2).first {
+                        cards.append(VocabCard(entity: card))
+                    }
+                }
+                
+            } else {
+                return nil
+            }
+            
+        } else if let entity = entity as? CloudSectionEntity {
+            let listName = entity.list?.name ?? ""
+            self.name = "\(listName) - \(entity.name!)"
+            
+            if let listId = entity.list?.id,
+                let sectionId = entity.id {
+                request.predicate = NSPredicate(format: "listId == %@ && sectionId == %@ && starred = %@",
+                                                listId as CVarArg, sectionId as CVarArg, NSNumber(value: true))
+                
+                let starCards = try! context.fetch(request)
+                
+                if starCards.count == 0 {
+                    return nil
+                }
+                
+                for sc in starCards {
+                    let request2: NSFetchRequest<CloudCardEntity> = CloudCardEntity.fetchRequest()
+                    request2.predicate = NSPredicate(format: "list.id == %@ && section.id == %@ && id == %@",
+                                                     sc.listId! as CVarArg,
+                                                     sc.sectionId! as CVarArg,
+                                                     sc.cardId! as CVarArg)
+                    
+                    if let card = try! context.fetch(request2).first {
+                        cards.append(VocabCard(entity: card))
+                    }
+                }
+                
+            } else {
+                return nil
+            }
+            
+        } else {
             return nil
         }
- */
+        
     }
 }
 
@@ -62,8 +116,8 @@ class StudyManager: ObservableObject {
     
     func fetchOrCreate(listId: UUID, sectionId: UUID, cardId: UUID) -> StarCardEntity {
         let context = CoreDataStack.shared.persistentContainer.viewContext
-
         let request: NSFetchRequest<StarCardEntity> = StarCardEntity.fetchRequest()
+        
         request.predicate = NSPredicate(format: "listId == %@ && sectionId == %@ && cardId == %@",
                                         listId as CVarArg,
                                         sectionId as CVarArg,
