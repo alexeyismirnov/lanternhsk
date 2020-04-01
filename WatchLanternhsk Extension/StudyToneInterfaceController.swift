@@ -39,6 +39,8 @@ class StudyToneInterfaceController: WKInterfaceController {
     var tones = [Tone]()
     var answers = [Bool]()
     
+    var multiChoice = false
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         setTitle("Cancel")
@@ -62,15 +64,18 @@ class StudyToneInterfaceController: WKInterfaceController {
             return
         }
         
-        syllabi = cards[index].pinyin.components(separatedBy: " ")
-        tones = cards[index].getTones()
+        multiChoice = cards[index].pinyin.contains("|")
+        syllabi = cards[index].pinyin
+            .components(separatedBy: CharacterSet(charactersIn: "| "))
+            .filter { $0.count > 0 }
         
+        tones = cards[index].getTones()
+
         toneIndex = 0
         answers = [Bool]()
         
         updateUI()
     }
-    
     
     func updateUI() {
         if (index == totalQuestions) {
@@ -107,7 +112,14 @@ class StudyToneInterfaceController: WKInterfaceController {
     
     func toneAnswered(isCorrect: Bool) {
         answers.append(isCorrect)
-        toneIndex += 1
+        
+        if multiChoice {
+            toneIndex = syllabi.count
+            
+        } else {
+            toneIndex += 1
+        }
+        
         updateUI()
         
         if toneIndex == syllabi.count {
@@ -125,6 +137,11 @@ class StudyToneInterfaceController: WKInterfaceController {
     }
     
     @IBAction func panGesture(_ sender: Any) {
+        var isFirstTone: Bool { abs(offsetY) < 20.0 && offsetX > 40.0 }
+        var isSecondTone: Bool { offsetY < -40.0 && offsetX > 40.0 }
+        var isThirdTone: Bool { tonePhase == .upStroke && offsetY < -40.0 }
+        var isFourthTone: Bool { offsetY > 40.0 && offsetX > 40.0 }
+        
         guard let panGesture = sender as? WKPanGestureRecognizer else {
           return
         }
@@ -155,7 +172,7 @@ class StudyToneInterfaceController: WKInterfaceController {
             
             self.previousPoint = currentPoint
             
-            if tones[toneIndex] == .third {
+            if multiChoice || tones[toneIndex] == .third {
                 switch tonePhase {
                 case .initialPoint:
                     tonePhase =  (diffX >= 0.0 && diffY >= 0) ? .downStroke : .error
@@ -181,21 +198,29 @@ class StudyToneInterfaceController: WKInterfaceController {
             }
             
         case .ended:
-            switch tones[toneIndex] {
-            case .first:
-                toneAnswered(isCorrect: abs(offsetY) < 20.0 && offsetX > 40.0)
-               
-            case .second:
-                toneAnswered(isCorrect: offsetY < -40.0 && offsetX > 40.0)
+            if multiChoice {
+                toneAnswered(isCorrect: tones.contains(.first) && isFirstTone ||
+                        tones.contains(.second) && isSecondTone ||
+                        tones.contains(.third) && isThirdTone ||
+                        tones.contains(.fourth) && isFourthTone)
                 
-            case .third:
-                toneAnswered(isCorrect: tonePhase == .upStroke && offsetY < -40.0)
-                
-            case .fourth:
-                toneAnswered(isCorrect: offsetY > 40.0 && offsetX > 40.0)
-               
-            default:
-                toneAnswered(isCorrect: false)
+            } else {
+                switch tones[toneIndex] {
+                case .first:
+                    toneAnswered(isCorrect: isFirstTone)
+                   
+                case .second:
+                    toneAnswered(isCorrect: isSecondTone)
+                    
+                case .third:
+                    toneAnswered(isCorrect: isThirdTone)
+                    
+                case .fourth:
+                    toneAnswered(isCorrect: isFourthTone)
+                   
+                default:
+                    toneAnswered(isCorrect: false)
+                }
             }
             
         default:
@@ -209,8 +234,11 @@ class StudyToneInterfaceController: WKInterfaceController {
             return
         }
         
-        toneAnswered(isCorrect: tones[toneIndex] == .none)
-
+        let isCorrect = multiChoice
+            ? tones.contains(.none)
+            : tones[toneIndex] == .none
+        
+        toneAnswered(isCorrect: isCorrect)
     }
 }
 
