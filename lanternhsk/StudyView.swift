@@ -9,16 +9,26 @@
 import SwiftUI
 import CoreData
 
-enum ActionViewMode {
-    case first
-    case second
+enum StudyType {
+    case translation
+    case pinyin
+    case tone
 }
 
-extension ActionViewMode {
+extension StudyType {
     func getView(deck: StudyDeck) -> some View {
         switch self {
-            case .first: return  QuestionList(model: QuestionModel(deck: deck))
-            case .second: return QuestionList(model: QuestionModel(deck: deck))
+        case .translation:
+            return AnyView(QuestionList(model: QuestionModel(deck: deck)))
+        case .pinyin:
+            return AnyView(QuestionList(model: QuestionModel(deck: deck)))
+        #if os(iOS)
+        case .tone:
+            return AnyView(StudyTone(model: StudyToneModel(deck: deck)))
+        #else
+        default:
+            return AnyView(EmptyView())
+        #endif
         }
     }
 }
@@ -27,7 +37,7 @@ struct StudyView: View {
     @EnvironmentObject var studyManager: StudyManager
     @State var studyLists = [StudyDeck]()
     
-    @State var actionViewMode = ActionViewMode.first
+    @State var actionViewMode = StudyType.translation
     @State var showActionView = [UUID: Bool]()
     @State var showActionSheet = [UUID: Bool]()
 
@@ -81,19 +91,23 @@ struct StudyView: View {
         return ActionSheet(title: Text("Study type"),  buttons: [
             .default(
             Text("Translation")) {
-                self.actionViewMode = .first
+                self.actionViewMode = .translation
                 self.showActionView[deck.id] = true
             },
             .default(Text("Pinyin")) {
-                self.actionViewMode = .second
+                self.actionViewMode = .pinyin
                 self.showActionView[deck.id] = true
             },
             .default(Text("Tone")) {
+                #if os(iOS)
+                self.actionViewMode = .tone
+                self.showActionView[deck.id] = true
+                #else
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     self.studyManager.deck = deck
                     self.studyManager.addQuestion()
                 }
-                
+                #endif
             },
         ])
     }
@@ -106,6 +120,13 @@ struct StudyView: View {
         
         let list = List(studyLists) { item in
             VStack(alignment: .leading) {
+                NavigationLink(destination: LazyView(self.actionViewMode.getView(deck: item)),
+                               isActive: Binding(
+                                   get: { return self.showActionView[item.id] ?? false },
+                                   set: { (newValue) in return self.showActionView[item.id] = newValue}
+                               ),
+                               label: { EmptyView() })
+                
                 Text(item.name).font(.headline)
                 Text("Words: \(item.cards.count)").font(.subheadline)
             }
@@ -120,11 +141,6 @@ struct StudyView: View {
                 set: { (newValue) in return self.showActionSheet[item.id] = newValue}
                 ),
                          content: { self.getActionSheet(deck: item) })
-            .sheet(isPresented: Binding(
-                get: { return self.showActionView[item.id]! },
-                set: { (newValue) in return self.showActionView[item.id] = newValue}
-            )) { self.actionViewMode.getView(deck: item) }
-            
         }
         
         #if os(watchOS)

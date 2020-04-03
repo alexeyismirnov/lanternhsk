@@ -9,13 +9,56 @@
 import SwiftUI
 
 struct StudyTone: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    @ObservedObject var model: StudyToneModel
+    
+    init(model: StudyToneModel) {
+        self.model = model
+        self.model.getCard()
     }
-}
 
-struct StudyTone_Previews: PreviewProvider {
-    static var previews: some View {
-        StudyTone()
+    var body: some View {
+        if model.index == model.totalQuestions {
+            return AnyView(
+                VStack(alignment: .leading) {
+                    Text("Correct: \(model.totalCorrect)")
+                        .foregroundColor(.green)
+                    
+                    Text("Wrong: \(model.totalIncorrect)")
+                        .foregroundColor(.red)
+                }.font(.headline)
+            )
+        }
+        
+        var word = Text("")
+        
+        for i in 0..<model.answers.count {
+            word = word + Text(model.currentCard.word[i])
+                .foregroundColor(model.answers[i] ? .green : .red)
+        }
+        
+        for i in model.answers.count..<model.syllabi.count {
+            word = word + Text(model.currentCard.word[i])
+        }
+
+        var pinyin = Text("")
+        
+        for i in 0..<model.toneIndex {
+            pinyin = pinyin + Text(model.syllabi[i]) + Text(" ")
+        }
+        
+        for i in model.toneIndex..<model.syllabi.count {
+            pinyin = pinyin + Text(model.syllabi[i].folding(options: .diacriticInsensitive, locale: .current)) + Text(" ")
+        }
+        
+        let content = VStack {
+            word.font(.title)
+            pinyin.font(.headline)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .navigationBarTitle("Draw tone", displayMode: .inline)
+        .overlay(
+            ToneOverlayView { self.model.toneAnswered($0) })
+            
+        return AnyView(content)
     }
 }

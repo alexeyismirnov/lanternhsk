@@ -6,157 +6,86 @@
 //  Copyright © 2020 Alexey Smirnov. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
+import Combine
 import WatchKit
-
-enum CheckmarkPhases {
-    case initialPoint
-    case downStroke
-    case upStroke
-    case error
-}
 
 class StudyToneInterfaceController: WKInterfaceController {
     @IBOutlet weak var label1: WKInterfaceLabel!
     @IBOutlet weak var label2: WKInterfaceLabel!
-    
-    var previousPoint: CGPoint?
-    var offsetX: CGFloat = 0.0
-    var offsetY: CGFloat = 0.0
+        
+    var model: StudyToneModel!
+    var subscription1: AnyCancellable?
 
-    var deck: StudyDeck?
-    let totalQuestions = 3
-    var totalCorrect = 0
-    var totalWrong = 0
-    
-    var cards = [VocabCard]()
-    
-    var index = 0
-    var toneIndex = 0
-    var tonePhase : CheckmarkPhases = .initialPoint
-    
-    var syllabi = [String]()
-    var tones = [Tone]()
-    var answers = [Bool]()
-    
-    var multiChoice = false
-    
+    var previousPoint: CGPoint?
+    let tracker = ToneGestureTracker(minOffset: 20.0, maxOffset: 40.0)
+
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         setTitle("Cancel")
 
-        deck = context as? StudyDeck
+        let deck = context as? StudyDeck
+        self.model = StudyToneModel(deck: deck!)
         
-        if let deck = deck {
-            cards = (0..<totalQuestions).map {_ in
-                deck.cards[Int.random(in: 0..<deck.cards.count)]
-            }
-        }
+        self.subscription1 = self.model.updateUI.sink(receiveValue: { _ in
+            self.updateUI()
+        })
         
-        getCard()
+        model.getCard()
     }
     
-    func getCard(_ _index: Int = 0) {
-        index = _index
-        
-        if index == totalQuestions {
-            updateUI()
-            return
-        }
-        
-        multiChoice = cards[index].pinyin.contains("|")
-        syllabi = cards[index].pinyin
-            .components(separatedBy: CharacterSet(charactersIn: "| "))
-            .filter { $0.count > 0 }
-        
-        tones = cards[index].getTones()
-
-        toneIndex = 0
-        answers = [Bool]()
-        
-        updateUI()
+    deinit {
+        subscription1?.cancel()
     }
     
     func updateUI() {
-        if (index == totalQuestions) {
-            label1.setText("Correct: \(totalCorrect)")
-            label2.setText("Wrong: \(totalWrong)")
+        if (model.index == model.totalQuestions) {
+            label1.setText("Correct: \(model.totalCorrect)")
+            label2.setText("Wrong: \(model.totalIncorrect)")
             return
         }
         
         var word = NSAttributedString()
+        let card = model.currentCard
         
-        for i in 0..<answers.count {
-            word = word + String(cards[index].word[i]).colored(with: answers[i] ? .green : .red)
+        for i in 0..<model.answers.count {
+            word = word + String(card.word[i]).colored(with: model.answers[i] ? .green : .red)
         }
         
-        for i in answers.count..<syllabi.count {
-            word = word + String(cards[index].word[i])
+        for i in model.answers.count..<model.syllabi.count {
+            word = word + String(card.word[i])
 
         }
         
         label1.setAttributedText(word)
         
-        var str = [String]()
+        var pinyin = [String]()
         
-        for i in 0..<toneIndex {
-            str.append(syllabi[i])
+        for i in 0..<model.toneIndex {
+            pinyin.append(model.syllabi[i])
         }
         
-        for i in toneIndex..<syllabi.count {
-            str.append(syllabi[i].folding(options: .diacriticInsensitive, locale: .current))
+        for i in model.toneIndex..<model.syllabi.count {
+            pinyin.append(model.syllabi[i].folding(options: .diacriticInsensitive, locale: .current))
         }
         
-        label2.setText(str.joined(separator: " "))
-    }
-    
-    func toneAnswered(isCorrect: Bool) {
-        answers.append(isCorrect)
-        
-        if multiChoice {
-            toneIndex = syllabi.count
-            
-        } else {
-            toneIndex += 1
-        }
-        
-        updateUI()
-        
-        if toneIndex == syllabi.count {
-            if answers.contains(false) {
-                totalWrong += 1
-            } else {
-                totalCorrect += 1
-            }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                self.getCard(self.index + 1)
-            }
-        }
-        
+        label2.setText(pinyin.joined(separator: " "))
     }
     
     @IBAction func panGesture(_ sender: Any) {
-        var isFirstTone: Bool { abs(offsetY) < 20.0 && offsetX > 40.0 }
-        var isSecondTone: Bool { offsetY < -40.0 && offsetX > 40.0 }
-        var isThirdTone: Bool { tonePhase == .upStroke && offsetY < -40.0 }
-        var isFourthTone: Bool { offsetY > 40.0 && offsetX > 40.0 }
-        
         guard let panGesture = sender as? WKPanGestureRecognizer else {
           return
         }
         
-        if index == totalQuestions || toneIndex == tones.count {
+        if model.index == model.totalQuestions || model.toneIndex == model.tones.count {
             return
         }
         
         switch panGesture.state {
         case .began:
             previousPoint = panGesture.locationInObject()
-            offsetX = 0.0
-            offsetY = 0.0
-            tonePhase = .initialPoint
-
+            tracker.initState()
+            
         case .changed:
             guard let previousPoint = previousPoint else {
                 return
@@ -167,61 +96,16 @@ class StudyToneInterfaceController: WKInterfaceController {
             let diffX = (currentPoint.x - previousPoint.x)
             let diffY = (currentPoint.y - previousPoint.y)
             
-            offsetX += diffX
-            offsetY += diffY
+            tracker.changed(diffX, diffY)
             
             self.previousPoint = currentPoint
-            
-            if multiChoice || tones[toneIndex] == .third {
-                switch tonePhase {
-                case .initialPoint:
-                    tonePhase =  (diffX >= 0.0 && diffY >= 0) ? .downStroke : .error
-                   
-                case .downStroke:
-                    if diffX >= 0.0 && diffY >= 0 {
-                        // downStroke
-                        
-                    } else if diffX >= 0.0 && diffY < 0.0 && offsetY > 40.0 {
-                        tonePhase = .upStroke
-                        offsetY = 0.0
-                        
-                    } else {
-                        tonePhase = .error
-                    }
-                    
-                case .upStroke:
-                    tonePhase = diffX >= 0.0 && diffY <= 0  ? .upStroke : .error
 
-                default:
-                    break
-                }
-            }
-            
         case .ended:
-            if multiChoice {
-                toneAnswered(isCorrect: tones.contains(.first) && isFirstTone ||
-                        tones.contains(.second) && isSecondTone ||
-                        tones.contains(.third) && isThirdTone ||
-                        tones.contains(.fourth) && isFourthTone)
-                
-            } else {
-                switch tones[toneIndex] {
-                case .first:
-                    toneAnswered(isCorrect: isFirstTone)
-                   
-                case .second:
-                    toneAnswered(isCorrect: isSecondTone)
-                    
-                case .third:
-                    toneAnswered(isCorrect: isThirdTone)
-                    
-                case .fourth:
-                    toneAnswered(isCorrect: isFourthTone)
-                   
-                default:
-                    toneAnswered(isCorrect: false)
-                }
-            }
+            model.toneAnswered((tracker.isFirstTone,
+                                tracker.isSecondTone,
+                                tracker.isThirdTone,
+                                tracker.isFourthTone,
+                                false))
             
         default:
             previousPoint = nil
@@ -230,15 +114,11 @@ class StudyToneInterfaceController: WKInterfaceController {
     }
     
     @IBAction func tapGesture(_ sender: Any) {
-        if index == totalQuestions || toneIndex == tones.count {
+        if model.index == model.totalQuestions || model.toneIndex == model.tones.count {
             return
         }
         
-        let isCorrect = multiChoice
-            ? tones.contains(.none)
-            : tones[toneIndex] == .none
-        
-        toneAnswered(isCorrect: isCorrect)
+        model.toneAnswered((false, false, false, false, true))
     }
 }
 
