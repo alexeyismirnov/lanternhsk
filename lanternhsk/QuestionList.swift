@@ -8,14 +8,26 @@
 
 import SwiftUI
 
-struct QuestionList: View {    
-    @State var answerType = AnswerType.none
+struct iWatchModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        #if os(watchOS)
+        return GeometryReader { geometry in
+            List { content }
+                .environment(\.defaultMinListRowHeight, geometry.size.height)
+        }
+        #else
+        return content
+        #endif
+    }
+}
+
+struct QuestionList: View {        
     @State var answerStr : String = ""
     @State var review: Bool = false
     
-    @ObservedObject var model: QuestionModel
+    @ObservedObject var model: StudyVocabModel
         
-    init(model: QuestionModel) {
+    init(model: StudyVocabModel) {
         self.model = model
     }
     
@@ -24,9 +36,15 @@ struct QuestionList: View {
             return
         }
         
-        model.getNextQuestion(answer: answerType)
-        answerType = .none
         answerStr = ""
+        model.getNextQuestion()
+    }
+    
+    func scheduleNextQuestion(after delay: Double) {
+        if model.task == nil {
+            model.task = DispatchWorkItem { self.nextQuestion() }
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: model.task!)
+        }
     }
     
     var body: some View {
@@ -45,40 +63,24 @@ struct QuestionList: View {
             )
         }
         
-        if answerType != .none {
-            let delay = answerType == .ignored ? 0.5 : 2.5
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-                if !self.review && self.answerType != .none  {
-                    self.nextQuestion()
-                }
-            }
-        }
+        var content: AnyView
         
-        var content: some View {
-            #if os(watchOS)
-            return GeometryReader { geometry in
-                List {
-                    StudyVocab(card: self.model.cards[self.model.index],
-                             answerType: self.$answerType,
-                             answerStr: self.$answerStr,
-                             review: self.$review)
-                    
-                }.environment(\.defaultMinListRowHeight, geometry.size.height)
-            }
+        if model.answerType == .ignored {
+            content = AnyView(EmptyView().modifier(iWatchModifier()))
+            scheduleNextQuestion(after: 0.5)
             
-            #else
-            return StudyVocab(card: self.model.cards[self.model.index],
-                            answerType: $answerType,
-                            answerStr: $answerStr,
-                            review: self.$review)
-            #endif
+        } else if model.answerType == .correct || model.answerType == .incorrect {
+            content = AnyView(QuestionAnswered(model, review: self.$review).modifier(iWatchModifier()))
+            scheduleNextQuestion(after: 2.5)
+            
+        } else {
+            content = AnyView(GetAnswer(model, answerStr: $answerStr).modifier(iWatchModifier()))
         }
         
         return AnyView(content
         .sheet(isPresented: $review,
                onDismiss: { self.nextQuestion() },
-               content: { CardDetails(card: self.model.cards[self.model.index]) })
+               content: { CardDetails(card: self.model.currentCard) })
 
         )
     }

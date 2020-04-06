@@ -37,8 +37,8 @@
 		8A6897E32428C28B004A0298 /* coredata_populate.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 8A6897DD2428C28B004A0298 /* coredata_populate.sqlite-shm */; };
 		8A7B0F6723AA0B9200DC1645 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6623AA0B9200DC1645 /* ListView.swift */; };
 		8A7B0F6823AA0B9200DC1645 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6623AA0B9200DC1645 /* ListView.swift */; };
-		8A9B7CFC23FBF7E100BA086B /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B7CFB23FBF7E100BA086B /* QuestionModel.swift */; };
-		8A9B7CFD23FBF7E100BA086B /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B7CFB23FBF7E100BA086B /* QuestionModel.swift */; };
+		8A9B7CFC23FBF7E100BA086B /* StudyVocabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B7CFB23FBF7E100BA086B /* StudyVocabModel.swift */; };
+		8A9B7CFD23FBF7E100BA086B /* StudyVocabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B7CFB23FBF7E100BA086B /* StudyVocabModel.swift */; };
 		8AA4D9B423FBD77B00FF13C0 /* QuestionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4D9B323FBD77B00FF13C0 /* QuestionList.swift */; };
 		8AA4D9B523FBD77B00FF13C0 /* QuestionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4D9B323FBD77B00FF13C0 /* QuestionList.swift */; };
 		8AAEA8C02435C981004E1E16 /* StudyToneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA8BF2435C981004E1E16 /* StudyToneModel.swift */; };
@@ -70,8 +70,8 @@
 		8AF2864C242B2F2C007E606D /* CloudListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF2864A242B2F2C007E606D /* CloudListView.swift */; };
 		8AF2864E242B6845007E606D /* CloudSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF2864D242B6845007E606D /* CloudSectionView.swift */; };
 		8AF2864F242B6845007E606D /* CloudSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF2864D242B6845007E606D /* CloudSectionView.swift */; };
-		8AFBE0BF23BB364F002E95BC /* StudyVocab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBE0BE23BB364F002E95BC /* StudyVocab.swift */; };
-		8AFBE0C023BB364F002E95BC /* StudyVocab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBE0BE23BB364F002E95BC /* StudyVocab.swift */; };
+		8AFBE0BF23BB364F002E95BC /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBE0BE23BB364F002E95BC /* QuestionView.swift */; };
+		8AFBE0C023BB364F002E95BC /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBE0BE23BB364F002E95BC /* QuestionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,7 +136,7 @@
 		8A6897DC2428C28B004A0298 /* coredata_populate.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = coredata_populate.sqlite; sourceTree = "<group>"; };
 		8A6897DD2428C28B004A0298 /* coredata_populate.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "coredata_populate.sqlite-shm"; sourceTree = "<group>"; };
 		8A7B0F6623AA0B9200DC1645 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
-		8A9B7CFB23FBF7E100BA086B /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		8A9B7CFB23FBF7E100BA086B /* StudyVocabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyVocabModel.swift; sourceTree = "<group>"; };
 		8AA4D9B323FBD77B00FF13C0 /* QuestionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionList.swift; sourceTree = "<group>"; };
 		8AAEA8BF2435C981004E1E16 /* StudyToneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyToneModel.swift; sourceTree = "<group>"; };
 		8AD525C523A6253600274135 /* lanternhsk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lanternhsk.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,7 +166,7 @@
 		8AF28647242B2948007E606D /* ExtensionsUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsUI.swift; sourceTree = "<group>"; };
 		8AF2864A242B2F2C007E606D /* CloudListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudListView.swift; sourceTree = "<group>"; };
 		8AF2864D242B6845007E606D /* CloudSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSectionView.swift; sourceTree = "<group>"; };
-		8AFBE0BE23BB364F002E95BC /* StudyVocab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyVocab.swift; sourceTree = "<group>"; };
+		8AFBE0BE23BB364F002E95BC /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,9 +238,9 @@
 				8AD525E023A62FA600274135 /* CardRow.swift */,
 				8A62CD3423FE2D8E00929454 /* CardDetails.swift */,
 				8A64F9D623AB667D0080F7B8 /* StudyView.swift */,
-				8A9B7CFB23FBF7E100BA086B /* QuestionModel.swift */,
 				8AA4D9B323FBD77B00FF13C0 /* QuestionList.swift */,
-				8AFBE0BE23BB364F002E95BC /* StudyVocab.swift */,
+				8AFBE0BE23BB364F002E95BC /* QuestionView.swift */,
+				8A9B7CFB23FBF7E100BA086B /* StudyVocabModel.swift */,
 				8AE4335F240509AC00E5C977 /* StudyTone.swift */,
 				8AAEA8BF2435C981004E1E16 /* StudyToneModel.swift */,
 				8A2C33402436D81E00A76539 /* ToneGestureRecognizer.swift */,
@@ -441,12 +441,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AF2864B242B2F2C007E606D /* CloudListView.swift in Sources */,
-				8A9B7CFC23FBF7E100BA086B /* QuestionModel.swift in Sources */,
+				8A9B7CFC23FBF7E100BA086B /* StudyVocabModel.swift in Sources */,
 				8AD525C923A6253600274135 /* AppDelegate.swift in Sources */,
 				8A2C33412436D81E00A76539 /* ToneGestureRecognizer.swift in Sources */,
 				8A64F9DC23AB6E9A0080F7B8 /* MainView.swift in Sources */,
 				8A62CD3523FE2D8E00929454 /* CardDetails.swift in Sources */,
-				8AFBE0BF23BB364F002E95BC /* StudyVocab.swift in Sources */,
+				8AFBE0BF23BB364F002E95BC /* QuestionView.swift in Sources */,
 				8A7B0F6723AA0B9200DC1645 /* ListView.swift in Sources */,
 				8AD525CB23A6253600274135 /* SceneDelegate.swift in Sources */,
 				8AF2864E242B6845007E606D /* CloudSectionView.swift in Sources */,
@@ -474,7 +474,7 @@
 			files = (
 				8AD525F823A634CC00274135 /* ListsHostingController.swift in Sources */,
 				8A64F9D823AB667D0080F7B8 /* StudyView.swift in Sources */,
-				8AFBE0C023BB364F002E95BC /* StudyVocab.swift in Sources */,
+				8AFBE0C023BB364F002E95BC /* QuestionView.swift in Sources */,
 				8A6897DA2428C261004A0298 /* CoreDataStack.swift in Sources */,
 				8A64F9DA23AB67BB0080F7B8 /* StudyHostingController.swift in Sources */,
 				8AD5261023A6354300274135 /* CardRow.swift in Sources */,
@@ -484,7 +484,7 @@
 				8AED1938242DD69D006A47F4 /* coredata_populate.xcdatamodeld in Sources */,
 				8A2C334424371DE800A76539 /* ToneGestureTracker.swift in Sources */,
 				8A62CD3623FE2D8E00929454 /* CardDetails.swift in Sources */,
-				8A9B7CFD23FBF7E100BA086B /* QuestionModel.swift in Sources */,
+				8A9B7CFD23FBF7E100BA086B /* StudyVocabModel.swift in Sources */,
 				8A5E5CEE242C8F4700691726 /* CloudCardView.swift in Sources */,
 				8AA4D9B523FBD77B00FF13C0 /* QuestionList.swift in Sources */,
 				8A638F8123B35DA300D4DD7F /* StudyManager.swift in Sources */,
