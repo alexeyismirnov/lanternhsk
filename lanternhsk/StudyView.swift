@@ -19,9 +19,9 @@ extension StudyType {
     func getView(deck: StudyDeck) -> some View {
         switch self {
         case .translation:
-            return AnyView(QuestionList(model: StudyVocabModel(deck: deck)))
+            return AnyView(StudyVocab(model: StudyVocabModel(deck: deck)))
         case .pinyin:
-            return AnyView(QuestionList(model: StudyVocabModel(deck: deck)))
+            return AnyView(StudyVocab(model: StudyVocabModel(deck: deck)))
         #if os(iOS)
         case .tone:
             return AnyView(StudyTone(model: StudyToneModel(deck: deck)))
@@ -40,8 +40,6 @@ struct StudyView: View {
     @State var actionViewMode = StudyType.translation
     @State var showActionView = [UUID: Bool]()
     @State var showActionSheet = [UUID: Bool]()
-
-    private var didSave =  NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)    
     
     init() {
         let (lists, actionViews, actionSheets) = getLists()
@@ -165,10 +163,7 @@ struct StudyView: View {
             .onReceive(studyManager.cardsChanged, perform: { _ in
                 self.reload()
             })
-            .onReceive(self.didSave) { _ in
-                self.reload()
-        }
-        
+            
     }
 }
 

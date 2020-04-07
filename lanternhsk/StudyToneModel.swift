@@ -13,9 +13,7 @@ class StudyToneModel: ObservableObject {
     var totalQuestions: Int
     var totalCorrect = 0
     var totalIncorrect = 0
-    
-    var deck: StudyDeck
- 
+     
     @Published var index: Int = 0
     @Published var toneIndex = 0
     let updateUI = PassthroughSubject<Void, Never>()
@@ -30,14 +28,8 @@ class StudyToneModel: ObservableObject {
     var multiChoice = false
     
     init(deck: StudyDeck, totalQuestions: Int = 3) {
-        self.deck = deck
         self.totalQuestions = totalQuestions
-        
-        self.cards = (0..<totalQuestions).map {_ in
-            self.deck.cards[Int.random(in: 0..<deck.cards.count)]
-        }
-        
-        print(self.cards)
+        self.cards = deck.shuffle(totalQuestions: totalQuestions)
     }
     
     func getCard(_ _index: Int = 0) {

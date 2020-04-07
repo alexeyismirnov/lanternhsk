@@ -39,8 +39,8 @@
 		8A7B0F6823AA0B9200DC1645 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7B0F6623AA0B9200DC1645 /* ListView.swift */; };
 		8A9B7CFC23FBF7E100BA086B /* StudyVocabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B7CFB23FBF7E100BA086B /* StudyVocabModel.swift */; };
 		8A9B7CFD23FBF7E100BA086B /* StudyVocabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B7CFB23FBF7E100BA086B /* StudyVocabModel.swift */; };
-		8AA4D9B423FBD77B00FF13C0 /* QuestionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4D9B323FBD77B00FF13C0 /* QuestionList.swift */; };
-		8AA4D9B523FBD77B00FF13C0 /* QuestionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4D9B323FBD77B00FF13C0 /* QuestionList.swift */; };
+		8AA4D9B423FBD77B00FF13C0 /* StudyVocab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4D9B323FBD77B00FF13C0 /* StudyVocab.swift */; };
+		8AA4D9B523FBD77B00FF13C0 /* StudyVocab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4D9B323FBD77B00FF13C0 /* StudyVocab.swift */; };
 		8AAEA8C02435C981004E1E16 /* StudyToneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA8BF2435C981004E1E16 /* StudyToneModel.swift */; };
 		8AD525C923A6253600274135 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525C823A6253600274135 /* AppDelegate.swift */; };
 		8AD525CB23A6253600274135 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525CA23A6253600274135 /* SceneDelegate.swift */; };
@@ -137,7 +137,7 @@
 		8A6897DD2428C28B004A0298 /* coredata_populate.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "coredata_populate.sqlite-shm"; sourceTree = "<group>"; };
 		8A7B0F6623AA0B9200DC1645 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		8A9B7CFB23FBF7E100BA086B /* StudyVocabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyVocabModel.swift; sourceTree = "<group>"; };
-		8AA4D9B323FBD77B00FF13C0 /* QuestionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionList.swift; sourceTree = "<group>"; };
+		8AA4D9B323FBD77B00FF13C0 /* StudyVocab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyVocab.swift; sourceTree = "<group>"; };
 		8AAEA8BF2435C981004E1E16 /* StudyToneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyToneModel.swift; sourceTree = "<group>"; };
 		8AD525C523A6253600274135 /* lanternhsk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lanternhsk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD525C823A6253600274135 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -238,9 +238,9 @@
 				8AD525E023A62FA600274135 /* CardRow.swift */,
 				8A62CD3423FE2D8E00929454 /* CardDetails.swift */,
 				8A64F9D623AB667D0080F7B8 /* StudyView.swift */,
-				8AA4D9B323FBD77B00FF13C0 /* QuestionList.swift */,
-				8AFBE0BE23BB364F002E95BC /* QuestionView.swift */,
+				8AA4D9B323FBD77B00FF13C0 /* StudyVocab.swift */,
 				8A9B7CFB23FBF7E100BA086B /* StudyVocabModel.swift */,
+				8AFBE0BE23BB364F002E95BC /* QuestionView.swift */,
 				8AE4335F240509AC00E5C977 /* StudyTone.swift */,
 				8AAEA8BF2435C981004E1E16 /* StudyToneModel.swift */,
 				8A2C33402436D81E00A76539 /* ToneGestureRecognizer.swift */,
@@ -458,7 +458,7 @@
 				8A61F0742408BFAB00B434A0 /* Extensions.swift in Sources */,
 				8AF28648242B2948007E606D /* ExtensionsUI.swift in Sources */,
 				8A6897D92428C261004A0298 /* CoreDataStack.swift in Sources */,
-				8AA4D9B423FBD77B00FF13C0 /* QuestionList.swift in Sources */,
+				8AA4D9B423FBD77B00FF13C0 /* StudyVocab.swift in Sources */,
 				8A2C334324371DE800A76539 /* ToneGestureTracker.swift in Sources */,
 				8A5E5CF0242C933D00691726 /* AddCard.swift in Sources */,
 				8AAEA8C02435C981004E1E16 /* StudyToneModel.swift in Sources */,
@@ -486,7 +486,7 @@
 				8A62CD3623FE2D8E00929454 /* CardDetails.swift in Sources */,
 				8A9B7CFD23FBF7E100BA086B /* StudyVocabModel.swift in Sources */,
 				8A5E5CEE242C8F4700691726 /* CloudCardView.swift in Sources */,
-				8AA4D9B523FBD77B00FF13C0 /* QuestionList.swift in Sources */,
+				8AA4D9B523FBD77B00FF13C0 /* StudyVocab.swift in Sources */,
 				8A638F8123B35DA300D4DD7F /* StudyManager.swift in Sources */,
 				8A5E5CEB242C8A6900691726 /* CardView.swift in Sources */,
 				8A61F0752408BFAB00B434A0 /* Extensions.swift in Sources */,

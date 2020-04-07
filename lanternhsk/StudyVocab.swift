@@ -21,7 +21,7 @@ struct iWatchModifier: ViewModifier {
     }
 }
 
-struct QuestionList: View {        
+struct StudyVocab: View {        
     @State var answerStr : String = ""
     @State var review: Bool = false
     

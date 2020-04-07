@@ -102,6 +102,30 @@ extension StudyDeck {
         }
         
     }
+    
+    func shuffle(totalQuestions: Int) -> [VocabCard] {
+        var result = [VocabCard]()
+        var lastIndex: Int?
+        
+        for _ in 0..<totalQuestions {
+            var newIndex: Int
+
+            if cards.count == 1 {
+                newIndex = 0
+                
+            } else {
+                repeat {
+                    newIndex = Int.random(in: 0..<cards.count)
+                    
+                } while (newIndex == lastIndex ?? -1)
+            }
+
+            lastIndex = newIndex
+            result.append(cards[newIndex])
+        }
+        
+        return result
+    }
 }
 
 class StudyManager: ObservableObject {

@@ -30,10 +30,7 @@ class StudyVocabModel: ObservableObject {
 
     init(deck: StudyDeck, totalQuestions: Int = 3) {
         self.totalQuestions = totalQuestions
-        
-        self.cards = (0..<totalQuestions).map {_ in
-            deck.cards[Int.random(in: 0..<deck.cards.count)]
-        }
+        self.cards = deck.shuffle(totalQuestions: totalQuestions)
     }
 
     func getNextQuestion() {
