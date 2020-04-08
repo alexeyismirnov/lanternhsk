@@ -11,7 +11,7 @@ import SwiftUI
 struct StudyTone: View {
     @ObservedObject var model: StudyToneModel
     
-    init(model: StudyToneModel) {
+    init(_ model: StudyToneModel) {
         self.model = model
         self.model.getCard()
     }

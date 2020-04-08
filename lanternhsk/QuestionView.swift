@@ -94,7 +94,10 @@ struct GetAnswer: View {
             
             VStack {
                 Text(model.currentCard.word).font(.title)
-                TextField("Translate", text: $answerStr, onCommit: {
+                TextField(model.type == .translation
+                    ? "Translate"
+                    : "Pinyin"
+                    , text: $answerStr, onCommit: {
                     self.model.answered(self.answerStr)
                 })
                     .multilineTextAlignment(.center)

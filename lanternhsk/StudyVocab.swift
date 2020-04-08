@@ -27,7 +27,7 @@ struct StudyVocab: View {
     
     @ObservedObject var model: StudyVocabModel
         
-    init(model: StudyVocabModel) {
+    init(_ model: StudyVocabModel) {
         self.model = model
     }
     

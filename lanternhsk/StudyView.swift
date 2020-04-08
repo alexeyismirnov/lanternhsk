@@ -19,12 +19,12 @@ extension StudyType {
     func getView(deck: StudyDeck) -> some View {
         switch self {
         case .translation:
-            return AnyView(StudyVocab(model: StudyVocabModel(deck: deck)))
+            return AnyView(StudyVocab(StudyVocabModel(.translation, deck: deck)))
         case .pinyin:
-            return AnyView(StudyVocab(model: StudyVocabModel(deck: deck)))
+            return AnyView(StudyVocab(StudyVocabModel(.pinyin, deck: deck)))
         #if os(iOS)
         case .tone:
-            return AnyView(StudyTone(model: StudyToneModel(deck: deck)))
+            return AnyView(StudyTone(StudyToneModel(deck: deck)))
         #else
         default:
             return AnyView(EmptyView())

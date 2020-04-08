@@ -13,8 +13,13 @@ enum AnswerType {
     case none, correct, incorrect, ignored
 }
 
+enum StudyModelType {
+    case translation, pinyin
+}
+
 class StudyVocabModel: ObservableObject {
     var totalQuestions: Int
+    let type: StudyModelType
     
     var totalCorrect = 0
     var totalIncorrect = 0
@@ -28,7 +33,8 @@ class StudyVocabModel: ObservableObject {
     
     var task: DispatchWorkItem?
 
-    init(deck: StudyDeck, totalQuestions: Int = 3) {
+    init(_ type: StudyModelType, deck: StudyDeck, totalQuestions: Int = 3) {
+        self.type = type
         self.totalQuestions = totalQuestions
         self.cards = deck.shuffle(totalQuestions: totalQuestions)
     }
@@ -43,24 +49,91 @@ class StudyVocabModel: ObservableObject {
         index += 1
     }
     
-    func answered(_ answer: String?) {
-        if let answer = answer {
-            if currentCard.translation.lowercased()
-                .contains(answer
-                    .trimmingCharacters(in: .whitespacesAndNewlines)
-                    .lowercased()) {
+    func checkTranslation(_ answer: String) {
+        let trans = currentCard.translation
+            .components(separatedBy: CharacterSet(charactersIn: " ;,!?()|"))
+            .filter { $0.count > 2 }
+        
+        let ans = answer
+            .components(separatedBy: CharacterSet(charactersIn: " ;,!?()|"))
+            .filter { $0.count > 2 }
+        
+        if ans.count == 0 || ans.filter({ !trans.contains($0) }).count > 0 {
+            answerType = .incorrect
+            totalIncorrect += 1
+            
+        } else {
+            answerType = .correct
+            totalCorrect += 1
+        }
+    }
+    
+    func checkPinyin(_ answer: String) {
+        let pinyin = currentCard.pinyin
+            .folding(options: .diacriticInsensitive, locale: nil)
+                
+        let comp = pinyin
+            .components(separatedBy: CharacterSet(charactersIn: "| "))
+            .filter({ $0.count > 0 })
+        
+        if pinyin.contains("|") {
+            if comp.contains(answer) {
                 answerType = .correct
                 totalCorrect += 1
-
             } else {
                 answerType = .incorrect
                 totalIncorrect += 1
             }
             
         } else {
+            let str = answer.components(separatedBy:
+                CharacterSet
+                    .decimalDigits
+                    .union(CharacterSet.whitespaces))
+                .joined()
+            
+            if comp.joined() == str {
+                answerType = .correct
+                totalCorrect += 1
+            } else {
+                answerType = .incorrect
+                totalIncorrect += 1
+            }
+            
+        }
+    }
+    
+    func checkChinese(_ answer: String) {
+        if currentCard.word.components(separatedBy: CharacterSet.whitespaces).joined() ==
+            answer.components(separatedBy: CharacterSet.whitespaces).joined() {
+            answerType = .correct
+            totalCorrect += 1
+        } else {
+            answerType = .incorrect
+            totalIncorrect += 1
+        }
+    }
+    
+    func answered(_ answer: String?) {
+        if var answer = answer {
+            answer = answer
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+                .lowercased()
+            
+            if type == .translation {
+                checkTranslation(answer)
+                
+            } else {
+                if answer.range(of: "\\p{Han}", options: .regularExpression) != nil {
+                    checkChinese(answer)
+                } else {
+                    checkPinyin(answer.folding(options: .diacriticInsensitive, locale: nil))
+                }
+            }
+            
+        } else {
             answerType = .ignored
             totalIgnored += 1
         }
-
     }
 }
