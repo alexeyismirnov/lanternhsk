@@ -38,14 +38,13 @@ struct ListView: View {
             ForEach(lists, id: \.id) { list in
                 self.buildItem(list)
             }
-            VStack(alignment: .leading) {
-                NavigationLink(destination: LazyView(CloudListView())) {
+            NavigationLink(destination: LazyView(CloudListView())) {
+                VStack(alignment: .leading) {
                     Text("Custom...").font(.headline)
                 }
+                .padding()
+                .frame(height: 50)
             }
-            .padding()
-            .frame(height: 50)
-
         }
 
         #if os(watchOS)

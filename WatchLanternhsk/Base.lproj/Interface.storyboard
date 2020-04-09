@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15705" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3mp-fW-waa">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16096" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3mp-fW-waa">
     <device id="watch38"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="15501"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="16012"/>
     </dependencies>
     <scenes>
         <!--Lists Hosting Controller-->
@@ -20,9 +20,20 @@
         <!--Study Hosting Controller-->
         <scene sceneID="SHd-pP-B2n">
             <objects>
-                <hostingController id="7t6-ch-UQZ" customClass="StudyHostingController" customModule="WatchLanternhsk_Extension"/>
+                <hostingController id="7t6-ch-UQZ" customClass="StudyHostingController" customModule="WatchLanternhsk_Extension">
+                    <connections>
+                        <segue destination="Asv-kW-8BS" kind="relationship" relationship="nextPage" id="3e2-pl-yU0"/>
+                    </connections>
+                </hostingController>
             </objects>
             <point key="canvasLocation" x="268" y="28"/>
+        </scene>
+        <!--Settings Hosting Controller-->
+        <scene sceneID="snc-4p-Jpq">
+            <objects>
+                <hostingController id="Asv-kW-8BS" customClass="SettingsHostingController" customModule="WatchLanternhsk_Extension"/>
+            </objects>
+            <point key="canvasLocation" x="493" y="23"/>
         </scene>
         <!--StudyTone-->
         <scene sceneID="VaT-40-gCT">

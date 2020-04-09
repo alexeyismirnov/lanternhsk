@@ -156,14 +156,20 @@ struct StudyView: View {
     }
     
     var body: some View {
-        getContent().navigationBarTitle("Study")
+        let content = getContent()
             .onAppear(perform: {
                 self.reload()
             })
             .onReceive(studyManager.cardsChanged, perform: { _ in
                 self.reload()
             })
-            
+        
+        #if os(watchOS)
+        return content.navigationBarTitle("Study")
+        #else
+        return content.navigationBarTitle("Study", displayMode: .inline)
+        #endif
+        
     }
 }
 

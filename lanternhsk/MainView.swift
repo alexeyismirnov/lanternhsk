@@ -28,6 +28,9 @@ struct MainView: View {
             
             NavigationView { StudyView() }
              .tabItem({ TabLabel(imageName: "book.fill", label: "Study") })
+            
+            NavigationView { SettingsView() }
+            .tabItem({ TabLabel(imageName: "gear", label: "Settings") })
         }
     }
 }
