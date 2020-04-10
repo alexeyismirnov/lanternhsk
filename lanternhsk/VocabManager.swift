@@ -94,9 +94,9 @@ struct VocabCard: Identifiable {
 }
 
 extension VocabCard {
-    init(entity: CardEntity) {
+    init(entity: CardEntity, charType: SettingsCharType) {
         self.init(id: entity.id!,
-                  word: entity.wordTrad!,
+                  word: charType == .traditional ? entity.wordTrad! : entity.wordSimp!,
                   pinyin: entity.pinyin!,
                   translation: entity.translation!,
                   entity: entity)

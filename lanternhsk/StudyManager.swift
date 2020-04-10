@@ -39,6 +39,8 @@ extension StudyDeck {
         let request: NSFetchRequest<StarCardEntity> = StarCardEntity.fetchRequest()
         
         if let entity = entity as? ListEntity {
+            let charType = SettingsCharType(rawValue: SettingsModel.shared.language)!
+
             self.name = entity.name!
             
             if let listId = entity.id {               
@@ -58,7 +60,7 @@ extension StudyDeck {
                                                      sc.cardId! as CVarArg)
                     
                     if let card = try! context.fetch(request2).first {
-                        cards.append(VocabCard(entity: card))
+                        cards.append(VocabCard(entity: card, charType: charType))
                     }
                 }
                 

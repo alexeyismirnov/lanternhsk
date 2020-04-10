@@ -9,33 +9,34 @@
 import SwiftUI
 import CoreData
 
-struct SettingsView: View {
-    @State private var language = 1
-    @State private var numQuestions: Double = 5
-    
+struct SettingsView: View {    
+    @ObservedObject var model = SettingsModel()
+    @State private var trigger: Bool = false
+
     var body: some View {
-       let content =
+        print("\(trigger)")
+        
+        let content =
             VStack {
-            List {
-                Text("Characters").font(.headline)
-                
-                Picker(selection: $language, label: Text("")) {
-                    Text("Traditional").tag(1)
-                    Text("Simplified").tag(2)
+                List {
+                    Text("Characters").font(.headline)
+                    
+                    Picker(selection: $model.language, label: Text("")) {
+                        Text("Traditional").tag(SettingsCharType.traditional.rawValue)
+                        Text("Simplified").tag(SettingsCharType.simplified.rawValue)
+                    }
+                    .labelsHidden()
+                    .clipped()
+                    .frame(height: 100)
+                    
+                    Text("Questions: \(Int(model.numQuestions))").font(.headline)
+                    
+                    Slider(value: $model.numQuestions, in: 1...20, step: 1)
                 }
-                .labelsHidden()
-                .clipped()
-                .frame(height: 100)
-                
-                Text("Questions: \(Int(numQuestions))").font(.headline)
-                
-                Slider(value: $numQuestions, in: 1...20, step: 1, onEditingChanged: {
-                    print("\($0)")
-                })
             }
-                
-               
-        }
+            .onReceive(model.settingsChanged, perform: { _ in
+                self.trigger.toggle()
+            })
         
         #if os(watchOS)
         return content.navigationBarTitle("Options")

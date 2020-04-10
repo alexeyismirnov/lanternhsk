@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 class StudyToneModel: ObservableObject {
-    var totalQuestions: Int
+    let totalQuestions: Int
     var totalCorrect = 0
     var totalIncorrect = 0
      
@@ -27,8 +27,8 @@ class StudyToneModel: ObservableObject {
     
     var multiChoice = false
     
-    init(deck: StudyDeck, totalQuestions: Int = 3) {
-        self.totalQuestions = totalQuestions
+    init(deck: StudyDeck) {
+        self.totalQuestions = Int(SettingsModel.shared.numQuestions)
         self.cards = deck.shuffle(totalQuestions: totalQuestions)
     }
     

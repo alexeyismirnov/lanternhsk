@@ -18,7 +18,7 @@ enum StudyModelType {
 }
 
 class StudyVocabModel: ObservableObject {
-    var totalQuestions: Int
+    let totalQuestions: Int
     let type: StudyModelType
     
     var totalCorrect = 0
@@ -33,9 +33,9 @@ class StudyVocabModel: ObservableObject {
     
     var task: DispatchWorkItem?
 
-    init(_ type: StudyModelType, deck: StudyDeck, totalQuestions: Int = 3) {
+    init(_ type: StudyModelType, deck: StudyDeck) {
         self.type = type
-        self.totalQuestions = totalQuestions
+        self.totalQuestions = Int(SettingsModel.shared.numQuestions)
         self.cards = deck.shuffle(totalQuestions: totalQuestions)
     }
 

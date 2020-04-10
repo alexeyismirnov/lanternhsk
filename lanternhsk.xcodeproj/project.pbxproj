@@ -28,6 +28,8 @@
 		8A68444E243ECB010032C963 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A68444D243ECB010032C963 /* SettingsView.swift */; };
 		8A68444F243ECB010032C963 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A68444D243ECB010032C963 /* SettingsView.swift */; };
 		8A684451243ED4D40032C963 /* SettingsHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A684450243ED4D40032C963 /* SettingsHostingController.swift */; };
+		8A684453243F1FA70032C963 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A684452243F1FA70032C963 /* SettingsModel.swift */; };
+		8A684454243F1FA70032C963 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A684452243F1FA70032C963 /* SettingsModel.swift */; };
 		8A6897D02428BC72004A0298 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6897CF2428BC72004A0298 /* CloudKit.framework */; };
 		8A6897D32428BD07004A0298 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6897D22428BD07004A0298 /* CloudKit.framework */; };
 		8A6897D92428C261004A0298 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6897D82428C261004A0298 /* CoreDataStack.swift */; };
@@ -132,6 +134,7 @@
 		8A64F9DB23AB6E9A0080F7B8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		8A68444D243ECB010032C963 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		8A684450243ED4D40032C963 /* SettingsHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHostingController.swift; sourceTree = "<group>"; };
+		8A684452243F1FA70032C963 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		8A6897CE2428BC58004A0298 /* lanternhsk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = lanternhsk.entitlements; sourceTree = "<group>"; };
 		8A6897CF2428BC72004A0298 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		8A6897D12428BD04004A0298 /* WatchLanternhsk Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchLanternhsk Extension.entitlements"; sourceTree = "<group>"; };
@@ -251,6 +254,7 @@
 				8A2C33402436D81E00A76539 /* ToneGestureRecognizer.swift */,
 				8A2C334224371DE800A76539 /* ToneGestureTracker.swift */,
 				8A68444D243ECB010032C963 /* SettingsView.swift */,
+				8A684452243F1FA70032C963 /* SettingsModel.swift */,
 				8A61F0732408BFAB00B434A0 /* Extensions.swift */,
 				8AF28647242B2948007E606D /* ExtensionsUI.swift */,
 				8AD525CE23A6253800274135 /* Assets.xcassets */,
@@ -465,6 +469,7 @@
 				8A61F0742408BFAB00B434A0 /* Extensions.swift in Sources */,
 				8AF28648242B2948007E606D /* ExtensionsUI.swift in Sources */,
 				8A6897D92428C261004A0298 /* CoreDataStack.swift in Sources */,
+				8A684453243F1FA70032C963 /* SettingsModel.swift in Sources */,
 				8AA4D9B423FBD77B00FF13C0 /* StudyVocab.swift in Sources */,
 				8A2C334324371DE800A76539 /* ToneGestureTracker.swift in Sources */,
 				8A5E5CF0242C933D00691726 /* AddCard.swift in Sources */,
@@ -492,6 +497,7 @@
 				8AD5260E23A6354300274135 /* VocabManager.swift in Sources */,
 				8A68444F243ECB010032C963 /* SettingsView.swift in Sources */,
 				8AED1938242DD69D006A47F4 /* coredata_populate.xcdatamodeld in Sources */,
+				8A684454243F1FA70032C963 /* SettingsModel.swift in Sources */,
 				8A2C334424371DE800A76539 /* ToneGestureTracker.swift in Sources */,
 				8A62CD3623FE2D8E00929454 /* CardDetails.swift in Sources */,
 				8A9B7CFD23FBF7E100BA086B /* StudyVocabModel.swift in Sources */,

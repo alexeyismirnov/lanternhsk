@@ -36,6 +36,10 @@
         <attribute name="wordCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="cards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CardEntity" inverseName="list" inverseEntity="CardEntity"/>
     </entity>
+    <entity name="SettingsEntity" representedClassName="SettingsEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="language" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="numQuestions" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="StarCardEntity" representedClassName="StarCardEntity" syncable="YES" codeGenerationType="class">
         <attribute name="cardId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="listId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
@@ -47,6 +51,7 @@
         <memberEntity name="CloudListEntity"/>
         <memberEntity name="CloudSectionEntity"/>
         <memberEntity name="StarCardEntity"/>
+        <memberEntity name="SettingsEntity"/>
     </configuration>
     <configuration name="Local">
         <memberEntity name="ListEntity"/>
@@ -59,5 +64,6 @@
         <element name="CloudSectionEntity" positionX="-36" positionY="54" width="128" height="118"/>
         <element name="ListEntity" positionX="-54" positionY="18" width="128" height="103"/>
         <element name="StarCardEntity" positionX="-54" positionY="63" width="128" height="103"/>
+        <element name="SettingsEntity" positionX="-54" positionY="63" width="128" height="73"/>
     </elements>
 </model>
