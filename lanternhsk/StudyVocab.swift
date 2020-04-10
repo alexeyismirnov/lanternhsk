@@ -80,7 +80,7 @@ struct StudyVocab: View {
         return AnyView(content
         .sheet(isPresented: $review,
                onDismiss: { self.nextQuestion() },
-               content: { CardDetails(card: self.model.currentCard) })
+               content: { CardDetails(self.model.currentCard) })
 
         )
     }

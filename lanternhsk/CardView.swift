@@ -23,9 +23,9 @@ struct CardView: View {
     
     func getCards() -> [VocabCard] {
         let context = CoreDataStack.shared.persistentContainer.viewContext
-        let request: NSFetchRequest<CardEntity> = CardEntity.fetchRequest()
         let charType = SettingsCharType(rawValue: SettingsModel.shared.language)!
 
+        let request: NSFetchRequest<CardEntity> = CardEntity.fetchRequest()
         request.predicate = NSPredicate(format: "list.id == %@", list.id! as CVarArg)
         request.sortDescriptors = [NSSortDescriptor(keyPath: \CardEntity.objectID, ascending: true)]
         

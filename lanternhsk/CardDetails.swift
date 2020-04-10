@@ -7,14 +7,54 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct CardDetails: View {
     let card: VocabCard
+    let dictionary: [DictionaryEntity]
+    
+    init(_ card: VocabCard) {
+        self.card = card
+        
+        let context = CoreDataStack.shared.persistentContainer.viewContext
+        
+        var dictionary = [DictionaryEntity]()
+        var uniqueChars = Set<Character>()
+        
+        for char in card.word {
+            if uniqueChars.contains(char) {
+                continue
+            } else {
+                uniqueChars.insert(char)
+            }
+            
+            let request: NSFetchRequest<DictionaryEntity> = DictionaryEntity.fetchRequest()
+            request.predicate = NSPredicate(format: "character == %@", String(char) as CVarArg)
+            
+            let dict = try! context.fetch(request)
+            if let dict = dict.first {
+                dictionary.append(dict)
+            }
+        }
+        
+        self.dictionary = dictionary
+    }
     
     var body: some View {
-        List {
+        let dictView = dictionary.count > 0
+            ?
+                AnyView(Section(header: Text("Characters")) {
+                    ForEach(self.dictionary, id: \.character) { entry in
+                        VStack(alignment: .leading) {
+                        Text(entry.character ?? "").font(.title)
+                        Text(entry.definition ?? "")
+                        }}
+                })
+            : AnyView(EmptyView())
+        
+        return List {
             Section(header: Text("Writing")) {
-                Text(card.word)
+                Text(card.word).font(.title)
             }
             Section(header: Text("Pinyin")) {
                 Text(card.pinyin)
@@ -23,6 +63,7 @@ struct CardDetails: View {
                 Text(card.translation)
             }
             
+            dictView
         }
     }
 }

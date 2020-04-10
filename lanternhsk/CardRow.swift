@@ -68,7 +68,7 @@ private struct CardRowSideOne: View {
                 ImageButton(iconName: "info.circle", handler: {
                     self.cardDetails = CardModalItem(card: self.card)
                     
-                }).sheet(item: $cardDetails, content: { CardDetails(card: $0.card) })
+                }).sheet(item: $cardDetails, content: { CardDetails($0.card) })
                 
             }.frame(maxHeight: .infinity, alignment: .top)
             

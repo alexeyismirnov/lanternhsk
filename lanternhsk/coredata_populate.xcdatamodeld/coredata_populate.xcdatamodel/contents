@@ -30,6 +30,10 @@
         <relationship name="cards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CloudCardEntity" inverseName="section" inverseEntity="CloudCardEntity"/>
         <relationship name="list" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CloudListEntity" inverseName="sections" inverseEntity="CloudListEntity"/>
     </entity>
+    <entity name="DictionaryEntity" representedClassName="DictionaryEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="character" optional="YES" attributeType="String"/>
+        <attribute name="definition" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="ListEntity" representedClassName="ListEntity" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -56,6 +60,7 @@
     <configuration name="Local">
         <memberEntity name="ListEntity"/>
         <memberEntity name="CardEntity"/>
+        <memberEntity name="DictionaryEntity"/>
     </configuration>
     <elements>
         <element name="CardEntity" positionX="-63" positionY="-18" width="128" height="133"/>
@@ -63,7 +68,8 @@
         <element name="CloudListEntity" positionX="-45" positionY="45" width="128" height="118"/>
         <element name="CloudSectionEntity" positionX="-36" positionY="54" width="128" height="118"/>
         <element name="ListEntity" positionX="-54" positionY="18" width="128" height="103"/>
-        <element name="StarCardEntity" positionX="-54" positionY="63" width="128" height="103"/>
         <element name="SettingsEntity" positionX="-54" positionY="63" width="128" height="73"/>
+        <element name="StarCardEntity" positionX="-54" positionY="63" width="128" height="103"/>
+        <element name="DictionaryEntity" positionX="-45" positionY="72" width="128" height="73"/>
     </elements>
 </model>
