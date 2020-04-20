@@ -2,14 +2,14 @@
 <document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16096" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3mp-fW-waa">
     <device id="watch38"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="16012"/>
     </dependencies>
     <scenes>
         <!--Lists Hosting Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <hostingController id="3mp-fW-waa" customClass="ListsHostingController" customModule="WatchLanternhsk" customModuleProvider="target">
+                <hostingController id="3mp-fW-waa" customClass="ListsHostingController" customModule="Flashcards_Extension">
                     <connections>
                         <segue destination="7t6-ch-UQZ" kind="relationship" relationship="nextPage" id="USA-Q8-FfV"/>
                     </connections>
@@ -20,7 +20,7 @@
         <!--Study Hosting Controller-->
         <scene sceneID="SHd-pP-B2n">
             <objects>
-                <hostingController id="7t6-ch-UQZ" customClass="StudyHostingController" customModule="WatchLanternhsk_Extension">
+                <hostingController id="7t6-ch-UQZ" customClass="StudyHostingController" customModule="Flashcards_Extension">
                     <connections>
                         <segue destination="Asv-kW-8BS" kind="relationship" relationship="nextPage" id="3e2-pl-yU0"/>
                     </connections>
@@ -31,14 +31,14 @@
         <!--Settings Hosting Controller-->
         <scene sceneID="snc-4p-Jpq">
             <objects>
-                <hostingController id="Asv-kW-8BS" customClass="SettingsHostingController" customModule="WatchLanternhsk_Extension"/>
+                <hostingController id="Asv-kW-8BS" customClass="SettingsHostingController" customModule="Flashcards_Extension"/>
             </objects>
             <point key="canvasLocation" x="493" y="23"/>
         </scene>
         <!--StudyTone-->
         <scene sceneID="VaT-40-gCT">
             <objects>
-                <controller identifier="StudyTone" id="2cm-eh-PjX" customClass="StudyToneInterfaceController" customModule="WatchLanternhsk_Extension">
+                <controller identifier="StudyTone" id="2cm-eh-PjX" customClass="StudyToneInterfaceController" customModule="Flashcards_Extension">
                     <items>
                         <group width="1" height="1" alignment="left" layout="vertical" id="1DB-Is-dZG">
                             <items>

@@ -47,6 +47,7 @@
 		8AA4D9B423FBD77B00FF13C0 /* StudyVocab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4D9B323FBD77B00FF13C0 /* StudyVocab.swift */; };
 		8AA4D9B523FBD77B00FF13C0 /* StudyVocab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4D9B323FBD77B00FF13C0 /* StudyVocab.swift */; };
 		8AAEA8C02435C981004E1E16 /* StudyToneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA8BF2435C981004E1E16 /* StudyToneModel.swift */; };
+		8ACBB0C1244D99AC00641B45 /* Flashcards Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8AD525F023A634CC00274135 /* Flashcards Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8AD525C923A6253600274135 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525C823A6253600274135 /* AppDelegate.swift */; };
 		8AD525CB23A6253600274135 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525CA23A6253600274135 /* SceneDelegate.swift */; };
 		8AD525CD23A6253600274135 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525CC23A6253600274135 /* CardView.swift */; };
@@ -57,13 +58,12 @@
 		8AD525E123A62FA600274135 /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525E023A62FA600274135 /* CardRow.swift */; };
 		8AD525E823A634CA00274135 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525E623A634CA00274135 /* Interface.storyboard */; };
 		8AD525EA23A634CC00274135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525E923A634CC00274135 /* Assets.xcassets */; };
-		8AD525F123A634CC00274135 /* WatchLanternhsk Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8AD525F023A634CC00274135 /* WatchLanternhsk Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8AD525F823A634CC00274135 /* ListsHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525F723A634CC00274135 /* ListsHostingController.swift */; };
 		8AD525FA23A634CC00274135 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525F923A634CC00274135 /* ExtensionDelegate.swift */; };
 		8AD525FC23A634CC00274135 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525FB23A634CC00274135 /* ComplicationController.swift */; };
 		8AD525FE23A634CD00274135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD525FD23A634CC00274135 /* Assets.xcassets */; };
 		8AD5260123A634CD00274135 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5260023A634CD00274135 /* Preview Assets.xcassets */; };
-		8AD5260523A634CD00274135 /* WatchLanternhsk.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8AD525E423A634CA00274135 /* WatchLanternhsk.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8AD5260523A634CD00274135 /* Flashcards.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8AD525E423A634CA00274135 /* Flashcards.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8AD5260E23A6354300274135 /* VocabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525DC23A6270F00274135 /* VocabManager.swift */; };
 		8AD5261023A6354300274135 /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525E023A62FA600274135 /* CardRow.swift */; };
 		8AE43360240509AC00E5C977 /* StudyTone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE4335F240509AC00E5C977 /* StudyTone.swift */; };
@@ -87,7 +87,7 @@
 			remoteGlobalIDString = 8AD525E323A634CA00274135;
 			remoteInfo = WatchLanternhsk;
 		};
-		8AD525F223A634CC00274135 /* PBXContainerItemProxy */ = {
+		8ACBB0C2244D99AC00641B45 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8AD525BD23A6253600274135 /* Project object */;
 			proxyType = 1;
@@ -97,13 +97,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8AD5260923A634CD00274135 /* Embed App Extensions */ = {
+		8ACBB0C4244D99AD00641B45 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				8AD525F123A634CC00274135 /* WatchLanternhsk Extension.appex in Embed App Extensions */,
+				8ACBB0C1244D99AC00641B45 /* Flashcards Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,7 +114,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				8AD5260523A634CD00274135 /* WatchLanternhsk.app in Embed Watch Content */,
+				8AD5260523A634CD00274135 /* Flashcards.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,7 +147,7 @@
 		8A9B7CFB23FBF7E100BA086B /* StudyVocabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyVocabModel.swift; sourceTree = "<group>"; };
 		8AA4D9B323FBD77B00FF13C0 /* StudyVocab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyVocab.swift; sourceTree = "<group>"; };
 		8AAEA8BF2435C981004E1E16 /* StudyToneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyToneModel.swift; sourceTree = "<group>"; };
-		8AD525C523A6253600274135 /* lanternhsk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lanternhsk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AD525C523A6253600274135 /* Flashcards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flashcards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD525C823A6253600274135 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AD525CA23A6253600274135 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8AD525CC23A6253600274135 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -157,11 +157,11 @@
 		8AD525D623A6253800274135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AD525DC23A6270F00274135 /* VocabManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabManager.swift; sourceTree = "<group>"; };
 		8AD525E023A62FA600274135 /* CardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRow.swift; sourceTree = "<group>"; };
-		8AD525E423A634CA00274135 /* WatchLanternhsk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchLanternhsk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AD525E423A634CA00274135 /* Flashcards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flashcards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD525E723A634CA00274135 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		8AD525E923A634CC00274135 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AD525EB23A634CC00274135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8AD525F023A634CC00274135 /* WatchLanternhsk Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WatchLanternhsk Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AD525F023A634CC00274135 /* Flashcards Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Flashcards Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD525F723A634CC00274135 /* ListsHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsHostingController.swift; sourceTree = "<group>"; };
 		8AD525F923A634CC00274135 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		8AD525FB23A634CC00274135 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
@@ -220,9 +220,9 @@
 		8AD525C623A6253600274135 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8AD525C523A6253600274135 /* lanternhsk.app */,
-				8AD525E423A634CA00274135 /* WatchLanternhsk.app */,
-				8AD525F023A634CC00274135 /* WatchLanternhsk Extension.appex */,
+				8AD525C523A6253600274135 /* Flashcards.app */,
+				8AD525E423A634CA00274135 /* Flashcards.app */,
+				8AD525F023A634CC00274135 /* Flashcards Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -331,7 +331,7 @@
 			);
 			name = lanternhsk;
 			productName = lanternhsk;
-			productReference = 8AD525C523A6253600274135 /* lanternhsk.app */;
+			productReference = 8AD525C523A6253600274135 /* Flashcards.app */;
 			productType = "com.apple.product-type.application";
 		};
 		8AD525E323A634CA00274135 /* WatchLanternhsk */ = {
@@ -339,16 +339,16 @@
 			buildConfigurationList = 8AD5260A23A634CD00274135 /* Build configuration list for PBXNativeTarget "WatchLanternhsk" */;
 			buildPhases = (
 				8AD525E223A634CA00274135 /* Resources */,
-				8AD5260923A634CD00274135 /* Embed App Extensions */,
+				8ACBB0C4244D99AD00641B45 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8AD525F323A634CC00274135 /* PBXTargetDependency */,
+				8ACBB0C3244D99AC00641B45 /* PBXTargetDependency */,
 			);
 			name = WatchLanternhsk;
 			productName = WatchLanternhsk;
-			productReference = 8AD525E423A634CA00274135 /* WatchLanternhsk.app */;
+			productReference = 8AD525E423A634CA00274135 /* Flashcards.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
 		8AD525EF23A634CC00274135 /* WatchLanternhsk Extension */ = {
@@ -365,7 +365,7 @@
 			);
 			name = "WatchLanternhsk Extension";
 			productName = "WatchLanternhsk Extension";
-			productReference = 8AD525F023A634CC00274135 /* WatchLanternhsk Extension.appex */;
+			productReference = 8AD525F023A634CC00274135 /* Flashcards Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
@@ -522,10 +522,10 @@
 			target = 8AD525E323A634CA00274135 /* WatchLanternhsk */;
 			targetProxy = 8A72772823BB6A9700A70124 /* PBXContainerItemProxy */;
 		};
-		8AD525F323A634CC00274135 /* PBXTargetDependency */ = {
+		8ACBB0C3244D99AC00641B45 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8AD525EF23A634CC00274135 /* WatchLanternhsk Extension */;
-			targetProxy = 8AD525F223A634CC00274135 /* PBXContainerItemProxy */;
+			targetProxy = 8ACBB0C2244D99AC00641B45 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -678,7 +678,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rlc.lanternhsk;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Flashcards;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -699,7 +699,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rlc.lanternhsk;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Flashcards;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -721,7 +721,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rlc.lanternhsk.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
+				PRODUCT_NAME = "Flashcards Extension";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -746,7 +746,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rlc.lanternhsk.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
+				PRODUCT_NAME = "Flashcards Extension";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -758,14 +758,13 @@
 		8AD5260B23A634CD00274135 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3NQ697ND22;
 				IBSC_MODULE = WatchLanternhsk_Extension;
 				INFOPLIST_FILE = WatchLanternhsk/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rlc.lanternhsk.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Flashcards;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -777,14 +776,13 @@
 		8AD5260C23A634CD00274135 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3NQ697ND22;
 				IBSC_MODULE = WatchLanternhsk_Extension;
 				INFOPLIST_FILE = WatchLanternhsk/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rlc.lanternhsk.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Flashcards;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
