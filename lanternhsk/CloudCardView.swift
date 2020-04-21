@@ -70,8 +70,18 @@ struct CloudCardView: View {
                 }
             })
         }
-        
-        content = AnyView(content
+                
+        content = AnyView(
+            VStack {
+                #if os(iOS)
+                NavigationLink(destination: AddCard(sheetVisible: self.$sheetVisible, list: self.list, section: self.section),
+                               isActive: $sheetVisible,
+                               label: { EmptyView() })
+                #endif
+                
+                content
+
+            }
             .onReceive(self.didSave) { _ in
                 (self.cloudCards, self.cards) = self.getCards()
                 
@@ -93,9 +103,7 @@ struct CloudCardView: View {
                             Text("Add")
                     })
                 }
-        ).sheet(isPresented: $sheetVisible) {
-            AddCard(sheetVisible: self.$sheetVisible, list: self.list, section: self.section)
-        }
+        )
         
         #else
         return GeometryReader { geometry in
