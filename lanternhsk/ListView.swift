@@ -12,6 +12,11 @@ import CoreData
 struct ListView: View {
     @State var lists: [ListEntity] = []
 
+    @State private var isShowingAlert = false
+    @State private var searchInput = ""
+    
+    @State private var searchPresented = false
+    
     init() {
         let request : NSFetchRequest<ListEntity> = ListEntity.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(keyPath: \ListEntity.objectID, ascending: true)]
@@ -45,6 +50,11 @@ struct ListView: View {
                 .padding()
                 .frame(height: 50)
             }
+            
+            NavigationLink(destination: LazyView(SearchView(query: self.searchInput)),
+                           isActive: $searchPresented,
+                           label: { EmptyView() }
+            )
         }
 
         #if os(watchOS)
@@ -53,7 +63,24 @@ struct ListView: View {
             .focusable(true)
         #else
         return list
-          .navigationBarTitle("Lists", displayMode: .inline)
+            .textFieldAlert(isShowing: $isShowingAlert,
+                            text: $searchInput,
+                            title: "Search") {
+                                self.searchPresented = true
+                                
+        }
+        .navigationBarTitle("Lists", displayMode: .inline)
+        .navigationBarItems(trailing:
+            Button(action: {
+                self.searchInput = ""
+                withAnimation {
+                    self.isShowingAlert.toggle()
+                }
+            }) {
+                Image(systemName: "magnifyingglass").imageScale(.large)
+            }
+                
+        )
         #endif
     }
 }

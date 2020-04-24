@@ -46,7 +46,8 @@ private struct CardRowSideOne: View {
     @State var cardDetails: CardModalItem?
     
     @Binding var card: VocabCard
-    
+    let listName: String?
+
     var isStarred: Bool {
         return studyManager.isStarred(card: card)
     }
@@ -74,7 +75,7 @@ private struct CardRowSideOne: View {
             
             VStack(alignment: .leading) {
                 Text(card.word).font(.title)
-                Text(card.pinyin).font(.subheadline)
+                Text(listName ?? card.pinyin).font(.subheadline)
             }
             .padding([.top, .bottom], 5.0)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -95,16 +96,34 @@ private struct CardRowSideTwo: View {
 
 struct CardRow: View {
     @State private var flipped: Bool = false
-    
     @Binding var card: VocabCard
     
-    init(card: Binding<VocabCard>) {
+    let showListName: Bool
+    let listName: String?
+    
+    init(card: Binding<VocabCard>, showListName: Bool = false) {
         self._card = card
+        self.showListName = showListName
+        
+        if showListName {
+            if let entity = card.wrappedValue.entity as? CardEntity {
+                self.listName = entity.list?.name ?? ""
+                
+            } else if let entity = card.wrappedValue.entity as? CloudCardEntity{
+                self.listName = (entity.list?.name ?? "")
+                    + " - "
+                    + (entity.section?.name ?? "")
+            } else {
+                self.listName = nil
+            }
+        } else {
+            self.listName = nil
+        }
     }
     
     var body: some View {
         ZStack {
-            CardRowSideOne(card: $card)
+            CardRowSideOne(card: $card, listName: listName)
                 .rotation3DEffect(.degrees(self.flipped ? 180.0 : 0.0), axis: (x: 1.0, y: 0.0, z: 0.0))
                 .zIndex(self.flipped ? 0 : 1)
                 .opacity(self.flipped ? 0 : 1)

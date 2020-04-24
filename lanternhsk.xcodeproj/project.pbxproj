@@ -66,6 +66,8 @@
 		8AD5260523A634CD00274135 /* Flashcards.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8AD525E423A634CA00274135 /* Flashcards.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8AD5260E23A6354300274135 /* VocabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525DC23A6270F00274135 /* VocabManager.swift */; };
 		8AD5261023A6354300274135 /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD525E023A62FA600274135 /* CardRow.swift */; };
+		8ADDCA8E2452DEC70054D912 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADDCA8D2452DEC70054D912 /* SearchView.swift */; };
+		8ADDCA8F2452DEC70054D912 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADDCA8D2452DEC70054D912 /* SearchView.swift */; };
 		8AE43360240509AC00E5C977 /* StudyTone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE4335F240509AC00E5C977 /* StudyTone.swift */; };
 		8AE43365240513D400E5C977 /* StudyToneInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE43364240513D400E5C977 /* StudyToneInterfaceController.swift */; };
 		8AED1937242DD69D006A47F4 /* coredata_populate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8AED1935242DD69D006A47F4 /* coredata_populate.xcdatamodeld */; };
@@ -168,6 +170,7 @@
 		8AD525FD23A634CC00274135 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AD5260023A634CD00274135 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8AD5260223A634CD00274135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8ADDCA8D2452DEC70054D912 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		8AE4335F240509AC00E5C977 /* StudyTone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTone.swift; sourceTree = "<group>"; };
 		8AE43364240513D400E5C977 /* StudyToneInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyToneInterfaceController.swift; sourceTree = "<group>"; };
 		8AED1936242DD69D006A47F4 /* coredata_populate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coredata_populate.xcdatamodel; sourceTree = "<group>"; };
@@ -238,6 +241,7 @@
 				8AD525CA23A6253600274135 /* SceneDelegate.swift */,
 				8A64F9DB23AB6E9A0080F7B8 /* MainView.swift */,
 				8A7B0F6623AA0B9200DC1645 /* ListView.swift */,
+				8ADDCA8D2452DEC70054D912 /* SearchView.swift */,
 				8AD525CC23A6253600274135 /* CardView.swift */,
 				8AF2864A242B2F2C007E606D /* CloudListView.swift */,
 				8AF2864D242B6845007E606D /* CloudSectionView.swift */,
@@ -475,6 +479,7 @@
 				8A5E5CF0242C933D00691726 /* AddCard.swift in Sources */,
 				8AAEA8C02435C981004E1E16 /* StudyToneModel.swift in Sources */,
 				8AD525E123A62FA600274135 /* CardRow.swift in Sources */,
+				8ADDCA8E2452DEC70054D912 /* SearchView.swift in Sources */,
 				8A64F9D723AB667D0080F7B8 /* StudyView.swift in Sources */,
 				8AE43360240509AC00E5C977 /* StudyTone.swift in Sources */,
 				8A68444E243ECB010032C963 /* SettingsView.swift in Sources */,
@@ -504,6 +509,7 @@
 				8A5E5CEE242C8F4700691726 /* CloudCardView.swift in Sources */,
 				8AA4D9B523FBD77B00FF13C0 /* StudyVocab.swift in Sources */,
 				8A638F8123B35DA300D4DD7F /* StudyManager.swift in Sources */,
+				8ADDCA8F2452DEC70054D912 /* SearchView.swift in Sources */,
 				8A5E5CEB242C8A6900691726 /* CardView.swift in Sources */,
 				8A61F0752408BFAB00B434A0 /* Extensions.swift in Sources */,
 				8AD525FC23A634CC00274135 /* ComplicationController.swift in Sources */,
