@@ -43,15 +43,93 @@ struct TextField_UI : UIViewRepresentable {
             self.field = field
         }
         
+        /*
         func textViewDidChange(_ textView: UITextView) {
             field.text = textView.text
+        }
+*/
+        func textViewDidEndEditing(_ textView: UITextView) {
+            field.text = textView.text
+        }
+        
+    }
+}
+
+struct TextFieldWithFocus: UIViewRepresentable {
+    class Coordinator: NSObject, UITextFieldDelegate {
+        @Binding var text: String
+        @Binding var isFirstResponder: Bool
+        var didBecomeFirstResponder = false
+  
+        var onCommit: () -> Void
+  
+        init(text: Binding<String>, isFirstResponder: Binding<Bool>, onCommit: @escaping () -> Void) {
+            _text = text
+            _isFirstResponder = isFirstResponder
+            self.onCommit = onCommit
+        }
+  
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            text = textField.text ?? ""
+            isFirstResponder = false
+            didBecomeFirstResponder = false
+                        
+            onCommit()
+            return true
+        }
+    }
+  
+    @Binding var text: String
+    var placeholder: String
+    @Binding var isFirstResponder: Bool
+    var textAlignment: NSTextAlignment = .left
+    var isSecure: Bool = false
+    var keyboardType: UIKeyboardType = .default
+    var returnKeyType: UIReturnKeyType = .default
+    var textContentType: UITextContentType?
+    var textFieldBorderStyle: UITextField.BorderStyle = .none
+    var enablesReturnKeyAutomatically: Bool = false
+  
+    var onCommit: (() -> Void)?
+  
+    func makeUIView(context: UIViewRepresentableContext<TextFieldWithFocus>) -> UITextField {
+        let textField = UITextField(frame: .zero)
+        textField.delegate = context.coordinator
+        textField.placeholder = NSLocalizedString(placeholder, comment: "")
+        textField.textAlignment = textAlignment
+        textField.isSecureTextEntry = isSecure
+        textField.keyboardType = keyboardType
+        textField.returnKeyType = returnKeyType
+        textField.textContentType = textContentType
+        textField.borderStyle = textFieldBorderStyle
+        textField.enablesReturnKeyAutomatically = enablesReturnKeyAutomatically
+        textField.backgroundColor = nil
+        textField.font = UIFont.systemFont(ofSize: 17)
+        textField.textColor = .black
+        
+        return textField
+    }
+  
+    func makeCoordinator() -> TextFieldWithFocus.Coordinator {
+        return Coordinator(text: $text, isFirstResponder: $isFirstResponder, onCommit: {
+            self.onCommit?()
+        })
+    }
+  
+    func updateUIView(_ uiView: UITextField, context: UIViewRepresentableContext<TextFieldWithFocus>) {
+        uiView.text = text
+        if isFirstResponder && !context.coordinator.didBecomeFirstResponder {
+            uiView.becomeFirstResponder()
+            context.coordinator.didBecomeFirstResponder = true
         }
     }
 }
 
+
 struct TextFieldAlert<Presenting>: View where Presenting: View {
     @Binding var isShowing: Bool
     @Binding var text: String
+
     let presenting: Presenting
     let title: String
     var action: (() -> Void)?
@@ -61,7 +139,20 @@ struct TextFieldAlert<Presenting>: View where Presenting: View {
             self.presenting.disabled(self.isShowing)
             VStack {
                 Text(self.title).foregroundColor(.black)
-                TextField("", text: self.$text).id(self.isShowing).foregroundColor(.black)
+                
+                TextFieldWithFocus(text: self.$text,
+                                   placeholder: "",
+                                   isFirstResponder: self.$isShowing,
+                                   onCommit: {
+                                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                                    self.isShowing = false                                    
+                                    self.action?()
+                                    
+                                    
+                })
+                    .id(self.isShowing)
+                    .foregroundColor(.black)
+                
                 Divider()
                 HStack {
                     Button(action: {
@@ -72,16 +163,6 @@ struct TextFieldAlert<Presenting>: View where Presenting: View {
                         Text("Cancel").frame(minWidth: 0, maxWidth: .infinity)
                     }
                     
-                    Button(action: {
-                        withAnimation {
-                            self.isShowing.toggle()
-                        }
-                        
-                        self.action?()
-
-                    }) {
-                        Text("OK").frame(minWidth: 0, maxWidth: .infinity)
-                    }
                 }
             }
             .padding()

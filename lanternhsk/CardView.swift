@@ -53,16 +53,7 @@ struct CardView: View {
             content
                 .environment(\.defaultMinListRowHeight, geometry.size.height)
                 .listStyle(CarouselListStyle()).focusable(true)
-        }.contextMenu(menuItems: {
-            Button(action: {
-                print("Refresh")
-            }, label: {
-                VStack{
-                    Image(systemName: "arrow.clockwise").font(.title)
-                    Text("Refresh view")
-                }
-            })
-        }).navigationBarTitle(list.name!)
+        }.navigationBarTitle(list.name!)
         #else
         return content.navigationBarTitle(list.name!)
         #endif

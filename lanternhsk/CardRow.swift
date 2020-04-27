@@ -46,6 +46,8 @@ private struct CardRowSideOne: View {
     @State var cardDetails: CardModalItem?
     
     @Binding var card: VocabCard
+    @State var trigger: Bool = false
+
     let listName: String?
 
     var isStarred: Bool {
@@ -53,16 +55,20 @@ private struct CardRowSideOne: View {
     }
 
     var body: some View {
-        ZStack {
+        print("build side one \(trigger)")
+
+        return ZStack {
             HStack(spacing: 0) {
                 Spacer()
                 ImageButton(iconName: isStarred ? "star.fill": "star",
                             handler: {
                                 if (self.isStarred) {
                                     self.studyManager.removeFromStudy(card: self.card)
-                                    
+                                    self.trigger.toggle()
+
                                 } else {
                                     self.studyManager.addToStudy(card: self.card)
+                                    self.trigger.toggle()
                                 }
                 })
                 
@@ -97,7 +103,7 @@ private struct CardRowSideTwo: View {
 struct CardRow: View {
     @State private var flipped: Bool = false
     @Binding var card: VocabCard
-    
+
     let showListName: Bool
     let listName: String?
     

@@ -35,6 +35,20 @@
             </objects>
             <point key="canvasLocation" x="493" y="23"/>
         </scene>
+        <!--SearchResults-->
+        <scene sceneID="P8W-qC-fD5">
+            <objects>
+                <hostingController identifier="SearchResults" id="bsy-ZO-0P6" customClass="SearchResultsHostingController" customModule="Flashcards_Extension"/>
+            </objects>
+            <point key="canvasLocation" x="-443" y="260"/>
+        </scene>
+        <!--SearchQuery-->
+        <scene sceneID="3kJ-vq-cnQ">
+            <objects>
+                <hostingController identifier="SearchQuery" id="pfs-hs-5AV" customClass="SearchQueryInterfaceController" customModule="Flashcards_Extension"/>
+            </objects>
+            <point key="canvasLocation" x="-223" y="258"/>
+        </scene>
         <!--StudyTone-->
         <scene sceneID="VaT-40-gCT">
             <objects>

@@ -136,6 +136,9 @@ class StudyManager: ObservableObject {
     @Published var cards = [StudyCard]()
     
     let cardsChanged = PassthroughSubject<Void, Never>()
+    let searchStarted = PassthroughSubject<Void, Never>()
+
+    @Published var searchQuery: String = ""
     
     var deck: StudyDeck?
     let questionAdded = PassthroughSubject<Void, Never>()
@@ -198,7 +201,7 @@ class StudyManager: ObservableObject {
 
     func addToStudy(card: VocabCard) {
         let context = CoreDataStack.shared.persistentContainer.viewContext
-        
+
         if let starCard = getStarCardEntity(card: card) {
             starCard.starred = true
             try! context.save()

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A2BDD3D24567AA600A8BF70 /* SearchInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2BDD3C24567AA600A8BF70 /* SearchInterfaceController.swift */; };
 		8A2C33412436D81E00A76539 /* ToneGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2C33402436D81E00A76539 /* ToneGestureRecognizer.swift */; };
 		8A2C334324371DE800A76539 /* ToneGestureTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2C334224371DE800A76539 /* ToneGestureTracker.swift */; };
 		8A2C334424371DE800A76539 /* ToneGestureTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2C334224371DE800A76539 /* ToneGestureTracker.swift */; };
@@ -124,6 +125,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8A2BDD3C24567AA600A8BF70 /* SearchInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInterfaceController.swift; sourceTree = "<group>"; };
 		8A2C33402436D81E00A76539 /* ToneGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToneGestureRecognizer.swift; sourceTree = "<group>"; };
 		8A2C334224371DE800A76539 /* ToneGestureTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToneGestureTracker.swift; sourceTree = "<group>"; };
 		8A5E5CEC242C8F4700691726 /* CloudCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudCardView.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				8AD525F723A634CC00274135 /* ListsHostingController.swift */,
 				8A64F9D923AB67BB0080F7B8 /* StudyHostingController.swift */,
 				8AE43364240513D400E5C977 /* StudyToneInterfaceController.swift */,
+				8A2BDD3C24567AA600A8BF70 /* SearchInterfaceController.swift */,
 				8A684450243ED4D40032C963 /* SettingsHostingController.swift */,
 				8AD525F923A634CC00274135 /* ExtensionDelegate.swift */,
 				8AD525FB23A634CC00274135 /* ComplicationController.swift */,
@@ -499,6 +502,7 @@
 				8AE43365240513D400E5C977 /* StudyToneInterfaceController.swift in Sources */,
 				8AF2864F242B6845007E606D /* CloudSectionView.swift in Sources */,
 				8A684451243ED4D40032C963 /* SettingsHostingController.swift in Sources */,
+				8A2BDD3D24567AA600A8BF70 /* SearchInterfaceController.swift in Sources */,
 				8AD5260E23A6354300274135 /* VocabManager.swift in Sources */,
 				8A68444F243ECB010032C963 /* SettingsView.swift in Sources */,
 				8AED1938242DD69D006A47F4 /* coredata_populate.xcdatamodeld in Sources */,

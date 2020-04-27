@@ -10,6 +10,7 @@ import SwiftUI
 import CoreData
 
 struct ListView: View {
+    @EnvironmentObject var studyManager: StudyManager
     @State var lists: [ListEntity] = []
 
     @State private var isShowingAlert = false
@@ -61,6 +62,17 @@ struct ListView: View {
         return list
             .navigationBarTitle("Lists")
             .focusable(true)
+            .contextMenu(menuItems: {
+                Button(action: {
+                    self.studyManager.searchStarted.send()
+
+                }, label: {
+                    VStack{
+                        Image(systemName: "magnifyingglass").font(.title)
+                        Text("Search")
+                    }
+                })
+            })
         #else
         return list
             .textFieldAlert(isShowing: $isShowingAlert,
@@ -76,9 +88,9 @@ struct ListView: View {
                 withAnimation {
                     self.isShowingAlert.toggle()
                 }
-            }) {
-                Image(systemName: "magnifyingglass").imageScale(.large)
-            }
+            }, label: {
+                Text("Search")
+            })
                 
         )
         #endif
