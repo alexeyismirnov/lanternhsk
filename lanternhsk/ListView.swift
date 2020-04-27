@@ -40,24 +40,27 @@ struct ListView: View {
     }
     
     var body: some View {
-        let list = List {
-            ForEach(lists, id: \.id) { list in
-                self.buildItem(list)
-            }
-            NavigationLink(destination: LazyView(CloudListView())) {
-                VStack(alignment: .leading) {
-                    Text("Custom...").font(.headline)
+        let list =
+            VStack {
+                NavigationLink(destination: LazyView(SearchView(query: self.searchInput)),
+                               isActive: $searchPresented,
+                               label: { EmptyView() }
+                ).frame(width: 0, height: 0)
+                
+                List {
+                    ForEach(lists, id: \.id) { list in
+                        self.buildItem(list)
+                    }
+                    NavigationLink(destination: LazyView(CloudListView())) {
+                        VStack(alignment: .leading) {
+                            Text("Custom...").font(.headline)
+                        }
+                        .padding()
+                        .frame(height: 50)
+                    }
                 }
-                .padding()
-                .frame(height: 50)
-            }
-            
-            NavigationLink(destination: LazyView(SearchView(query: self.searchInput)),
-                           isActive: $searchPresented,
-                           label: { EmptyView() }
-            )
         }
-
+            
         #if os(watchOS)
         return list
             .navigationBarTitle("Lists")

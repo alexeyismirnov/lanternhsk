@@ -26,7 +26,6 @@ class SearchQueryInterfaceController: WKInterfaceController {
                                                 
                                                 if let choice = result?[0] as? String {
                                                     self.studyManager.searchQuery = choice
-                                                    print(choice)
                                                 }
             })
         }
