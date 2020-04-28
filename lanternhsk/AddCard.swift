@@ -33,30 +33,14 @@ final class KeyboardResponder: ObservableObject {
     }
 }
 
-struct LabelTextField : View {
-    var label: String
-    
-    @Binding var text: String
-
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(label).font(.headline)
-            
-            TextField("", text: self.$text)
-                .padding(.all)
-                .border(Color.gray, width: 2)
-                .background(Color.white.opacity(0.5))
-                .cornerRadius(5.0)
-            }
-            .padding(10)
-        
-    }
-}
-
 struct AddCard: View {
     @State private var wordInput = ""
     @State private var pinyinInput = ""
     @State private var translationInput = ""
+    @State private var firstResponder1 = false
+    @State private var firstResponder2 = false
+    @State private var firstResponder3 = false
+
     @State private var selectorIndex = 0
     @State private var csvInput = ""
     
@@ -155,9 +139,9 @@ struct AddCard: View {
                 
                 (selectorIndex == 0) ?
                     AnyView(VStack(alignment: .leading) {
-                        LabelTextField(label: "Word", text: $wordInput)
-                        LabelTextField(label: "Pinyin", text: $pinyinInput)
-                        LabelTextField(label: "Translation", text: $translationInput)
+                        LabelTextField(label: "Character(s)", text: $wordInput, isFirstResponder: $firstResponder1)
+                        LabelTextField(label: "Pinyin", text: $pinyinInput, isFirstResponder: $firstResponder2)
+                        LabelTextField(label: "Translation", text: $translationInput, isFirstResponder: $firstResponder3)
                     }
                     .padding()
                     .padding(.bottom, keyboard.currentHeight)
@@ -182,38 +166,44 @@ struct AddCard: View {
             let context = CoreDataStack.shared.persistentContainer.viewContext
             
             if self.selectorIndex == 0 {
-                if self.wordInput.count == 0 ||
-                    self.pinyinInput.count == 0 ||
-                    self.translationInput.count == 0 {
-                    self.validationError = true
-                    return
-                }
+                self.firstResponder1 = false
+                self.firstResponder2 = false
+                self.firstResponder3 = false
                 
-                var tones = [String]()
-                
-                for pinyin in self.pinyinInput.components(separatedBy: " ") {
-                    if let pinyin = self.formatPinyin(pinyin) {
-                        tones.append(pinyin)
-                        
-                    } else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if self.wordInput.count == 0 ||
+                        self.pinyinInput.count == 0 ||
+                        self.translationInput.count == 0 {
                         self.validationError = true
                         return
                     }
+                    
+                    var tones = [String]()
+                    
+                    for pinyin in self.pinyinInput.components(separatedBy: " ") {
+                        if let pinyin = self.formatPinyin(pinyin) {
+                            tones.append(pinyin)
+                            
+                        } else {
+                            self.validationError = true
+                            return
+                        }
+                    }
+                    
+                    let card = CloudCardEntity(context: context)
+                    card.id = UUID()
+                    card.list = self.list
+                    card.section = self.section
+                    
+                    card.word = self.wordInput
+                    card.pinyin = tones.joined(separator: " ")
+                    card.translation = self.translationInput.trimmingCharacters(in: .whitespacesAndNewlines)
+                    
+                    self.list.wordCount += 1
+                    self.section.wordCount += 1
+                    
+                    try! context.save()
                 }
-                
-                let card = CloudCardEntity(context: context)
-                card.id = UUID()
-                card.list = self.list
-                card.section = self.section
-                
-                card.word = self.wordInput
-                card.pinyin = tones.joined(separator: " ")
-                card.translation = self.translationInput
-                
-                self.list.wordCount += 1
-                self.section.wordCount += 1
-                
-                try! context.save()
                 
             } else {
                 let cards: [VocabCard] = self.loadCSV(self.csvInput)
