@@ -82,7 +82,7 @@ struct VocabCard: Identifiable {
     func getTones() -> [Tone] {
         var tones = [Tone]()
         for str in pinyin
-            .components(separatedBy: CharacterSet(charactersIn: "| ")) 
+            .components(separatedBy: CharacterSet(charactersIn: "|, "))
             .filter({ $0.count > 0 }) {
             if let tone = Tone(str) {
                 tones.append(tone)

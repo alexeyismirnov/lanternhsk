@@ -40,9 +40,9 @@ class StudyToneModel: ObservableObject {
             return
         }
         
-        multiChoice = cards[index].pinyin.contains("|")
+        multiChoice = cards[index].pinyin.contains("|") || cards[index].pinyin.contains(",")
         syllabi = cards[index].pinyin
-            .components(separatedBy: CharacterSet(charactersIn: "| "))
+            .components(separatedBy: CharacterSet(charactersIn: "|, "))
             .filter { $0.count > 0 }
         
         tones = cards[index].getTones()

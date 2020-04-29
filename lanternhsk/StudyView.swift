@@ -86,33 +86,84 @@ struct StudyView: View {
     }
     
     func getActionSheet(deck: StudyDeck) -> ActionSheet {
-        return ActionSheet(title: Text("Study type"),  buttons: [
-            .default(
-            Text("Translation")) {
-                self.actionViewMode = .translation
-                self.showActionView[deck.id] = true
-            },
-            .default(Text("Pinyin")) {
-                self.actionViewMode = .pinyin
-                self.showActionView[deck.id] = true
-            },
-            .default(Text("Tone")) {
-                #if os(iOS)
-                self.actionViewMode = .tone
-                self.showActionView[deck.id] = true
-                #else
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    self.studyManager.deck = deck
-                    self.studyManager.addQuestion()
+        let translation =  ActionSheet.Button.default(Text("Translation")) {
+            self.actionViewMode = .translation
+            self.showActionView[deck.id] = true
+        }
+        
+        let pinyin = ActionSheet.Button.default(Text("Pinyin")) {
+            self.actionViewMode = .pinyin
+            self.showActionView[deck.id] = true
+        }
+        
+        let tone = ActionSheet.Button.default(Text("Tone")) {
+            #if os(iOS)
+            self.actionViewMode = .tone
+            self.showActionView[deck.id] = true
+            #else
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.studyManager.deck = deck
+                self.studyManager.addQuestion()
+            }
+            #endif
+        }
+        
+        let remove = ActionSheet.Button.destructive(Text("Remove")) {
+            self.showActionSheet[deck.id] = false
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                let context = CoreDataStack.shared.persistentContainer.viewContext
+                let request: NSFetchRequest<StarCardEntity> = StarCardEntity.fetchRequest()
+                
+                if let entity = deck.entity as? ListEntity,
+                    let listId = entity.id {
+                    request.predicate = NSPredicate(format: "listId == %@ && sectionId == %@ && starred == %@",
+                                                    listId as CVarArg, listId as CVarArg, NSNumber(value: true))
+                    
+                    let starCards = try! context.fetch(request)
+                    
+                    for sc in starCards {
+                        sc.starred = false
+                        try! context.save()
+                    }
+                    
+                } else if let entity = deck.entity as? CloudSectionEntity,
+                    let listId = entity.list?.id,
+                    let sectionId = entity.id {
+                    request.predicate = NSPredicate(format: "listId == %@ && sectionId == %@ && starred = %@",
+                                                    listId as CVarArg, sectionId as CVarArg, NSNumber(value: true))
+                    
+                    let starCards = try! context.fetch(request)
+                    
+                    for sc in starCards {
+                        sc.starred = false
+                        try! context.save()
+                    }
                 }
-                #endif
-            },
+                
+                self.reload()
+            }
+        }
+        
+        let cancel = ActionSheet.Button.cancel(Text("Cancel")) {
+            print("hit abort")
+        }
+        
+        #if os(iOS)
+        return ActionSheet(title: Text("Study type"),  buttons: [
+            translation, pinyin, tone, remove, cancel
         ])
+        #elseif os(watchOS)
+        return ActionSheet(title: Text("Study type"),  buttons: [
+            tone, pinyin, translation, remove
+        ])
+        #endif
+        
     }
     
     func getContent() -> AnyView {
         if studyLists.count == 0 {
-            return AnyView(Text("You did not select any words for study")
+            return AnyView(Text("You did not select any words for studying")
                 .multilineTextAlignment(.center))
         }
         

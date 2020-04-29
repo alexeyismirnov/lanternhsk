@@ -28,12 +28,14 @@ struct StudyDeck:  Identifiable {
     var id: UUID
     var name: String
     var cards: [VocabCard]
+    var entity: AnyObject
 }
 
 extension StudyDeck {
     init?(entity: AnyObject) {
         self.id = UUID()
         self.cards = [VocabCard]()
+        self.entity = entity
         
         let context = CoreDataStack.shared.persistentContainer.viewContext
         let request: NSFetchRequest<StarCardEntity> = StarCardEntity.fetchRequest()

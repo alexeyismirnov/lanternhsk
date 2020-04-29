@@ -14,9 +14,7 @@ struct CloudCardView: View {
     var list: CloudListEntity
     var section: CloudSectionEntity
     
-    @State var cloudCards: [CloudCardEntity] = []
     @State var cards: [VocabCard] = []
-
     @State private var sheetVisible = false
 
     private var didSave =  NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)
@@ -25,27 +23,24 @@ struct CloudCardView: View {
         self.list = list
         self.section = section
         
-        let (cloudCards, cards) = getCards()
-        self._cloudCards = State(initialValue: cloudCards)
-        self._cards = State(initialValue: cards)
+        self._cards = State(initialValue: getCards())
     }
     
-    func getCards() -> ([CloudCardEntity], [VocabCard]) {
+    func getCards() -> [VocabCard] {
         let context = CoreDataStack.shared.persistentContainer.viewContext
+        
         let request : NSFetchRequest<CloudCardEntity> =  CloudCardEntity.fetchRequest()
-
         request.sortDescriptors = [NSSortDescriptor(keyPath: \CloudCardEntity.objectID, ascending: true)]
+        
         if let listId = list.id, let sectionId = section.id {
             request.predicate = NSPredicate(format: "list.id == %@ && section.id == %@", listId as CVarArg, sectionId as CVarArg)
             
             let cloudCards : [CloudCardEntity] = try! context.fetch(request)
-            let cards = cloudCards.map { VocabCard(entity: $0) }
+            return cloudCards.map { VocabCard(entity: $0) }
             
-            return (cloudCards, cards)
         } else {
-            return ([], [])
+            return []
         }
-
     }
     
     var body: some View {
@@ -89,11 +84,11 @@ struct CloudCardView: View {
 
             }
             .onReceive(self.didSave) { _ in
-                (self.cloudCards, self.cards) = self.getCards()
+                self.cards = self.getCards()
                 
-        }.onAppear(perform: {
-            (self.cloudCards, self.cards) = self.getCards()
-        }))
+            }.onAppear(perform: {
+                self.cards = self.getCards()
+            }))
         
         #if os(iOS)
         return content

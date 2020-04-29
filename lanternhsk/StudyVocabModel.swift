@@ -73,10 +73,10 @@ class StudyVocabModel: ObservableObject {
             .folding(options: .diacriticInsensitive, locale: nil)
                 
         let comp = pinyin
-            .components(separatedBy: CharacterSet(charactersIn: "| "))
+            .components(separatedBy: CharacterSet(charactersIn: "|, "))
             .filter({ $0.count > 0 })
         
-        if pinyin.contains("|") {
+        if pinyin.contains("|") || pinyin.contains(",") {
             if comp.contains(answer) {
                 answerType = .correct
                 totalCorrect += 1
