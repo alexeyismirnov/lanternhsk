@@ -203,6 +203,8 @@ struct AddCard: View {
                     self.section.wordCount += 1
                     
                     try! context.save()
+                    
+                    self.sheetVisible = false
                 }
                 
             } else {
@@ -247,9 +249,9 @@ struct AddCard: View {
                     
                     try! context.save()
                 }
+                
+                self.sheetVisible = false
             }
-            
-            self.sheetVisible = false
             
         }) {
             Text("Add").bold()

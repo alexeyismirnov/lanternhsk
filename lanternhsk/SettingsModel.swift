@@ -19,31 +19,35 @@ class SettingsModel: ObservableObject {
     static let shared = SettingsModel()
     
     let context = CoreDataStack.shared.persistentContainer.viewContext
-    let request: NSFetchRequest<SettingsEntity> = SettingsEntity.fetchRequest()
-
+    
+    @Published var settings: SettingsEntity = SettingsEntity()
     let settingsChanged = PassthroughSubject<Void, Never>()
 
-    func fetchOrCreate() -> SettingsEntity {
+    init() {
+        self.reload()
+    }
+    
+    func reload() {
+        let request: NSFetchRequest<SettingsEntity> = SettingsEntity.fetchRequest()
+
         let results = try! context.fetch(request)
 
         if let settings = results.first {
-            return settings
+            self.settings = settings
             
         } else {
             let settings = SettingsEntity(context: context)
             settings.language = 0
             settings.numQuestions = 3
-            
-            return settings
+            self.settings = settings
         }
     }
     
     var language: Int  {
         get {
-            return Int(fetchOrCreate().language)
+            return Int(settings.language)
         }
         set (newValue) {
-            let settings = fetchOrCreate()
             settings.language = Int32(newValue)
             try! context.save()
 
@@ -53,10 +57,9 @@ class SettingsModel: ObservableObject {
     
     var numQuestions: Double  {
         get {
-            return Double(fetchOrCreate().numQuestions)
+            return Double(settings.numQuestions)
         }
         set (newValue) {
-            let settings = fetchOrCreate()
             settings.numQuestions = Int32(newValue.rounded())
             try! context.save()
             

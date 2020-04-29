@@ -71,6 +71,7 @@ struct CloudSectionView: View {
                     for index in offsets {
                         self.list.wordCount -= self.sections[index].wordCount
                         context.delete(self.sections[index])
+                        self.sections.remove(at: index)
                     }
                     try! context.save()
                 }

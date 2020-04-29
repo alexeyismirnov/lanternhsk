@@ -35,7 +35,7 @@ struct CardView: View {
     }
     
     func buildItem(_ index: Int) -> CardRow {
-        return CardRow(card: self.$cards[index])
+        return CardRow(card: self.cards[index])
     }
     
     var body: some View {

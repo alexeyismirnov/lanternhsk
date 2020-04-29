@@ -54,19 +54,25 @@ struct CloudCardView: View {
         
         if cards.count == 0 {
             content = AnyView(
-                Text("No cards").multilineTextAlignment(.center)
-            )
+                VStack(alignment: .center) {
+                    Text("No cards")
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center))
             
         } else {
             content = AnyView(List {
                 ForEach(cards.indices, id:\.self ){ index in
-                    CardRow(card: self.$cards[index]) }.onDelete { offsets in
+                    CardRow(card: self.cards[index]) }
+                    .onDelete { offsets in
                         for index in offsets {
                             self.list.wordCount -= 1
                             self.section.wordCount -= 1
-                            context.delete(self.cloudCards[index])
+                            
+                            context.delete(self.cards[index].entity as! CloudCardEntity)
+                            self.cards.remove(at: index)
                         }
                         try! context.save()
+                        
                 }
             })
         }

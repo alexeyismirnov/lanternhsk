@@ -45,7 +45,7 @@ struct SearchView: View {
     }
     
     func buildItem(_ index: Int) -> CardRow {
-        return CardRow(card: self.$cards[index], showListName: true)
+        return CardRow(card: self.cards[index], showListName: true)
     }
     
     var body: some View {

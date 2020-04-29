@@ -45,7 +45,7 @@ private struct CardRowSideOne: View {
     @EnvironmentObject var studyManager: StudyManager
     @State var cardDetails: CardModalItem?
     
-    @Binding var card: VocabCard
+    var card: VocabCard
     @State var trigger: Bool = false
 
     let listName: String?
@@ -102,20 +102,20 @@ private struct CardRowSideTwo: View {
 
 struct CardRow: View {
     @State private var flipped: Bool = false
-    @Binding var card: VocabCard
+    var card: VocabCard
 
     let showListName: Bool
     let listName: String?
     
-    init(card: Binding<VocabCard>, showListName: Bool = false) {
-        self._card = card
+    init(card: VocabCard, showListName: Bool = false) {
+        self.card = card
         self.showListName = showListName
         
         if showListName {
-            if let entity = card.wrappedValue.entity as? CardEntity {
+            if let entity = card.entity as? CardEntity {
                 self.listName = entity.list?.name ?? ""
                 
-            } else if let entity = card.wrappedValue.entity as? CloudCardEntity{
+            } else if let entity = card.entity as? CloudCardEntity{
                 self.listName = (entity.list?.name ?? "")
                     + " - "
                     + (entity.section?.name ?? "")
@@ -129,7 +129,7 @@ struct CardRow: View {
     
     var body: some View {
         ZStack {
-            CardRowSideOne(card: $card, listName: listName)
+            CardRowSideOne(card: card, listName: listName)
                 .rotation3DEffect(.degrees(self.flipped ? 180.0 : 0.0), axis: (x: 1.0, y: 0.0, z: 0.0))
                 .zIndex(self.flipped ? 0 : 1)
                 .opacity(self.flipped ? 0 : 1)

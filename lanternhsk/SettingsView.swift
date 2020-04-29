@@ -13,6 +13,8 @@ struct SettingsView: View {
     @ObservedObject var model = SettingsModel()
     @State private var trigger: Bool = false
 
+    private var didSave =  NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)
+
     var body: some View {
         print("\(trigger)")
         
@@ -36,6 +38,16 @@ struct SettingsView: View {
             }
             .onReceive(model.settingsChanged, perform: { _ in
                 self.trigger.toggle()
+            })
+                
+            .onReceive(self.didSave) { _ in
+                self.model.reload()
+                self.trigger.toggle()
+                    
+            }.onAppear(perform: {
+                self.model.reload()
+                self.trigger.toggle()
+                
             })
         
         #if os(watchOS)

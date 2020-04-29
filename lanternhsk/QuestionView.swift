@@ -82,6 +82,7 @@ struct QuestionAnswered: View {
 struct GetAnswer: View {
     @ObservedObject var model: StudyVocabModel
     @Binding var answerStr: String
+    @State var isShowing: Bool = false
 
     init(_ model: StudyVocabModel, answerStr: Binding<String>) {
         self.model = model
@@ -89,21 +90,38 @@ struct GetAnswer: View {
     }
         
     var body: some View {
-        VStack {
-            Spacer()
-            
+        let placeholder = model.type == .translation
+            ? "Translate"
+            : "Pinyin"
+        
+        return VStack {
+            Spacer().layoutPriority(10)
             VStack {
                 Text(model.currentCard.word).font(.title)
-                TextField(model.type == .translation
-                    ? "Translate"
-                    : "Pinyin"
-                    , text: $answerStr, onCommit: {
+                
+                #if os(iOS)
+                TextFieldWithFocus(placeholder: placeholder,
+                                   text: $answerStr,
+                                   isFirstResponder: self.$isShowing,
+                                   textAlignment: .center,
+                                   onCommit: {
+                                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                                                    to: nil,
+                                                                    from: nil,
+                                                                    for: nil)
+                                    self.model.answered(self.answerStr)
+                                    
+                }) .multilineTextAlignment(.center)
+                
+                #else
+                TextField(placeholder, text: $answerStr, onCommit: {
                     self.model.answered(self.answerStr)
-                })
-                    .multilineTextAlignment(.center)
+                }).multilineTextAlignment(.center)
+                
+                #endif
             }
             
-            Spacer()
+            Spacer().layoutPriority(10)
             
             SmallButton(type: .skip) { self.model.answered(nil) }
         }

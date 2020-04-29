@@ -96,9 +96,11 @@ struct TextFieldWithFocus: UIViewRepresentable {
         }
     }
   
+    var placeholder: String = ""
     @Binding var text: String
-    var placeholder: String
     @Binding var isFirstResponder: Bool
+
+    var textColor: UIColor?
     var textAlignment: NSTextAlignment = .left
     var isSecure: Bool = false
     var keyboardType: UIKeyboardType = .default
@@ -120,9 +122,12 @@ struct TextFieldWithFocus: UIViewRepresentable {
         textField.textContentType = textContentType
         textField.borderStyle = textFieldBorderStyle
         textField.enablesReturnKeyAutomatically = enablesReturnKeyAutomatically
-        textField.backgroundColor = nil
+        textField.backgroundColor = .clear
         textField.font = UIFont.systemFont(ofSize: 17)
-        textField.textColor = .black
+        
+        if let textColor = textColor {
+            textField.textColor = textColor
+        }
         
         return textField
     }
@@ -153,13 +158,13 @@ struct LabelTextField : View {
         VStack(alignment: .leading) {
             Text(label).font(.headline)
             
-            TextFieldWithFocus(text: self.$text,
-                               placeholder: "",
-                               isFirstResponder: self.$isFirstResponder,
-                               onCommit: {})
+            TextFieldWithFocus(
+                text: self.$text,
+                isFirstResponder: self.$isFirstResponder,
+                onCommit: {})
                 .padding(.all)
                 .border(Color.gray, width: 2)
-                .background(Color.white.opacity(0.5))
+                // .background(Color.white.opacity(0.5))
                 .cornerRadius(5.0)
             }
             .padding(10)
@@ -182,13 +187,12 @@ struct TextFieldAlert<Presenting>: View where Presenting: View {
                 Text(self.title).foregroundColor(.black)
                 
                 TextFieldWithFocus(text: self.$text,
-                                   placeholder: "",
                                    isFirstResponder: self.$isShowing,
+                                   textColor: .black,
                                    onCommit: {
                                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                                     self.isShowing = false                                    
                                     self.action?()
-
                 })
                     .id(self.isShowing)
                     .foregroundColor(.black)

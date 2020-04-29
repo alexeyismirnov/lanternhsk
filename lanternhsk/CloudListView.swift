@@ -65,6 +65,7 @@ struct CloudListView: View {
                 }.onDelete { offsets in
                     for index in offsets {
                         context.delete(self.lists[index])
+                        self.lists.remove(at: index)
                     }
                     try! context.save()
                 }
