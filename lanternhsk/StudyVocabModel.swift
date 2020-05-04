@@ -72,9 +72,11 @@ class StudyVocabModel: ObservableObject {
         let pinyin = currentCard.pinyin.lowercased()
             .folding(options: .diacriticInsensitive, locale: nil)
                 
-        let comp = pinyin.lowercased()
+        let comp = pinyin
             .components(separatedBy: CharacterSet(charactersIn: "|, "))
             .filter({ $0.count > 0 })
+        
+        let answer = answer.lowercased()
         
         if pinyin.contains("|") || pinyin.contains(",") {
             if comp.contains(answer) {
