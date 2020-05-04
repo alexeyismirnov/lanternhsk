@@ -50,11 +50,11 @@ class StudyVocabModel: ObservableObject {
     }
     
     func checkTranslation(_ answer: String) {
-        let trans = currentCard.translation
+        let trans = currentCard.translation.lowercased()
             .components(separatedBy: CharacterSet(charactersIn: " ;,!?()|"))
             .filter { $0.count > 2 }
         
-        let ans = answer
+        let ans = answer.lowercased()
             .components(separatedBy: CharacterSet(charactersIn: " ;,!?()|"))
             .filter { $0.count > 2 }
         
@@ -69,10 +69,10 @@ class StudyVocabModel: ObservableObject {
     }
     
     func checkPinyin(_ answer: String) {
-        let pinyin = currentCard.pinyin
+        let pinyin = currentCard.pinyin.lowercased()
             .folding(options: .diacriticInsensitive, locale: nil)
                 
-        let comp = pinyin
+        let comp = pinyin.lowercased()
             .components(separatedBy: CharacterSet(charactersIn: "|, "))
             .filter({ $0.count > 0 })
         
@@ -118,7 +118,6 @@ class StudyVocabModel: ObservableObject {
         if var answer = answer {
             answer = answer
                 .trimmingCharacters(in: .whitespacesAndNewlines)
-                .lowercased()
             
             if type == .translation {
                 checkTranslation(answer)

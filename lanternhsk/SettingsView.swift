@@ -10,7 +10,7 @@ import SwiftUI
 import CoreData
 
 struct SettingsView: View {    
-    @ObservedObject var model = SettingsModel()
+    @ObservedObject var model = SettingsModel.shared
     @State private var trigger: Bool = false
 
     private var didSave =  NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)

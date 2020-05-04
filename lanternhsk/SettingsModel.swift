@@ -38,7 +38,7 @@ class SettingsModel: ObservableObject {
         } else {
             let settings = SettingsEntity(context: context)
             settings.language = 0
-            settings.numQuestions = 3
+            settings.numQuestions = 5
             self.settings = settings
         }
     }
