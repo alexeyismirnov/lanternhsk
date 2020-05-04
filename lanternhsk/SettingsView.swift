@@ -34,6 +34,18 @@ struct SettingsView: View {
                     Text("Questions: \(Int(model.numQuestions))").font(.headline)
                     
                     Slider(value: $model.numQuestions, in: 1...20, step: 1)
+                    
+                    #if os(iOS)
+                    Button(action: {
+                        let app_id = 1511448888
+                        let link = "itms-apps://itunes.apple.com/xy/app/foo/id\(app_id)?action=write-review"
+                        
+                        guard let url = URL(string: link) else { return }
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }) {
+                        Text("Rate app...").font(.headline).padding(.vertical)
+                    }
+                    #endif
                 }
             }
             .onReceive(model.settingsChanged, perform: { _ in
