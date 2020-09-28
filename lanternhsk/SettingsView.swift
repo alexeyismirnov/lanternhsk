@@ -46,7 +46,7 @@ struct SettingsView: View {
                         Text("Rate app...").font(.headline).padding(.vertical)
                     }
                     #endif
-                }
+                }.listStyle(PlainListStyle())
             }
             .onReceive(model.settingsChanged, perform: { _ in
                 self.trigger.toggle()

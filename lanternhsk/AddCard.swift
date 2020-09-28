@@ -8,44 +8,14 @@
 
 import SwiftUI
 
-final class KeyboardResponder: ObservableObject {
-    private var notificationCenter: NotificationCenter
-    @Published private(set) var currentHeight: CGFloat = 0
-
-    init(center: NotificationCenter = .default) {
-        notificationCenter = center
-        notificationCenter.addObserver(self, selector: #selector(keyBoardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(keyBoardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-
-    deinit {
-        notificationCenter.removeObserver(self)
-    }
-
-    @objc func keyBoardWillShow(notification: Notification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            currentHeight = keyboardSize.height
-        }
-    }
-
-    @objc func keyBoardWillHide(notification: Notification) {
-        currentHeight = 0
-    }
-}
-
 struct AddCard: View {
     @State private var wordInput = ""
     @State private var pinyinInput = ""
     @State private var translationInput = ""
-    @State private var firstResponder1 = false
-    @State private var firstResponder2 = false
-    @State private var firstResponder3 = false
 
     @State private var selectorIndex = 0
     @State private var csvInput = ""
     
-    @ObservedObject private var keyboard = KeyboardResponder()
-
     @State private var validationError = false
     @Binding var sheetVisible: Bool
 
@@ -139,12 +109,17 @@ struct AddCard: View {
                 
                 (selectorIndex == 0) ?
                     AnyView(VStack(alignment: .leading) {
-                        LabelTextField(label: "Character(s)", text: $wordInput, isFirstResponder: $firstResponder1)
-                        LabelTextField(label: "Pinyin", text: $pinyinInput, isFirstResponder: $firstResponder2)
-                        LabelTextField(label: "Translation", text: $translationInput, isFirstResponder: $firstResponder3)
+                        TextField("Character(s)", text: $wordInput).ignoresSafeArea(.keyboard, edges: .bottom).padding(.all)
+                            .border(Color.gray, width: 2)
+                            .cornerRadius(5.0)
+                        TextField("Pinyin", text: $pinyinInput).ignoresSafeArea(.keyboard, edges: .bottom).padding(.all)
+                            .border(Color.gray, width: 2)
+                            .cornerRadius(5.0)
+                        TextField("Translation", text: $translationInput).ignoresSafeArea(.keyboard, edges: .bottom).padding(.all)
+                            .border(Color.gray, width: 2)
+                            .cornerRadius(5.0)
                     }
                     .padding()
-                    .padding(.bottom, keyboard.currentHeight)
                     .edgesIgnoringSafeArea(.bottom)
                     .animation(.easeOut(duration: 0.16))
                     .listRowInsets(EdgeInsets()))
@@ -166,10 +141,6 @@ struct AddCard: View {
             let context = CoreDataStack.shared.persistentContainer.viewContext
             
             if self.selectorIndex == 0 {
-                self.firstResponder1 = false
-                self.firstResponder2 = false
-                self.firstResponder3 = false
-                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if self.wordInput.count == 0 ||
                         self.pinyinInput.count == 0 ||

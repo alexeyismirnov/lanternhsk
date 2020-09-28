@@ -18,7 +18,7 @@ struct ListView: View {
     
     @State private var searchPresented = false
     
-    init() {
+    init() {        
         let request : NSFetchRequest<ListEntity> = ListEntity.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(keyPath: \ListEntity.objectID, ascending: true)]
         
@@ -40,9 +40,11 @@ struct ListView: View {
     }
     
     var body: some View {
+        print("build \(searchInput)")
+        
         let list =
             VStack {
-                NavigationLink(destination: LazyView(SearchView(query: self.searchInput)),
+                NavigationLink(destination: LazyView(SearchView(query: searchInput)),
                                isActive: $searchPresented,
                                label: { EmptyView() }
                 ).frame(width: 0, height: 0)
@@ -58,7 +60,7 @@ struct ListView: View {
                         .padding()
                         .frame(height: 50)
                     }
-                }
+                }.listStyle(PlainListStyle())
         }
             
         #if os(watchOS)
@@ -78,12 +80,22 @@ struct ListView: View {
             })
         #else
         return list
+            .alert(isPresented: $isShowingAlert, TextAlert(title: "Search", action: {
+                if let input = $0  {
+                    searchInput = input
+                    self.searchPresented = true
+                    
+                }
+            }))
+            /*
             .textFieldAlert(isShowing: $isShowingAlert,
                             text: $searchInput,
                             title: "Search") {
+                print("input \(searchInput)")
                                 self.searchPresented = true
                                 
         }
+ */
         .navigationBarTitle("Lists", displayMode: .inline)
         .navigationBarItems(trailing:
             Button(action: {

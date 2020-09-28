@@ -19,7 +19,6 @@ struct CloudSectionView: View {
     
     #if os(iOS)
     @State private var isShowingAlert = false
-    @State private var alertInput = ""
     #endif
 
     @State private var trigger: Bool = false
@@ -93,7 +92,6 @@ struct CloudSectionView: View {
         return content.navigationBarItems(trailing:
             HStack {
                 Button(action: {
-                    self.alertInput = ""
                     withAnimation {
                         self.isShowingAlert.toggle()
                     }
@@ -104,6 +102,24 @@ struct CloudSectionView: View {
                 
             }
         )
+        .alert(isPresented: $isShowingAlert, TextAlert(title: "Add Section", action: {
+            if let alertInput = $0  {
+                DispatchQueue.main.async {
+                    let section = CloudSectionEntity(context: context)
+                    section.id = UUID()
+                    section.list = self.list
+                    section.name = alertInput
+                    section.wordCount = 0
+                    
+                    try! context.save()
+                    self.sections = self.getSections()
+                    self.trigger.toggle()
+                }
+                
+            }
+        }))
+        
+        /*
             .textFieldAlert(isShowing: $isShowingAlert,
                             text: $alertInput,
                             title: "Add Section") {
@@ -120,6 +136,7 @@ struct CloudSectionView: View {
                                 }
                                 
         }
+ */
         
         #else
         return content

@@ -82,7 +82,6 @@ struct QuestionAnswered: View {
 struct GetAnswer: View {
     @ObservedObject var model: StudyVocabModel
     @Binding var answerStr: String
-    @State var isShowing: Bool = false
 
     init(_ model: StudyVocabModel, answerStr: Binding<String>) {
         self.model = model
@@ -100,18 +99,17 @@ struct GetAnswer: View {
                 Text(model.currentCard.word).font(.title)
                 
                 #if os(iOS)
-                TextFieldWithFocus(placeholder: placeholder,
-                                   text: $answerStr,
-                                   isFirstResponder: self.$isShowing,
-                                   textAlignment: .center,
-                                   onCommit: {
-                                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
-                                                                    to: nil,
-                                                                    from: nil,
-                                                                    for: nil)
-                                    self.model.answered(self.answerStr)
-                                    
-                }) .multilineTextAlignment(.center)
+                TextField(placeholder,
+                          text: $answerStr,
+                          onCommit: {
+                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                                            to: nil,
+                                                            from: nil,
+                                                            for: nil)
+                            self.model.answered(self.answerStr)
+                            
+                          }).ignoresSafeArea(.keyboard, edges: .bottom)
+                    .multilineTextAlignment(.center)
                 
                 #else
                 TextField(placeholder, text: $answerStr, onCommit: {
