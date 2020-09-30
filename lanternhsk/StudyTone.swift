@@ -55,7 +55,7 @@ struct StudyTone: View {
             pinyin.font(.headline)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .navigationBarTitle("Draw tone", displayMode: .inline)
+        .navigationTitle("Draw tone")
         .overlay(
             ToneOverlayView { self.model.toneAnswered($0) })
             

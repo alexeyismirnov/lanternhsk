@@ -23,13 +23,15 @@ struct CloudSectionView: View {
 
     @State private var trigger: Bool = false
 
+    @EnvironmentObject var studyManager: StudyManager
+
     init(_ list: CloudListEntity) {
         self.list = list
         self._sections = State(initialValue: getSections())
     }
     
     func buildItem(_ section:CloudSectionEntity) -> some View {
-        let view = LazyView(CloudCardView(self.list, section))
+        let view = LazyView(CloudCardView(self.list, section).environmentObject(studyManager))
         
         return NavigationLink(destination: view) {
             VStack(alignment: .leading) {
@@ -61,6 +63,7 @@ struct CloudSectionView: View {
         if sections.count == 0 {
             content = AnyView(Text("No sections")
                 .multilineTextAlignment(.center))
+            
         } else {
             content = AnyView(List {
                 ForEach(sections, id: \.id) { section in
@@ -83,47 +86,41 @@ struct CloudSectionView: View {
                 self.sections = self.getSections()
                 self.trigger.toggle()
                 
-            })
-            
-            .toolbar {
-                #if os(iOS)
-                // FIXME: without this, back button will disappear
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {}, label: {})
-                }
-                #endif
-                ToolbarItem {
-                    #if os(iOS)
-                    Button(action: {
-                        self.alert(TextAlert(title: "Enter Name", action: {
-                            if let input = $0  {
-                                DispatchQueue.main.async {
-                                    let section = CloudSectionEntity(context: context)
-                                    section.id = UUID()
-                                    section.list = self.list
-                                    section.name = input
-                                    section.wordCount = 0
-                                    
-                                    try! context.save()
-                                    self.sections = self.getSections()
-                                    self.trigger.toggle()
-                                }
-                            }
-                        }))
-                        
-                    },
-                    label: {
-                        Text("Add")
-                    })
-                    #endif
-                }}
-            .navigationTitle(list.name ?? "")
-
-            )
+            }))
         }
         
-        return content
-        
+        return content.toolbar {
+            #if os(iOS)
+            // FIXME: without this, back button will disappear
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {}, label: {})
+            }
+            ToolbarItem {
+                Button(action: {
+                    self.alert(TextAlert(title: "Enter Name", action: {
+                        if let input = $0  {
+                            DispatchQueue.main.async {
+                                let section = CloudSectionEntity(context: context)
+                                section.id = UUID()
+                                section.list = self.list
+                                section.name = input
+                                section.wordCount = 0
+                                
+                                try! context.save()
+                                self.sections = self.getSections()
+                                self.trigger.toggle()
+                            }
+                        }
+                    }))
+                    
+                },
+                label: {
+                    Text("Add")
+                })
+            }
+            #endif
+        }
+        .navigationTitle(list.name ?? "")
     }
 }
 

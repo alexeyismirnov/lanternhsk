@@ -19,6 +19,7 @@ struct CloudListView: View {
     @State private var alertInput = ""
     
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var studyManager: StudyManager
 
     init() {
         let context = CoreDataStack.shared.persistentContainer.viewContext
@@ -30,7 +31,7 @@ struct CloudListView: View {
     }
     
     func buildItem(_ list:CloudListEntity) -> some View {
-        let view = LazyView(CloudSectionView(list))
+        let view = LazyView(CloudSectionView(list).environmentObject(studyManager))
         
         return NavigationLink(destination: view) {
             VStack(alignment: .leading) {
@@ -75,49 +76,45 @@ struct CloudListView: View {
                 
             }.onAppear(perform: {
                 self.reload()
-            })
-            .toolbar {
-                #if os(iOS)
-                // FIXME: without this, back button will disappear
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {}, label: {})
-                }
-                #endif
-                
-                ToolbarItem {
-                    #if os(iOS)
-                    Button(action: {
-                        self.alert(TextAlert(title: "Enter Name", action: {
-                            if let input = $0  {
-                                DispatchQueue.main.async {
-                                    let context = CoreDataStack.shared.persistentContainer.viewContext
-                                    
-                                    let list1 = CloudListEntity(context: context)
-                                    list1.id = UUID()
-                                    list1.name = input
-                                    list1.wordCount = 0
-                                    
-                                    try! context.save()
-                                    
-                                    self.reload()
-                                }
-                            }
-                            
-                        }))
-                        
-                    }, label: {
-                        Text("Add")
-                    })
-                    #endif
-                }
-            }
-            .navigationTitle("Flashcards")
-
-            )
-            
+            }))
         }
         
-        return content
+        return content.toolbar {
+            #if os(iOS)
+            // FIXME: without this, back button will disappear
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {}, label: {})
+            }
+            
+            ToolbarItem {
+                Button(action: {
+                    self.alert(TextAlert(title: "Enter Name", action: {
+                        if let input = $0  {
+                            DispatchQueue.main.async {
+                                let context = CoreDataStack.shared.persistentContainer.viewContext
+                                
+                                let list1 = CloudListEntity(context: context)
+                                list1.id = UUID()
+                                list1.name = input
+                                list1.wordCount = 0
+                                
+                                try! context.save()
+                                
+                                self.reload()
+                            }
+                        }
+                        
+                    }))
+                    
+                }, label: {
+                    Text("Add")
+                })
+            }
+            #endif
+            
+        }
+        .navigationTitle("Flashcards")
+
     }
     
 }

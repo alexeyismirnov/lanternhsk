@@ -71,7 +71,7 @@ struct CloudCardView: View {
                 }
             })
         }
-                
+        
         content = AnyView(
             VStack {
                 #if os(iOS)
@@ -95,10 +95,8 @@ struct CloudCardView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {}, label: {})
                 }
-                #endif
                 
                 ToolbarItem {
-                    #if os(iOS)
                     Button(action: {
                         withAnimation {
                             self.sheetVisible = true
@@ -107,11 +105,13 @@ struct CloudCardView: View {
                     label: {
                         Text("Add")
                     })
-                    #endif
-                }}
+                }
+                #endif
+
+            }
             .navigationTitle(section.name ?? "")
-        )
-        
+         )
+ 
         #if os(iOS)
         return content
 

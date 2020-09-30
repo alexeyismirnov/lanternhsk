@@ -29,7 +29,7 @@ struct ListView: View {
     }
     
     func buildItem(_ list:ListEntity) -> some View {
-        let view = LazyView(CardView(list))
+        let view = LazyView(CardView(list).environmentObject(studyManager))
 
         return NavigationLink(destination: view) {
             VStack(alignment: .leading) {
@@ -53,7 +53,7 @@ struct ListView: View {
                     ForEach(lists, id: \.id) { list in
                         self.buildItem(list)
                     }
-                    NavigationLink(destination: LazyView(CloudListView())) {
+                    NavigationLink(destination: LazyView(CloudListView().environmentObject(studyManager))) {
                         VStack(alignment: .leading) {
                             Text("Custom...").font(.headline)
                         }
@@ -61,7 +61,7 @@ struct ListView: View {
                         .frame(height: 50)
                     }
                 }.listStyle(PlainListStyle())
-        }
+            }
             .toolbar {
                 ToolbarItem {
                     Button(action: {
@@ -75,7 +75,7 @@ struct ListView: View {
                         }))
                         #else
                         self.studyManager.searchStarted.send()
-
+                        
                         #endif
                     }
                     , label: {

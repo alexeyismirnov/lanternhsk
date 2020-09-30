@@ -29,7 +29,6 @@ struct SettingsView: View {
                     }
                     .labelsHidden()
                     .clipped()
-                    .frame(height: 100)
                     
                     Text("Questions: \(Int(model.numQuestions))").font(.headline)
                     
@@ -51,7 +50,6 @@ struct SettingsView: View {
             .onReceive(model.settingsChanged, perform: { _ in
                 self.trigger.toggle()
             })
-                
             .onReceive(self.didSave) { _ in
                 self.model.reload()
                 self.trigger.toggle()
@@ -61,12 +59,12 @@ struct SettingsView: View {
                 self.trigger.toggle()
                 
             })
+            .navigationTitle("Options")
         
         #if os(watchOS)
-        return content.navigationBarTitle("Options")
+        return content
         #else
         return content
-            .navigationBarTitle("Options", displayMode: .inline)
             .onAppear { UITableView.appearance().separatorStyle = .none }
             .onDisappear { UITableView.appearance().separatorStyle = .singleLine }
         #endif

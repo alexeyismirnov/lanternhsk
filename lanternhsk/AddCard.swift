@@ -136,98 +136,107 @@ struct AddCard: View {
         }
         .onAppear { UITableView.appearance().separatorStyle = .none }
         .onDisappear { UITableView.appearance().separatorStyle = .singleLine }
-        .navigationBarTitle(Text("New Card"), displayMode: .inline)
-        .navigationBarItems(trailing: Button(action: {
-            let context = CoreDataStack.shared.persistentContainer.viewContext
-            
-            if self.selectorIndex == 0 {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    if self.wordInput.count == 0 ||
-                        self.pinyinInput.count == 0 ||
-                        self.translationInput.count == 0 {
-                        self.validationError = true
-                        return
-                    }
-                    
-                    var tones = [String]()
-                    
-                    for pinyin in self.pinyinInput.components(separatedBy: " ") {
-                        if let pinyin = self.formatPinyin(pinyin) {
-                            tones.append(pinyin)
-                            
-                        } else {
-                            self.validationError = true
-                            return
-                        }
-                    }
-                    
-                    let card = CloudCardEntity(context: context)
-                    card.id = UUID()
-                    card.list = self.list
-                    card.section = self.section
-                    
-                    card.word = self.wordInput
-                    card.pinyin = tones.joined(separator: " ")
-                    card.translation = self.translationInput.trimmingCharacters(in: .whitespacesAndNewlines)
-                    
-                    self.list.wordCount += 1
-                    self.section.wordCount += 1
-                    
-                    try! context.save()
-                    
-                    self.sheetVisible = false
-                }
-                
-            } else {
-                let cards: [VocabCard] = self.loadCSV(self.csvInput)
-                
-                for c in cards {
-                    var tones = [String]()
-                    var valid = true
-                    
-                    if c.word.count == 0 ||
-                        c.pinyin.count == 0 ||
-                        c.translation.count == 0 {
-                        // validation error
-                        continue
-                    }
-                    
-                    for pinyin in c.pinyin.components(separatedBy: " ") {
-                        if let pinyin = self.formatPinyin(pinyin) {
-                            tones.append(pinyin)
-                            
-                        } else {
-                            valid = false
-                            break
-                        }
-                    }
-                    
-                    if !valid {
-                        // validation error
-                        continue
-                    }
-                    
-                    let card = CloudCardEntity(context: context)
-                    card.id = UUID()
-                    card.list = self.list
-                    card.section = self.section
-                    card.word = c.word
-                    card.pinyin = tones.joined(separator: " ")
-                    card.translation = c.translation
-                    
-                    self.list.wordCount += 1
-                    self.section.wordCount += 1
-                    
-                    try! context.save()
-                }
-                
-                self.sheetVisible = false
+        .toolbar {
+            // FIXME: without this, back button will disappear
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {}, label: {})
             }
             
-        }) {
-            Text("Add").bold()
-        })
-            .alert(isPresented: $validationError) {
+            ToolbarItem {
+                Button(action: {
+                    let context = CoreDataStack.shared.persistentContainer.viewContext
+                    
+                    if self.selectorIndex == 0 {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            if self.wordInput.count == 0 ||
+                                self.pinyinInput.count == 0 ||
+                                self.translationInput.count == 0 {
+                                self.validationError = true
+                                return
+                            }
+                            
+                            var tones = [String]()
+                            
+                            for pinyin in self.pinyinInput.components(separatedBy: " ") {
+                                if let pinyin = self.formatPinyin(pinyin) {
+                                    tones.append(pinyin)
+                                    
+                                } else {
+                                    self.validationError = true
+                                    return
+                                }
+                            }
+                            
+                            let card = CloudCardEntity(context: context)
+                            card.id = UUID()
+                            card.list = self.list
+                            card.section = self.section
+                            
+                            card.word = self.wordInput
+                            card.pinyin = tones.joined(separator: " ")
+                            card.translation = self.translationInput.trimmingCharacters(in: .whitespacesAndNewlines)
+                            
+                            self.list.wordCount += 1
+                            self.section.wordCount += 1
+                            
+                            try! context.save()
+                            
+                            self.sheetVisible = false
+                        }
+                        
+                    } else {
+                        let cards: [VocabCard] = self.loadCSV(self.csvInput)
+                        
+                        for c in cards {
+                            var tones = [String]()
+                            var valid = true
+                            
+                            if c.word.count == 0 ||
+                                c.pinyin.count == 0 ||
+                                c.translation.count == 0 {
+                                // validation error
+                                continue
+                            }
+                            
+                            for pinyin in c.pinyin.components(separatedBy: " ") {
+                                if let pinyin = self.formatPinyin(pinyin) {
+                                    tones.append(pinyin)
+                                    
+                                } else {
+                                    valid = false
+                                    break
+                                }
+                            }
+                            
+                            if !valid {
+                                // validation error
+                                continue
+                            }
+                            
+                            let card = CloudCardEntity(context: context)
+                            card.id = UUID()
+                            card.list = self.list
+                            card.section = self.section
+                            card.word = c.word
+                            card.pinyin = tones.joined(separator: " ")
+                            card.translation = c.translation
+                            
+                            self.list.wordCount += 1
+                            self.section.wordCount += 1
+                            
+                            try! context.save()
+                        }
+                        
+                        self.sheetVisible = false
+                    }
+                    
+                }, label: {
+                    Text("Add").bold()
+                })
+            }
+        }
+        .navigationTitle("New Card")
+        .alert(isPresented: $validationError) {
                 Alert(title: Text("Add card"), message: Text("Invalid input"), dismissButton: .default(Text("OK")))
         }
     }

@@ -65,6 +65,8 @@ struct CardDetails: View {
             
             dictView
         }
+        .listStyle(PlainListStyle())
+        .environment(\.defaultMinListRowHeight, 10)
     }
 }
 

@@ -46,16 +46,16 @@ struct CardView: View {
         }
         .onReceive(self.didSave) { _ in
             self.cards = self.getCards()
-        }
+        }.navigationTitle(list.name!)
         
         #if os(watchOS)
         return GeometryReader { geometry in
             content
                 .environment(\.defaultMinListRowHeight, geometry.size.height)
                 .listStyle(CarouselListStyle()).focusable(true)
-        }.navigationBarTitle(list.name!)
+        }
         #else
-        return content.navigationBarTitle(list.name!)
+        return content
         #endif
         
     }

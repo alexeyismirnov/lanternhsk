@@ -56,25 +56,27 @@ struct SearchView: View {
                 VStack(alignment: .center) {
                     Text("Not found")
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center))
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                .navigationTitle("Search results")
+            )
                 
         } else {
             content = AnyView(List {
                 ForEach(cards.indices, id:\.self ){ index in
                     self.buildItem(index)
                 }
-            })
-           
-        }
-        
+            }
+            .navigationTitle("Search results")
+        )}
+                
         #if os(watchOS)
         return GeometryReader { geometry in
             content
                 .environment(\.defaultMinListRowHeight, geometry.size.height)
                 .listStyle(CarouselListStyle()).focusable(true)
-        }.navigationBarTitle("Search results")
+        }
         #else
-        return content.navigationBarTitle("Search results")
+        return content
         #endif
         
     }
