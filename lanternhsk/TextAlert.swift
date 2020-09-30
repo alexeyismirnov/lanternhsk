@@ -23,45 +23,6 @@ extension UIAlertController {
     }
 }
 
-
-struct AlertWrapper<Content: View>: UIViewControllerRepresentable {
-    @Binding var isPresented: Bool
-    let alert: TextAlert
-    let content: Content
-    
-    func makeUIViewController(context: UIViewControllerRepresentableContext<AlertWrapper>) -> UIHostingController<Content> {
-        UIHostingController(rootView: content)
-    }
-    
-    final class Coordinator {
-        var alertController: UIAlertController?
-        init(_ controller: UIAlertController? = nil) {
-            self.alertController = controller
-        }
-    }
-    
-    func makeCoordinator() -> Coordinator {
-        return Coordinator()
-    }
-    
-    
-    func updateUIViewController(_ uiViewController: UIHostingController<Content>, context: UIViewControllerRepresentableContext<AlertWrapper>) {
-        uiViewController.rootView = content
-        if isPresented && uiViewController.presentedViewController == nil {
-            var alert = self.alert
-            alert.action = {
-                self.isPresented = false
-                self.alert.action($0)
-            }
-            context.coordinator.alertController = UIAlertController(alert: alert)
-            uiViewController.present(context.coordinator.alertController!, animated: true)
-        }
-        if !isPresented && uiViewController.presentedViewController == context.coordinator.alertController {
-            uiViewController.dismiss(animated: true)
-        }
-    }
-}
-
 public struct TextAlert {
     public var title: String
     public var placeholder: String = ""
@@ -71,7 +32,42 @@ public struct TextAlert {
 }
 
 extension View {
-    public func alert(isPresented: Binding<Bool>, _ alert: TextAlert) -> some View {
-        AlertWrapper(isPresented: isPresented, alert: alert, content: self)
+    private func keyWindow() -> UIWindow? {
+        return UIApplication.shared.connectedScenes
+            .filter {$0.activationState == .foregroundActive}
+            .compactMap {$0 as? UIWindowScene}
+            .first?.windows.filter {$0.isKeyWindow}.first
+    }
+    
+    private func topMostViewController() -> UIViewController? {
+        guard let rootController = keyWindow()?.rootViewController else {
+            return nil
+        }
+        return topMostViewController(for: rootController)
+    }
+    
+    private func topMostViewController(for controller: UIViewController) -> UIViewController {
+        if let presentedController = controller.presentedViewController {
+            return topMostViewController(for: presentedController)
+        } else if let navigationController = controller as? UINavigationController {
+            guard let topController = navigationController.topViewController else {
+                return navigationController
+            }
+            return topMostViewController(for: topController)
+        } else if let tabController = controller as? UITabBarController {
+            guard let topController = tabController.selectedViewController else {
+                return tabController
+            }
+            return topMostViewController(for: topController)
+        }
+        return controller
+    }
+    
+    public func alert(_ alert: TextAlert) {
+        let alertController = UIAlertController(alert: alert)
+        
+        if let controller = topMostViewController() {
+            controller.present(alertController, animated: true)
+        }
     }
 }

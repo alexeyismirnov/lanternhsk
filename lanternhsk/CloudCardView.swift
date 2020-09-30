@@ -88,30 +88,39 @@ struct CloudCardView: View {
                 
             }.onAppear(perform: {
                 self.cards = self.getCards()
-            }))
-        
-        #if os(iOS)
-        return content
-            .navigationBarTitle(section.name ?? "")
-            .navigationBarItems(trailing:
-                HStack {
+            })
+            .toolbar {
+                #if os(iOS)
+                // FIXME: without this, back button will disappear
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {}, label: {})
+                }
+                #endif
+                
+                ToolbarItem {
+                    #if os(iOS)
                     Button(action: {
                         withAnimation {
                             self.sheetVisible = true
                         }
                     },
-                           label: {
-                            Text("Add")
+                    label: {
+                        Text("Add")
                     })
-                }
+                    #endif
+                }}
+            .navigationTitle(section.name ?? "")
         )
         
+        #if os(iOS)
+        return content
+
         #else
         return GeometryReader { geometry in
             content
                 .environment(\.defaultMinListRowHeight, geometry.size.height)
                 .listStyle(CarouselListStyle()).focusable(true)
-        }.navigationBarTitle(list.name!)
+        }
         #endif
         
     }

@@ -9,23 +9,17 @@
 import SwiftUI
 import CoreData
 
-extension View {
-    func conditional(closure: (Self) -> AnyView) -> AnyView {
-        return closure(self)
-    }
-}
-
-
 struct CloudListView: View {
     var request : NSFetchRequest<CloudListEntity> =  CloudListEntity.fetchRequest()
     @State var lists: [CloudListEntity] = []
     
     private var didSave =  NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)
     
-    @State private var isShowingAlert = false
     @State private var trigger: Bool = false
     @State private var alertInput = ""
     
+    @Environment(\.presentationMode) var presentationMode
+
     init() {
         let context = CoreDataStack.shared.persistentContainer.viewContext
         
@@ -34,74 +28,6 @@ struct CloudListView: View {
         let lists = try! context.fetch(request)
         self._lists = State(initialValue: lists)
     }
-    
-    #if os(iOS)
-
-    private func keyWindow() -> UIWindow? {
-        return UIApplication.shared.connectedScenes
-            .filter {$0.activationState == .foregroundActive}
-            .compactMap {$0 as? UIWindowScene}
-            .first?.windows.filter {$0.isKeyWindow}.first
-    }
-    
-    private func topMostViewController() -> UIViewController? {
-        guard let rootController = keyWindow()?.rootViewController else {
-            return nil
-        }
-        return topMostViewController(for: rootController)
-    }
-    
-    private func topMostViewController(for controller: UIViewController) -> UIViewController {
-        if let presentedController = controller.presentedViewController {
-            return topMostViewController(for: presentedController)
-        } else if let navigationController = controller as? UINavigationController {
-            guard let topController = navigationController.topViewController else {
-                return navigationController
-            }
-            return topMostViewController(for: topController)
-        } else if let tabController = controller as? UITabBarController {
-            guard let topController = tabController.selectedViewController else {
-                return tabController
-            }
-            return topMostViewController(for: topController)
-        }
-        return controller
-    }
-    
-    private func alert() {
-        let alert = UIAlertController(title: "Enter Name", message: "...or pseudo", preferredStyle: .alert)
-        alert.addTextField { (textField) in
-            textField.placeholder = "Enter something"
-        }
-        alert.addAction(UIAlertAction(title: "Done", style: .default) { _ in
-            let textField = alert.textFields![0] as UITextField
-            alertInput = textField.text ?? "Name"
-            
-            let context = CoreDataStack.shared.persistentContainer.viewContext
-
-            let list1 = CloudListEntity(context: context)
-            list1.id = UUID()
-            list1.name = alertInput
-            list1.wordCount = 0
-            
-            try! context.save()
-            
-            self.reload()
-            
-            print("Name \(alertInput)")
-            
-        })
-        let textField = alert.textFields![0] as UITextField
-        alertInput = textField.text ?? "Name"
-        showAlert(alert: alert)
-    }
-    
-    func showAlert(alert: UIAlertController) {
-        if let controller = topMostViewController() {
-            controller.present(alert, animated: true)
-        }
-    }
-    #endif
     
     func buildItem(_ list:CloudListEntity) -> some View {
         let view = LazyView(CloudSectionView(list))
@@ -150,22 +76,44 @@ struct CloudListView: View {
             }.onAppear(perform: {
                 self.reload()
             })
-            .navigationTitle("Flashcards")
             .toolbar {
+                #if os(iOS)
+                // FIXME: without this, back button will disappear
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {}, label: {})
+                }
+                #endif
+                
                 ToolbarItem {
+                    #if os(iOS)
                     Button(action: {
-                        #if os(iOS)
-                        self.alert()
-                        #endif
+                        self.alert(TextAlert(title: "Enter Name", action: {
+                            if let input = $0  {
+                                DispatchQueue.main.async {
+                                    let context = CoreDataStack.shared.persistentContainer.viewContext
+                                    
+                                    let list1 = CloudListEntity(context: context)
+                                    list1.id = UUID()
+                                    list1.name = input
+                                    list1.wordCount = 0
+                                    
+                                    try! context.save()
+                                    
+                                    self.reload()
+                                }
+                            }
+                            
+                        }))
                         
-                        withAnimation {
-                            self.isShowingAlert.toggle()
-                        }
                     }, label: {
                         Text("Add")
                     })
+                    #endif
                 }
-            })
+            }
+            .navigationTitle("Flashcards")
+
+            )
             
         }
         

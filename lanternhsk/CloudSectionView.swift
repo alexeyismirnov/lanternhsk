@@ -84,63 +84,45 @@ struct CloudSectionView: View {
                 self.trigger.toggle()
                 
             })
-                .navigationBarTitle(list.name ?? ""))
-        }
-        
-        
-        #if os(iOS)
-        return content.navigationBarItems(trailing:
-            HStack {
-                Button(action: {
-                    withAnimation {
-                        self.isShowingAlert.toggle()
-                    }
-                },
-                       label: {
-                        Text("Add")
-                })
-                
-            }
-        )
-        .alert(isPresented: $isShowingAlert, TextAlert(title: "Add Section", action: {
-            if let alertInput = $0  {
-                DispatchQueue.main.async {
-                    let section = CloudSectionEntity(context: context)
-                    section.id = UUID()
-                    section.list = self.list
-                    section.name = alertInput
-                    section.wordCount = 0
-                    
-                    try! context.save()
-                    self.sections = self.getSections()
-                    self.trigger.toggle()
+            
+            .toolbar {
+                #if os(iOS)
+                // FIXME: without this, back button will disappear
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {}, label: {})
                 }
-                
-            }
-        }))
-        
-        /*
-            .textFieldAlert(isShowing: $isShowingAlert,
-                            text: $alertInput,
-                            title: "Add Section") {
+                #endif
+                ToolbarItem {
+                    #if os(iOS)
+                    Button(action: {
+                        self.alert(TextAlert(title: "Enter Name", action: {
+                            if let input = $0  {
                                 DispatchQueue.main.async {
                                     let section = CloudSectionEntity(context: context)
                                     section.id = UUID()
                                     section.list = self.list
-                                    section.name = self.alertInput
+                                    section.name = input
                                     section.wordCount = 0
                                     
                                     try! context.save()
                                     self.sections = self.getSections()
                                     self.trigger.toggle()
                                 }
-                                
+                            }
+                        }))
+                        
+                    },
+                    label: {
+                        Text("Add")
+                    })
+                    #endif
+                }}
+            .navigationTitle(list.name ?? "")
+
+            )
         }
- */
         
-        #else
         return content
-        #endif
         
     }
 }

@@ -62,53 +62,31 @@ struct ListView: View {
                     }
                 }.listStyle(PlainListStyle())
         }
-            
-        #if os(watchOS)
-        return list
-            .navigationBarTitle("Lists")
-            .focusable(true)
-            .contextMenu(menuItems: {
-                Button(action: {
-                    self.studyManager.searchStarted.send()
-
-                }, label: {
-                    VStack{
-                        Image(systemName: "magnifyingglass").font(.title)
-                        Text("Search")
-                    }
-                })
-            })
-        #else
-        return list
-            .alert(isPresented: $isShowingAlert, TextAlert(title: "Search", action: {
-                if let input = $0  {
-                    searchInput = input
-                    self.searchPresented = true
-                    
-                }
-            }))
-            /*
-            .textFieldAlert(isShowing: $isShowingAlert,
-                            text: $searchInput,
-                            title: "Search") {
-                print("input \(searchInput)")
+            .toolbar {
+                ToolbarItem {
+                    Button(action: {
+                        #if os(iOS)
+                        self.alert(TextAlert(title: "Search", action: {
+                            if let input = $0  {
+                                searchInput = input
                                 self.searchPresented = true
                                 
-        }
- */
-        .navigationBarTitle("Lists", displayMode: .inline)
-        .navigationBarItems(trailing:
-            Button(action: {
-                self.searchInput = ""
-                withAnimation {
-                    self.isShowingAlert.toggle()
+                            }
+                        }))
+                        #else
+                        self.studyManager.searchStarted.send()
+
+                        #endif
+                    }
+                    , label: {
+                        Text("Search")
+                    })
                 }
-            }, label: {
-                Text("Search")
-            })
-                
-        )
-        #endif
+            }
+            .navigationTitle("Flashcards")
+
+                    
+       return list
     }
 }
 
